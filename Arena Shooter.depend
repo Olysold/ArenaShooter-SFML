@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1359205553 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
+1373457881 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
+	<iostream>
+	"Utility.hpp"
+	"ResourceManager.hpp"
 
 1365233432 z:\programming\c++\sfml2\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -335,4 +338,35 @@
 	<SFML/System/String.hpp>
 	<string>
 	<vector>
+
+1372932396 source:z:\programming\c++\github repositories\arenashooter-sfml\src\logger.cpp
+	"Logger.hpp"
+	<cstdlib>
+	"Utility.hpp"
+
+1372932372 z:\programming\c++\github repositories\arenashooter-sfml\include\logger.hpp
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	"Utility.hpp"
+
+1373457637 z:\programming\c++\github repositories\arenashooter-sfml\include\utility.hpp
+	<sstream>
+	<string>
+
+1373457845 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
+	"ResourceManager.hpp"
+
+1373457845 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
+	<map>
+	<string>
+	<memory>
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1373457611 source:z:\programming\c++\github repositories\arenashooter-sfml\src\utility.cpp
+	"Utility.hpp"
+	<ctime>
 

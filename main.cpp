@@ -1,8 +1,20 @@
+//3RD
 #include <SFML/Graphics.hpp>
+
+//STD
+#include <iostream>
+
+//SELF
+#include "Utility.hpp"
+#include "ResourceManager.hpp"
+
+ResourceManager ResMan;
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "Template");
+
+    ResMan.texture("Player");
 
     while (window.isOpen())
     {
