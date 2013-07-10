@@ -4,10 +4,17 @@
 //3RD
 #include <SFML/Graphics.hpp>
 
+//SELF
+#include "Enemy.hpp"
+#include "Bullet.hpp"
+
 class Player
 {
 public:
     Player();
+
+    void collision(Enemy&); ///Interaction Class calls collision functions
+    void collision(Bullet&);
 
     sf::Sprite sprite;
 
