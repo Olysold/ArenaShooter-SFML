@@ -60,6 +60,9 @@
 			<Add directory="dll/debug" />
 		</Compiler>
 		<Linker>
+			<Add option="-static-libgcc" />
+			<Add option="-static-libstdc++" />
+			<Add option="-static" />
 			<Add directory="Z:/Programming/C++/SFML2/lib" />
 			<Add directory="src" />
 			<Add directory="include" />
@@ -67,6 +70,11 @@
 			<Add directory="dll/release" />
 			<Add directory="dll/debug" />
 		</Linker>
+		<ExtraCommands>
+			<Add after='cmd /c xcopy &quot;$(PROJECT_DIR)\data&quot; &quot;$(PROJECT_DIR)\bin\Debug\data&quot; /e /i /h /y' />
+			<Add after='cmd /c xcopy &quot;$(PROJECT_DIR)\data&quot; &quot;$(PROJECT_DIR)\bin\Release\data&quot; /e /i /h /y' />
+			<Mode after="always" />
+		</ExtraCommands>
 		<Unit filename="data/textures/Error.png" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/util.hpp" />
