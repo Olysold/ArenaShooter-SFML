@@ -61,7 +61,7 @@ sf::Font* ResourceManager::font(std::string filename)
                 exit(EXIT_FAILURE);
             }
         }
-        std::cout << "Added fon \'" << filename << ".ttf\'\n";
+        std::cout << "Added font \'" << filename << ".ttf\'\n";
         m_fonts.insert(fontPair(filename, f));
         return m_fonts.find(filename)->second;
     }
