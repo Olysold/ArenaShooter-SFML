@@ -23,14 +23,8 @@
 					<Add library="sfml-system-d" />
 				</Linker>
 				<ExtraCommands>
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin&quot; &quot;$(PROJECT_DIR)\dll&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\libsndfile-1.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\openal32.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-audio-d-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-graphics-d-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-window-d-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-network-d-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-system-d-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Debug&quot;' />
+					<Add after='cmd /c xcopy &quot;$(PROJECT_DIR)\dll\debug&quot; &quot;$(PROJECT_DIR)\bin\Debug\&quot; /e /i /h /y' />
+					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Release">
@@ -50,14 +44,8 @@
 					<Add library="sfml-system" />
 				</Linker>
 				<ExtraCommands>
-					<Add after='cmd /c copy &quot;D:\Programming\C++\SFML2\bin&quot; &quot;$(PROJECT_DIR)\dll&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\libsndfile-1.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\openal32.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-audio-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-graphics-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-window-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-network-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
-					<Add after='cmd /c copy &quot;Z:\Programming\C++\SFML2\bin\sfml-system-2.dll&quot; &quot;$(PROJECT_DIR)\bin\Release&quot;' />
+					<Add after='cmd /c xcopy &quot;$(PROJECT_DIR)\dll\release&quot; &quot;$(PROJECT_DIR)\bin\Release&quot; /e /i /h /y' />
+					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 		</Build>
@@ -68,14 +56,23 @@
 			<Add directory="src" />
 			<Add directory="include" />
 			<Add directory="dll" />
+			<Add directory="dll/release" />
+			<Add directory="dll/debug" />
 		</Compiler>
 		<Linker>
 			<Add directory="Z:/Programming/C++/SFML2/lib" />
 			<Add directory="src" />
 			<Add directory="include" />
 			<Add directory="dll" />
+			<Add directory="dll/release" />
+			<Add directory="dll/debug" />
 		</Linker>
+		<Unit filename="data/textures/Error.png" />
+		<Unit filename="include/ResourceManager.hpp" />
+		<Unit filename="include/util.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ResourceManager.cpp" />
+		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
