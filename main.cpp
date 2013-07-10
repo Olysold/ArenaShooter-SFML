@@ -5,7 +5,7 @@
 #include <iostream>
 
 //SELF
-#include "Utility.hpp"
+#include "util.hpp"
 #include "ResourceManager.hpp"
 
 ResourceManager ResMan;
