@@ -12,5 +12,6 @@
 *.la
 *.a
 
-# Bin
+# Folders
 /bin/
+/obj/

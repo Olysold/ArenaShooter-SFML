@@ -43,14 +43,12 @@ sf::Texture* ResourceManager::texture(std::string filename)
 
 sf::Font* ResourceManager::font(std::string filename)
 {
-
     if (m_fonts.find(filename) != m_fonts.end())
     {
         return m_fonts.find(filename)->second;
     }
     else
     {
-
         sf::Font* f = new sf::Font;
 
         if (!f->loadFromFile(("data/fonts/" + filename + ".ttf")))
