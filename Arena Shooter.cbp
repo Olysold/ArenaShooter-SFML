@@ -76,9 +76,23 @@
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="data/textures/Error.png" />
+		<Unit filename="include/Bullet.hpp" />
+		<Unit filename="include/Camera.hpp" />
+		<Unit filename="include/Enemy.hpp" />
+		<Unit filename="include/EnemyManager.hpp" />
+		<Unit filename="include/Game.hpp" />
+		<Unit filename="include/Interaction.hpp" />
+		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/util.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Bullet.cpp" />
+		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/Enemy.cpp" />
+		<Unit filename="src/EnemyManager.cpp" />
+		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/Interaction.cpp" />
+		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/util.cpp" />
 		<Extensions>
