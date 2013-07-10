@@ -13,19 +13,10 @@ enum class Status
     AlreadyOpen
 };
 
-enum class Severity
-{
-    None,
-    Info,
-    Minor,
-    Major
-};
-
 namespace util
 {
     std::string getDate();
     std::string enumToString(Status);
-    std::string enumToString(Severity);
 
     template <class T> std::string PODToString(T type)
     {

@@ -44,27 +44,3 @@ std::string util::enumToString(Status stat)
 
     return "Unknown Status2";
 }
-
-std::string util::enumToString(Severity sev)
-{
-    switch (sev)
-    {
-    case Severity::None:
-        return "None";
-        break;
-    case Severity::Info:
-        return "Info";
-        break;
-    case Severity::Minor:
-        return "Minor";
-        break;
-    case Severity::Major:
-        return "Major";
-        break;
-    default:
-        return "Unknown Severity";
-        break;
-    }
-
-    return "Unknown Severity2";
-}
