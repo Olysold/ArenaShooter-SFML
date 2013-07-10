@@ -6,6 +6,8 @@
 
 //SELF
 
+///Should we make an IDC, or use Issues? I want to use Issues but I feel like it won't get noticed as much
+
 /**
 Should we look at using vector positions for speed & direction, or would you prefer not to?
 Take a look at ECS: ControlSystem and "Utility/Vector.cpp"
@@ -15,7 +17,7 @@ P.S are you sure you want to call it Interaction class? CollisionManager sounds 
 
 For bullet collision, we can either do:
 1) BulletManager to create and store all bullets, use bool to determine who spawned it.
-
+Is more consistent due to EnemyManager
 {
     m_bullets = m_bulMan.getBullets();
     if (m_bullets[i].playerSpawned == true && m_bullets[i].box.intersects(m_enemies[j])
@@ -27,7 +29,7 @@ For bullet collision, we can either do:
 or
 
 2) store bullets in Player/Enemy class, let Interaction class handle who spawned it.
-
+Makes more sense, though you do need to have access to player/enemies to access bullets
 {
     m_enemies = m_enemyMan.getEnemies();
     if (m_enemies[i].bullets[j].box.intersects(m_player))
@@ -38,6 +40,7 @@ or
 
 Now, about multi-line parameters, EnemyManager looks like this:
 
+(I prefer either this or the next)
 void createEnemy(unsigned int level,
                  unsigned int health,
                  unsigned int armor,
@@ -91,7 +94,8 @@ void createEnemy
         unsigned int bulletDamage
     );
 
-    also ROF is an acronym, should it still adhere to the camelCase rule and be "rof"?
+    (I think acronyms should stay acronyms)
+    ROF is an acronym, should it still adhere to the camelCase rule and be "rof"? or keep it as "ROF"?
 */
 
 int main()
