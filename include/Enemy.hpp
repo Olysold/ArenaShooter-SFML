@@ -6,6 +6,9 @@
 
 //SELF
 #include "AnimatedSprite.hpp"
+#include "BulletManager.hpp"
+
+#include <memory>
 
 class Enemy
 {
@@ -13,15 +16,17 @@ public:
     Enemy(unsigned int level); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
     virtual ~Enemy();
 
-    void move();
-    void shoot();
-    void dropLoot();
+    void update();
 
     AnimatedSprite sprite;
     sf::Sound deathSound;
     sf::Sound shootSound;
 
 private:
+    void move();
+    void shoot();
+    void dropLoot();
+
     unsigned int    m_level; ///Used as a factor to multiply stats?
 
     unsigned int    m_health;
@@ -33,6 +38,8 @@ private:
 
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
+
+    const shared_ptr<BulletManager> m_bullets;
 };
 
 #endif

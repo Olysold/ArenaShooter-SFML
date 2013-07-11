@@ -25,7 +25,7 @@ public:
                      unsigned int bulletSpeed,
                      unsigned int bulletDamage);
 
-    void kill();
+    void kill(std::vector<Enemy>::iterator&);
 
     std::vector<Enemy>& getEnemies(); ///For collision handling
 
