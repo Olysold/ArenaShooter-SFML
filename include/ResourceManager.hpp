@@ -10,14 +10,14 @@
 //3RD
 #include <SFML/Graphics.hpp>
 
-typedef std::map<std::string, sf::Texture*> texMap;
-typedef std::map<std::string, sf::Font*> fontMap;
-typedef std::pair<std::string, sf::Texture*> texPair;
-typedef std::pair<std::string, sf::Font*> fontPair;
-
 class ResourceManager
 {
 public:
+    typedef std::map<std::string, sf::Texture*> texMap;
+    typedef std::map<std::string, sf::Font*> fontMap;
+    typedef std::pair<std::string, sf::Texture*> texPair;
+    typedef std::pair<std::string, sf::Font*> fontPair;
+
     ResourceManager();
     ~ResourceManager();
 

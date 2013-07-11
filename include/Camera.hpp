@@ -10,7 +10,7 @@
 class Camera
 {
 public:
-    Camera(Player&); ///Camera stores a reference to the player
+    Camera(Player&); ///Camera stores a reference to the player to get player's location
     void update(sf::RenderWindow&); ///Call for camera to move to player
 
 private:
