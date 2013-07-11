@@ -30,10 +30,10 @@ public:
     void cleanup(); ///Call to cleanup bullets that extend out of the arena
 
 private:
-    //std::vector<Bullet>                     m_enemyBullets;
-    //std::vector<Bullet>                     m_playerBullets;
+    std::vector<Bullet>                     m_enemyBullets;
+    std::vector<Bullet>                     m_playerBullets;
 
-    //const std::shared_ptr<ResourceManager>  m_resources;
+    const std::shared_ptr<ResourceManager>  m_resMan;
 };
 
 #endif

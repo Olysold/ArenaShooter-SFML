@@ -40,7 +40,7 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
 
-    const BulletManager m_bullets;
+    const BulletManager m_buMan;
 };
 
 #endif
