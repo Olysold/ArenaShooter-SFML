@@ -16,11 +16,11 @@ public:
     Game(sf::VideoMode, std::string);
     void run();
 
-private:
-    unsigned int     m_score;
+    static unsigned int     score;
 
-    sf::Time         m_deltaTime;
-    sf::RenderWindow m_window;
+private:
+    static sf::Time         m_deltaTime;
+    static sf::RenderWindow m_window;
 };
 
 #endif

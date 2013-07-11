@@ -23,6 +23,19 @@ public:
     void update(sf::Time& deltaTime);
     void draw(sf::RenderWindow&);
 
+    //TODO
+    void takeDamage(int damage)
+    {
+        m_health -= damage;
+    }
+    int getDamage();
+
+    //TODO
+    int getValue()
+    {
+        return 10;
+    }
+
     AnimatedSprite sprite;
     sf::Sound deathSound;
     sf::Sound shootSound;

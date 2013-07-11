@@ -12,6 +12,11 @@ class Enemy;
 class Player;
 class Bullet;
 
+
+unsigned int     Game::score;
+sf::Time         Game::m_deltaTime;
+sf::RenderWindow Game::m_window;
+
 Game::Game(sf::VideoMode vm, std::string title):
 m_score(0)
 {

@@ -19,3 +19,8 @@ void Enemy::draw(sf::RenderWindow& window)
     window.draw(sprite);
 }
 
+int Enemy::getDamage()
+{
+    return m_damage;
+}
+

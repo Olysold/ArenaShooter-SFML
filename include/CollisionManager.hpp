@@ -8,6 +8,7 @@
 #include "Player.hpp"
 #include "EnemyManager.hpp"
 #include "BulletManager.hpp"
+#include "Game.hpp"
 
 class CollisionManager
 {
@@ -16,12 +17,10 @@ public:
     void update(sf::Time& deltaTime); ///Call to check for collisions
 
 private:
-    void collision(Player&, Enemy&);
-    void collision(Bullet&, Player&);
-    void collision(Bullet&, Enemy&);
-
     const std::shared_ptr<BulletManager> m_bulMan;
     const std::shared_ptr<EnemyManager>  m_enemyMan;
+    const std::shared_ptr<Game>          m_game;
+    Player                               m_player;
 };
 
 #endif

@@ -22,7 +22,15 @@ public:
 
     void kill();
 
-    void update(sf::Time deltaTime);
+    void update(sf::Time& deltaTime);
+    void draw(sf::RenderWindow& window);
+
+    //TODO
+    int getHealth()
+    {
+        return m_health;
+    }
+    void takeDamage(int damage);
 
     AnimatedSprite sprite;
     sf::Sound deathSound;
@@ -35,12 +43,9 @@ private:
 
     bool            m_alive;
 
-    unsigned int    m_health;
-    unsigned int    m_armor;
-    unsigned int    m_shield;
+    int    m_health;
     unsigned int    m_speed;
 
-    unsigned int    m_bulletHealth;
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
     unsigned int    m_bulletROF;
