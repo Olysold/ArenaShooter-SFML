@@ -69,15 +69,15 @@ sf::Font* ResourceManager::font(std::string filename)
     }
 }
 
-sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
+sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
 {
     if (m_sBuffers.find(filename) != m_sBuffers.end())
     {
-        return m_sBuffers.find(filename)->second;
+        return *m_sBuffers.find(filename)->second;
     }
     else
     {
-        sf::SoundBuffer* sb = new sf::SoundBuffer;
+        std::shared_ptr<sf::SoundBuffer> sb(new sf::SoundBuffer);
 
         if (!sb->loadFromFile(("data/sounds/" + filename + ".ogg")))
         {
@@ -90,7 +90,7 @@ sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
         }
         std::cout << "Added sound \'" << filename << ".ogg\'\n";
         m_sBuffers.insert(sBufferPair(filename, sb));
-        return m_sBuffers.find(filename)->second;
+        return *m_sBuffers.find(filename)->second;
     }
 }
 

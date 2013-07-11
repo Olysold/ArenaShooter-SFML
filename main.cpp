@@ -11,7 +11,7 @@ ResourceManager ResMan;
 
 int main()
 {
-    sf::Sound Test(*ResMan.soundBuffer("test"));
+    sf::Sound Test(ResMan.soundBuffer("test"));
     Test.play();
 
     sf::RenderWindow window(sf::VideoMode(200, 200), "Template");
