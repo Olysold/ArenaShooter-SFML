@@ -11,21 +11,17 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
-    for (texMap::iterator it = m_textures.begin(); it != m_textures.end(); ++it)
-    {
-        delete it->second;
-    }
 }
 
-sf::Texture* ResourceManager::texture(std::string filename)
+sf::Texture& ResourceManager::texture(std::string filename)
 {
     if (m_textures.find(filename) != m_textures.end())
     {
-        return m_textures.find(filename)->second;
+        return *m_textures.find(filename)->second;
     }
     else
     {
-        sf::Texture* t = new sf::Texture;
+        std::shared_ptr<sf::Texture> t(new sf::Texture);
 
         if (!t->loadFromFile(("data/textures/" + filename + ".png")))
         {
@@ -39,19 +35,19 @@ sf::Texture* ResourceManager::texture(std::string filename)
         std::cout << "Added texture \'" << filename << ".png\'\n";
         m_textures.insert(texPair(filename, t));
 
-        return m_textures.find(filename)->second;
+        return *m_textures.find(filename)->second;
     }
 }
 
-sf::Font* ResourceManager::font(std::string filename)
+sf::Font& ResourceManager::font(std::string filename)
 {
     if (m_fonts.find(filename) != m_fonts.end())
     {
-        return m_fonts.find(filename)->second;
+        return *m_fonts.find(filename)->second;
     }
     else
     {
-        sf::Font* f = new sf::Font;
+        std::shared_ptr<sf::Font> f(new sf::Font);
 
         if (!f->loadFromFile(("data/fonts/" + filename + ".ttf")))
         {
@@ -65,7 +61,7 @@ sf::Font* ResourceManager::font(std::string filename)
         }
         std::cout << "Added font \'" << filename << ".ttf\'\n";
         m_fonts.insert(fontPair(filename, f));
-        return m_fonts.find(filename)->second;
+        return *m_fonts.find(filename)->second;
     }
 }
 
@@ -94,27 +90,27 @@ sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
     }
 }
 
-Animation* ResourceManager::addAnimation(std::string name, Animation ani)
+Animation& ResourceManager::addAnimation(std::string name, Animation ani)
 {
     if (m_animations.find(name) != m_animations.end())
     {
-        return m_animations.find(name)->second;
+        return *m_animations.find(name)->second;
     }
     else
     {
-        Animation* a = new Animation;
+        std::shared_ptr<Animation> a(new Animation);
         *a = ani;
         std::cout << "Added animation \'" << name << "\'\n";
         m_animations.insert(aniPair(name, a));
-        return m_animations.find(name)->second;
+        return *m_animations.find(name)->second;
     }
 }
 
-Animation* ResourceManager::getAnimation(std::string name)
+Animation& ResourceManager::getAnimation(std::string name)
 {
     if (m_animations.find(name) != m_animations.end())
     {
-        return m_animations.find(name)->second;
+        return *m_animations.find(name)->second;
     }
     else
     {

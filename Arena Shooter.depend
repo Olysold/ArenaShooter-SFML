@@ -452,7 +452,7 @@
 	"AnimatedSprite.hpp"
 	"BulletManager.hpp"
 
-1373550527 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
+1373551119 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<map>
