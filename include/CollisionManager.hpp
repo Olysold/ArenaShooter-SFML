@@ -5,8 +5,8 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-#include "EnemyManager.hpp"
 #include "Player.hpp"
+#include "EnemyManager.hpp"
 #include "BulletManager.hpp"
 
 class CollisionManager
@@ -20,7 +20,8 @@ private:
     void collision(Bullet&, Player&);
     void collision(Bullet&, Enemy&);
 
-    BulletManager m_bulMan;
+    const std::shared_ptr<BulletManager> m_bulMan;
+    const std::shared_ptr<EnemyManager>  m_enemyMan;
 };
 
 #endif

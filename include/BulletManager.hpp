@@ -18,7 +18,7 @@
 
 class Enemy;
 class Player;
-class Buller;
+class Bullet;
 
 class BulletManager
 {

@@ -2,6 +2,8 @@
 
 texMap ResourceManager::m_textures;
 fontMap ResourceManager::m_fonts;
+aniMap ResourceManager::m_animations;
+sBufferMap ResourceManager::m_sBuffers;
 
 ResourceManager::ResourceManager()
 {
@@ -69,9 +71,9 @@ sf::Font* ResourceManager::font(std::string filename)
 
 sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
 {
-    if (m_sBuffer.find(filename) != m_sBuffer.end())
+    if (m_sBuffers.find(filename) != m_sBuffers.end())
     {
-        return m_sBuffer.find(filename)->second;
+        return m_sBuffers.find(filename)->second;
     }
     else
     {
@@ -87,12 +89,12 @@ sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
             }
         }
         std::cout << "Added sound \'" << filename << ".ogg\'\n";
-        m_sBuffer.insert(sBufferPair(filename, sb));
-        return m_sBuffer.find(filename)->second;
+        m_sBuffers.insert(sBufferPair(filename, sb));
+        return m_sBuffers.find(filename)->second;
     }
 }
 
-sf::Animation* ResourceManager::addAnimation(std::string name, Animation ani)
+Animation* ResourceManager::addAnimation(std::string name, Animation ani)
 {
     if (m_animations.find(name) != m_animations.end())
     {
@@ -100,13 +102,15 @@ sf::Animation* ResourceManager::addAnimation(std::string name, Animation ani)
     }
     else
     {
+        Animation* a = new Animation;
+        *a = ani;
         std::cout << "Added animation \'" << name << "\'\n";
-        m_animations.insert(aniPair(name, f));
+        m_animations.insert(aniPair(name, a));
         return m_animations.find(name)->second;
     }
 }
 
-sf::Animation* ResourceManager::getAnimation(std::string name)
+Animation* ResourceManager::getAnimation(std::string name)
 {
     if (m_animations.find(name) != m_animations.end())
     {

@@ -13,6 +13,8 @@
 #include "BulletManager.hpp"
 #include "ResourceManager.hpp"
 
+class BulletManager;
+
 class Player
 {
 public:
@@ -43,8 +45,8 @@ private:
     int             m_bulletDamage;
     unsigned int    m_bulletROF;
 
-    const std::shared_ptr<BulletManager> m_bullets;
-    const std::shared_ptr<ResourceManager> m_resources;
+    const std::shared_ptr<BulletManager> m_bulMan;
+    const std::shared_ptr<ResourceManager> m_resMan;
 };
 
 #endif

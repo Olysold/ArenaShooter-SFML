@@ -1,6 +1,7 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy()
+Enemy::Enemy(unsigned int level):
+m_level(level)
 {
 }
 

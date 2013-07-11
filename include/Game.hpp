@@ -10,10 +10,10 @@ public:
     Game();
 
 private:
-    sf::RenderWindow m_window;
-    sf::Time m_deltaTime;
+    unsigned int     m_score;
 
-    unsigned int m_score;
+    sf::Time         m_deltaTime;
+    sf::RenderWindow m_window;
 };
 
 #endif

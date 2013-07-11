@@ -357,3 +357,145 @@
 1373544450 source:z:\programming\c++\github repositories\arenashooter-sfml\src\animation.cpp
 	"Animation.hpp"
 
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\bullet.cpp
+	"Bullet.hpp"
+
+1373539251 z:\programming\c++\github repositories\arenashooter-sfml\include\bullet.hpp
+	<SFML/Graphics.hpp>
+	"Player.hpp"
+	"Enemy.hpp"
+
+1373549131 z:\programming\c++\github repositories\arenashooter-sfml\include\player.hpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<memory>
+	"AnimatedSprite.hpp"
+	"BulletManager.hpp"
+	"ResourceManager.hpp"
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1373461123 z:\programming\c++\sfml2\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Thread.hpp>
+	<vector>
+
+1373549071 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
+	<SFML/Graphics.hpp>
+	<map>
+	<vector>
+	<string>
+	<memory>
+	"Enemy.hpp"
+	"Player.hpp"
+	"Bullet.hpp"
+	"ResourceManager.hpp"
+
+1373549098 z:\programming\c++\github repositories\arenashooter-sfml\include\enemy.hpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<memory>
+	"AnimatedSprite.hpp"
+	"BulletManager.hpp"
+
+1373549221 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<map>
+	<string>
+	<memory>
+	<iostream>
+	"Animation.hpp"
+
+1373544725 source:z:\programming\c++\github repositories\arenashooter-sfml\src\bulletmanager.cpp
+	"BulletManager.hpp"
+
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\camera.cpp
+	"Camera.hpp"
+
+1373539251 z:\programming\c++\github repositories\arenashooter-sfml\include\camera.hpp
+	<SFML/Graphics.hpp>
+	"Player.hpp"
+
+1373539340 source:z:\programming\c++\github repositories\arenashooter-sfml\src\collisionmanager.cpp
+	"CollisionManager.hpp"
+
+1373549039 z:\programming\c++\github repositories\arenashooter-sfml\include\collisionmanager.hpp
+	<SFML/Graphics.hpp>
+	"Player.hpp"
+	"EnemyManager.hpp"
+	"BulletManager.hpp"
+
+1373549112 z:\programming\c++\github repositories\arenashooter-sfml\include\enemymanager.hpp
+	<vector>
+	"Enemy.hpp"
+	<memory>
+
+1373549147 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemy.cpp
+	"Enemy.hpp"
+
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemymanager.cpp
+	"EnemyManager.hpp"
+
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
+	"Game.hpp"
+
+1373548989 z:\programming\c++\github repositories\arenashooter-sfml\include\game.hpp
+	<SFML/Graphics.hpp>
+
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
+	"Player.hpp"
+
