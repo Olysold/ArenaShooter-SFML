@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
+#include "AnimatedSprite.hpp"
 
 class Enemy
 {
@@ -12,7 +13,13 @@ public:
     Enemy(unsigned int level); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
     virtual ~Enemy();
 
-    sf::Sprite sprite;
+    void move();
+    void shoot();
+    void dropLoot();
+
+    AnimatedSprite sprite;
+    sf::Sound deathSound;
+    sf::Sound shootSound;
 
 private:
     unsigned int    m_level; ///Used as a factor to multiply stats?

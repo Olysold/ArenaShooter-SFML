@@ -26,7 +26,6 @@ public:
                      unsigned int bulletDamage);
 
     void kill();
-    void dropLoot();
 
     std::vector<Enemy>& getEnemies(); ///For collision handling
 
