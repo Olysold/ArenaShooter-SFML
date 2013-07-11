@@ -14,17 +14,17 @@
 //SELF
 #include "Animation.hpp"
 
-typedef std::map<std::string, sf::Texture*> texMap;
-typedef std::pair<std::string, sf::Texture*> texPair;
+typedef std::map<std::string, std::shared_ptr<sf::Texture>> texMap;
+typedef std::pair<std::string, std::shared_ptr<sf::Texture>> texPair;
 
-typedef std::map<std::string, sf::Font*> fontMap;
-typedef std::pair<std::string, sf::Font*> fontPair;
+typedef std::map<std::string, std::shared_ptr<sf::Font>> fontMap;
+typedef std::pair<std::string, std::shared_ptr<sf::Font>> fontPair;
 
-typedef std::map<std::string, Animation*> aniMap;
-typedef std::pair<std::string, Animation*> aniPair;
+typedef std::map<std::string, std::shared_ptr<Animation>> aniMap;
+typedef std::pair<std::string, std::shared_ptr<Animation>> aniPair;
 
-typedef std::map<std::string, sf::SoundBuffer*> sBufferMap;
-typedef std::pair<std::string, sf::SoundBuffer*> sBufferPair;
+typedef std::map<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferMap;
+typedef std::pair<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferPair;
 
 class ResourceManager
 {
@@ -33,8 +33,8 @@ public:
     ResourceManager();
     ~ResourceManager();
 
-    sf::Texture* texture(std::string);
-    sf::Font* font(std::string);
+    std::shared_ptr<sf::Texture> texture(std::string);
+    std::shared_ptr<sf::Font> font(std::string);
     sf::SoundBuffer* soundBuffer(std::string);
 
     Animation* addAnimation(std::string, Animation);
