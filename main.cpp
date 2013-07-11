@@ -5,31 +5,13 @@
 #include <iostream>
 
 //SELF
-#include "ResourceManager.hpp"
+#include "Game.hpp"
 
-ResourceManager ResMan;
 
 int main()
 {
-    sf::Sound Test(ResMan.soundBuffer("test"));
-    Test.play();
-
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Template");
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear(sf::Color(40, 40, 40));
-        window.display();
-    }
-
-    Test.stop();
+    Game game(sf::VideoMode(640, 640), "Bullet Arena");
+    game.run();
 
     return 0;
 }

@@ -27,6 +27,9 @@ public:
     void createPlayerB(Player& player); ///Create bullets at player's location
     void createEnemyB(std::shared_ptr<Enemy> enemy); ///Create bullets at chosen enemy type location
 
+    std::vector<Bullet>& getEnemyBullets();
+    std::vector<Bullet>& getPlayerBullets();
+
     void cleanup(); ///Call to cleanup bullets that extend out of the arena
 
 private:

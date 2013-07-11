@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1373550506 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
+1373552507 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
-	"ResourceManager.hpp"
+	"Game.hpp"
 
 1373461123 z:\programming\c++\sfml2\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -434,7 +434,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1373549071 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
+1373553088 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
 	<SFML/Graphics.hpp>
 	<map>
 	<vector>
@@ -445,7 +445,7 @@
 	"Bullet.hpp"
 	"ResourceManager.hpp"
 
-1373549098 z:\programming\c++\github repositories\arenashooter-sfml\include\enemy.hpp
+1373553215 z:\programming\c++\github repositories\arenashooter-sfml\include\enemy.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<memory>
@@ -474,7 +474,7 @@
 1373539340 source:z:\programming\c++\github repositories\arenashooter-sfml\src\collisionmanager.cpp
 	"CollisionManager.hpp"
 
-1373549039 z:\programming\c++\github repositories\arenashooter-sfml\include\collisionmanager.hpp
+1373553215 z:\programming\c++\github repositories\arenashooter-sfml\include\collisionmanager.hpp
 	<SFML/Graphics.hpp>
 	"Player.hpp"
 	"EnemyManager.hpp"
@@ -491,16 +491,18 @@
 1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
+1373552449 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 
-1373548989 z:\programming\c++\github repositories\arenashooter-sfml\include\game.hpp
+1373552502 z:\programming\c++\github repositories\arenashooter-sfml\include\game.hpp
 	<SFML/Graphics.hpp>
+	<memory>
+	<string>
 
 1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 
-1373550467 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
+1373551165 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
 	"ResourceManager.hpp"
 
 1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\util.cpp
