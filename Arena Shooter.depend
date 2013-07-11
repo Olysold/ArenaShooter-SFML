@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
+1373549552 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
+	"ResourceManager.hpp"
 
 1373461123 z:\programming\c++\sfml2\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -498,4 +499,15 @@
 
 1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
+
+1373549595 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
+	"ResourceManager.hpp"
+
+1373539251 source:z:\programming\c++\github repositories\arenashooter-sfml\src\util.cpp
+	"util.hpp"
+	<ctime>
+
+1373539251 z:\programming\c++\github repositories\arenashooter-sfml\include\util.hpp
+	<sstream>
+	<string>
 

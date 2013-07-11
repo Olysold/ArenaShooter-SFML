@@ -82,7 +82,7 @@ sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
         if (!sb->loadFromFile(("data/sounds/" + filename + ".ogg")))
         {
             filename = "Error";
-            if (!sb->loadFromFile("data/fonts/Error.ogg"))
+            if (!sb->loadFromFile("data/sounds/Error.ogg"))
             {
                 std::cout << "Unable to find backup font, exiting\n";
                 exit(EXIT_FAILURE);
