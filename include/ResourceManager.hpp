@@ -17,11 +17,14 @@ class ResourceManager
 {
 public:
     typedef std::map<std::string, sf::Texture*> texMap;
-    typedef std::map<std::string, sf::Font*> fontMap;
     typedef std::pair<std::string, sf::Texture*> texPair;
+
+    typedef std::map<std::string, sf::Font*> fontMap;
     typedef std::pair<std::string, sf::Font*> fontPair;
+
     typedef std::map<std::string, Animation*> aniMap;
     typedef std::pair<std::string, Animation*> aniPair;
+
     typedef std::map<std::string, sf::SoundBuffer*> sBufferMap;
     typedef std::pair<std::string, sf::SoundBuffer*> sBufferPair;
 
@@ -30,12 +33,15 @@ public:
 
     sf::Texture* texture(std::string);
     sf::Font* font(std::string);
-    sf::Animation* animation(); ///Set with texture
     sf::SoundBuffer* soundBuffer(std::string);
+
+    sf::Animation* addAnimation(std::string, Animation);
+    sf::Animation* getAnimation(std::string);
+
 private:
     static texMap m_textures;
     static fontMap m_fonts;
-    static aniMap m_animation;
+    static aniMap m_animations;
     static sBufferMap m_sBuffer;
 };
 

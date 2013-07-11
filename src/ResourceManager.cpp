@@ -66,3 +66,55 @@ sf::Font* ResourceManager::font(std::string filename)
         return m_fonts.find(filename)->second;
     }
 }
+
+sf::SoundBuffer* ResourceManager::soundBuffer(std::string filename)
+{
+    if (m_sBuffer.find(filename) != m_sBuffer.end())
+    {
+        return m_sBuffer.find(filename)->second;
+    }
+    else
+    {
+        sf::SoundBuffer* sb = new sf::SoundBuffer;
+
+        if (!sb->loadFromFile(("data/sounds/" + filename + ".ogg")))
+        {
+            filename = "Error";
+            if (!sb->loadFromFile("data/fonts/Error.ogg"))
+            {
+                std::cout << "Unable to find backup font, exiting\n";
+                exit(EXIT_FAILURE);
+            }
+        }
+        std::cout << "Added sound \'" << filename << ".ogg\'\n";
+        m_sBuffer.insert(sBufferPair(filename, sb));
+        return m_sBuffer.find(filename)->second;
+    }
+}
+
+sf::Animation* ResourceManager::addAnimation(std::string name, Animation ani)
+{
+    if (m_animations.find(name) != m_animations.end())
+    {
+        return m_animations.find(name)->second;
+    }
+    else
+    {
+        std::cout << "Added animation \'" << name << "\'\n";
+        m_animations.insert(aniPair(name, f));
+        return m_animations.find(name)->second;
+    }
+}
+
+sf::Animation* ResourceManager::getAnimation(std::string name)
+{
+    if (m_animations.find(name) != m_animations.end())
+    {
+        return m_animations.find(name)->second;
+    }
+    else
+    {
+        std::cout << "Unable to find animation \'" << name << "\', exiting\n";
+        exit(EXIT_FAILURE);
+    }
+}
