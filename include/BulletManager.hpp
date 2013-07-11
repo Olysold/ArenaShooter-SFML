@@ -12,6 +12,13 @@
 
 //SELF
 #include "Enemy.hpp"
+#include "Player.hpp"
+#include "Bullet.hpp"
+#include "ResourceManager.hpp"
+
+class Enemy;
+class Player;
+class Buller;
 
 class BulletManager
 {
@@ -23,13 +30,10 @@ public:
     void cleanup(); ///Call to cleanup bullets that extend out of the arena
 
 private:
-    ///Existing bullets
-    ///Polymorphic access to various enemies, vector of textured bullets
-    std::map<std::shared_ptr<Enemy>,
-             std::vector<Bullet>>       m_enemyBullets;
-    std::vector<Bullet>                 m_playerBullets;
+    //std::vector<Bullet>                     m_enemyBullets;
+    //std::vector<Bullet>                     m_playerBullets;
 
-    const std::shared_ptr<ResourceManager>   m_resources;
+    //const std::shared_ptr<ResourceManager>  m_resources;
 };
 
 #endif

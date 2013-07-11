@@ -35,8 +35,8 @@ public:
     sf::Font* font(std::string);
     sf::SoundBuffer* soundBuffer(std::string);
 
-    sf::Animation* addAnimation(std::string, Animation);
-    sf::Animation* getAnimation(std::string);
+    Animation* addAnimation(std::string, Animation);
+    Animation* getAnimation(std::string);
 
 private:
     static texMap m_textures;

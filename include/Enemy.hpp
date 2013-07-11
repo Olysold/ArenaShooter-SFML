@@ -40,7 +40,7 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
 
-    const std::shared_ptr<BulletManager> m_bullets;
+    const BulletManager m_bullets;
 };
 
 #endif
