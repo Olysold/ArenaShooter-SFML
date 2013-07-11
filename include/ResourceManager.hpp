@@ -1,15 +1,16 @@
 #ifndef RESOURCEMANAGER_HPP
 #define RESOURCEMANAGER_HPP
 
+//3RD
+#include <SFML/Graphics.hpp>
+
 //STD
 #include <map>
 #include <string>
 #include <memory>
 #include <iostream>
 
-//3RD
-#include <SFML/Graphics.hpp>
-
+//SELF
 #include "Animation.hpp"
 
 class ResourceManager

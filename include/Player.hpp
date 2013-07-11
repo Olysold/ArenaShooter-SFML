@@ -3,9 +3,15 @@
 
 //3RD
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
+//STD
+#include <memory>
 
 //SELF
 #include "AnimatedSprite.hpp"
+#include "BulletManager.hpp"
+#include "ResourceManager.hpp"
 
 class Player
 {
@@ -37,7 +43,7 @@ private:
     int             m_bulletDamage;
     unsigned int    m_bulletROF;
 
-    const shared_ptr<BulletManager> m_bullets;
+    const std::shared_ptr<BulletManager> m_bullets;
     const std::shared_ptr<ResourceManager> m_resources;
 };
 

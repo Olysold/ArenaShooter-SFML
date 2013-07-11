@@ -4,11 +4,12 @@
 //3RD
 #include <SFML/Graphics.hpp>
 
+//STD
+#include <memory>
+
 //SELF
 #include "AnimatedSprite.hpp"
 #include "BulletManager.hpp"
-
-#include <memory>
 
 class Enemy
 {
@@ -39,7 +40,7 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
 
-    const shared_ptr<BulletManager> m_bullets;
+    const std::shared_ptr<BulletManager> m_bullets;
 };
 
 #endif

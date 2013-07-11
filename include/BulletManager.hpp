@@ -4,18 +4,19 @@
 //3RD
 #include <SFML/Graphics.hpp>
 
-//SELF
-#include "Player.hpp"
-#include "Enemy.hpp"
-
+//STD
 #include <map>
 #include <vector>
 #include <string>
 #include <memory>
 
+//SELF
+#include "Enemy.hpp"
+
 class BulletManager
 {
 public:
+    BulletManager();
     void createPlayerB(Player& player); ///Create bullets at player's location
     void createEnemyB(std::shared_ptr<Enemy> enemy); ///Create bullets at chosen enemy type location
 
@@ -28,7 +29,7 @@ private:
              std::vector<Bullet>>       m_enemyBullets;
     std::vector<Bullet>                 m_playerBullets;
 
-    const shared_ptr<ResourceManager>   m_resources;
+    const std::shared_ptr<ResourceManager>   m_resources;
 };
 
-#endif // BULLETMANAGER_HPP_INCLUDED
+#endif
