@@ -16,15 +16,15 @@ public:
     Enemy(unsigned int level); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
     virtual ~Enemy();
 
-    void update();
+    void update(sf::Time deltaTime);
 
     AnimatedSprite sprite;
     sf::Sound deathSound;
     sf::Sound shootSound;
 
 private:
-    void move();
-    void shoot();
+    void move(sf::Time deltaTime);
+    void shoot(sf::Time deltaTime);
     void dropLoot();
 
     unsigned int    m_level; ///Used as a factor to multiply stats?

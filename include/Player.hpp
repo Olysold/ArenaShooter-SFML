@@ -5,15 +5,28 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
+#include "AnimatedSprite.hpp"
 
 class Player
 {
 public:
     Player();
 
-    sf::Sprite sprite;
+    void kill();
+
+    void update(sf::Time deltaTime);
+
+    AnimatedSprite sprite;
+    sf::Sound deathSound;
+    sf::Sound shootSound;
 
 private:
+    void move(sf::Time deltaTime);
+    void shoot(sf::Time deltaTime);
+    void dropLoot();
+
+    bool            m_alive;
+
     unsigned int    m_health;
     unsigned int    m_armor;
     unsigned int    m_shield;
@@ -23,6 +36,9 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
     unsigned int    m_bulletROF;
+
+    const shared_ptr<BulletManager> m_bullets;
+    const std::shared_ptr<ResourceManager> m_resources;
 };
 
 #endif

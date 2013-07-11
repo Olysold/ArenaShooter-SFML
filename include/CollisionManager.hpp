@@ -17,8 +17,11 @@
 class CollisionManager
 {
 public:
-    CollisionManager);
+    CollisionManager();
     void update(sf::RenderWindow&); ///Call to check for collisions
+
+    void playerCollision(Player&, BulletManager&);
+    void enemyCollision(Enemy&, EnemyManager&);
 
 private:
 };
