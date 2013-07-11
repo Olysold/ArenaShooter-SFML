@@ -5,17 +5,12 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-#include "Player.hpp"
-#include "Bullet.hpp"
 
 class Enemy
 {
 public:
     Enemy(unsigned int level); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
     virtual ~Enemy();
-
-    void collision(Player&); ///Interaction Class calls collision functions
-    void collision(Bullet&);
 
     sf::Sprite sprite;
 
