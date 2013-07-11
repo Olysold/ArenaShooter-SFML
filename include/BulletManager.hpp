@@ -27,6 +27,8 @@ private:
     std::map<std::shared_ptr<Enemy>,
              std::vector<Bullet>>       m_enemyBullets;
     std::vector<Bullet>                 m_playerBullets;
+
+    const shared_ptr<ResourceManager>   m_resources;
 };
 
 #endif // BULLETMANAGER_HPP_INCLUDED

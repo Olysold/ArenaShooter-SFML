@@ -15,8 +15,7 @@ public:
     void update(sf::Time deltaTime); ///Call to move bullet
     void draw(sf::RenderWindow& window); ///Call to draw bullet
 
-    void collision(Player&); ///Interaction Class calls collision functions
-    void collision(Enemy&);
+    sf::Sprite bullet;
 
 private:
     bool            m_playerBullet;

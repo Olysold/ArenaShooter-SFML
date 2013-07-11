@@ -7,6 +7,8 @@
 //SELF
 #include "Enemy.hpp"
 
+#include <memory>
+
 ///Manages creation and storage of all Enemies
 class EnemyManager
 {
@@ -23,10 +25,15 @@ public:
                      unsigned int bulletSpeed,
                      unsigned int bulletDamage);
 
+    void kill();
+    void dropLoot();
+
     std::vector<Enemy>& getEnemies(); ///For collision handling
 
 private:
     std::vector<Enemy> m_enemies;
+
+    const std::shared_ptr<ResourceManager> m_resources;
 };
 
 #endif
