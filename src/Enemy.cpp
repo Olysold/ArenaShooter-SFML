@@ -8,3 +8,14 @@ m_level(level)
 Enemy::~Enemy()
 {
 }
+
+void Enemy::update(sf::Time& deltaTime)
+{
+
+}
+
+void Enemy::draw(sf::RenderWindow& window)
+{
+    window.draw(sprite);
+}
+

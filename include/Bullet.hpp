@@ -12,10 +12,10 @@ class Bullet
 {
 public:
     Bullet(bool playerBullet, unsigned int speed, int damage); ///Set who shot the bullet
-    void update(sf::Time deltaTime); ///Call to move bullet
+    void update(sf::Time& deltaTime); ///Call to move bullet
     void draw(sf::RenderWindow& window); ///Call to draw bullet
 
-    sf::Sprite bullet;
+    sf::Sprite sprite;
 
 private:
     bool            m_playerBullet;
