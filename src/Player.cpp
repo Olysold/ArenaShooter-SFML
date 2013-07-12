@@ -4,7 +4,7 @@ Player::Player()
 {
 }
 
-Player::takeDamage(int damage)
+void Player::takeDamage(int damage)
 {
     m_health -= damage;
 }

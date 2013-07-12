@@ -10,6 +10,10 @@
 #include "BulletManager.hpp"
 #include "Game.hpp"
 
+class BulletManager;
+class EnemyManager;
+class Game;
+
 class CollisionManager
 {
 public:

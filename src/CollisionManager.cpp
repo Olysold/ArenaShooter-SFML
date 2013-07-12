@@ -16,12 +16,12 @@ void CollisionManager::update(sf::Time& deltaTime)
         if (enemies[i].sprite.getGlobalBounds().intersects(m_player.sprite.getGlobalBounds()))
         {
             m_player.takeDamage(enemies[i].getDamage());
-            m_game->score += enemies[i].getValue();
-            m_enemyMan->kill(i);
+            ///m_game->score += enemies[i].getValue();
+            ///m_enemyMan->kill(i);
 
             if (m_player.getHealth() <= 0)
             {
-                m_player.kill();
+                ///m_player.kill();
             }
         }
     }
@@ -32,11 +32,11 @@ void CollisionManager::update(sf::Time& deltaTime)
         if (eBullets[i].sprite.getGlobalBounds().intersects(m_player.sprite.getGlobalBounds()))
         {
             m_player.takeDamage(eBullets[i].getDamage());
-            m_bulMan->kill(i);
+            ///m_bulMan->kill(i);
 
             if (m_player.getHealth() <= 0)
             {
-                m_player.kill();
+               ///m_player.kill();
             }
         }
     }
@@ -48,12 +48,12 @@ void CollisionManager::update(sf::Time& deltaTime)
         {
             if (pBullets[i].sprite.getGlobalBounds().intersects(enemies[i].sprite.getGlobalBounds()))
             {
-                enemies.takeDamage(pBullets[i].getDamage());
-                m_bulMan->kill(i);
+                ///enemies.takeDamage(pBullets[i].getDamage());
+                ///m_bulMan->kill(i);
 
-                if (enemies[i].getHealth() <= 0)
+                ///if (enemies[i].getHealth() <= 0)
                 {
-                    m_enemyMan->kill(i);
+                    ///m_enemyMan->kill(i);
                 }
             }
         }

@@ -2,85 +2,66 @@
 
 #include <iostream>
 
-#include "EnemyManager.hpp"
-#include "BulletManager.hpp"
-#include "CollisionManager.hpp"
-#include "Camera.hpp"
-//#include "Arena.hpp"
-
-class Enemy;
-class Player;
-class Bullet;
-
-
-unsigned int     Game::score;
-sf::Time         Game::m_deltaTime;
-sf::RenderWindow Game::m_window;
-
-Game::Game(sf::VideoMode vm, std::string title):
-m_score(0)
+void Game::updateEntity(sf::Time& deltaTime,
+                        EnemyManager& enemyMan,
+                        BulletManager& bulMan,
+                        CollisionManager& colMan)
 {
-    m_window.create(vm, title);
-}
-
-void Game::run()
-{
-    EnemyManager enemyMan;
-    BulletManager bulMan;
-    CollisionManager colMan;
-    //Arena arena;
-
-    m_window.setFramerateLimit(120);
-
-    sf::Clock currFrame;
-    sf::Time deltaTime;
-    while (m_window.isOpen())
+    if(!enemyMan.getEnemies().empty())
     {
-        sf::Event event;
-        while (m_window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                m_window.close();
-        }
-
-        for (auto enemy : enemyMan.getEnemies())
+        for (auto& enemy : enemyMan.getEnemies())
         {
             enemy.update(deltaTime);
         }
-
-        for (auto bullet : bulMan.getEnemyBullets())
-        {
-            bullet.update(deltaTime);
-        }
-
-        for (auto bullet : bulMan.getPlayerBullets())
-        {
-            bullet.update(deltaTime);
-        }
-
-        colMan.update(deltaTime);
-
-        m_window.clear(sf::Color(40, 40, 40));
-
-        for (auto& enemy : enemyMan.getEnemies())
-        {
-            enemy.draw(m_window);
-        }
-
-        for (auto& bullet : bulMan.getEnemyBullets())
-        {
-            bullet.draw(m_window);
-        }
-
-        for (auto& bullet : bulMan.getPlayerBullets())
-        {
-            bullet.draw(m_window);
-        }
-
-        m_window.display();
-
-        std::cout << "FPS:" << 1.f / deltaTime.asSeconds() << "\n";
-        deltaTime = currFrame.restart();
     }
 
+    if(!bulMan.getEnemyBullets().empty())
+    {
+        for (auto& bullet : bulMan.getEnemyBullets())
+        {
+            bullet.update(deltaTime);
+        }
+    }
+
+    if(!bulMan.getPlayerBullets().empty())
+    {
+        for (auto& bullet : bulMan.getPlayerBullets())
+        {
+            bullet.update(deltaTime);
+        }
+    }
+
+    ///colMan.update(deltaTime);
+}
+
+void Game::drawEntity(Player& player,
+                      EnemyManager& enemyMan,
+                      BulletManager& bulMan,
+                      sf::RenderWindow& window)
+{
+    //window.draw(player.getPlayer());
+
+    if(!enemyMan.getEnemies().empty())
+    {
+        for (auto enemy : enemyMan.getEnemies())
+        {
+            enemy.draw(window);
+        }
+    }
+
+    //if(!bulMan.getEnemeyBullets().empty())
+    {
+        //for (auto bullet : bulMan.getEnemyBullets())
+        {
+            //bullet.draw(window);
+        }
+    }
+
+    if(!bulMan.getEnemyBullets().empty())
+    {
+        for (auto bullet : bulMan.getPlayerBullets())
+        {
+            bullet.draw(window);
+        }
+    }
 }

@@ -1,5 +1,5 @@
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef GAME_HPP_INCLUDED
+#define GAME_HPP_INCLUDED
 
 //3RD
 #include <SFML/Graphics.hpp>
@@ -9,18 +9,25 @@
 #include <string>
 
 //SELF
+#include "Player.hpp"
+#include "EnemyManager.hpp"
+#include "BulletManager.hpp"
+#include "CollisionManager.hpp"
+#include "Camera.hpp"
+
+class CollisionManager;
 
 class Game
 {
 public:
-    Game(sf::VideoMode, std::string);
-    void run();
-
-    static unsigned int     score;
+    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&);
+    void drawEntity(Player&, EnemyManager&, BulletManager&, sf::RenderWindow&);
 
 private:
-    static sf::Time         m_deltaTime;
-    static sf::RenderWindow m_window;
+    sf::Time m_deltaTime;
+
+
+    unsigned int m_score;
 };
 
 #endif
