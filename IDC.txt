@@ -1,0 +1,19 @@
+I removed the static stuff in the linker settings (was causing me issues).
+Sorry if it's a burden for you, maybe we can talk about it and see if 
+there's a better way.
+
+I commented out (with 3 ///) the parts of the programs that don't have
+functionality just yet so we can at least run the prog while we do things.
+
+About searching through containers (like drawing enemies and such), you 
+might want to apply a check before searching (ie. container isn't empty) 
+first. Specifically in CollisionManager's update function.
+
+I also changed the way the Game header works, specifically gameRun() funct.
+It just seems like it's taking over the work of main(). Rather than that, 
+I'm thinking the class should be controlling the flow of the game, like
+what's the current game condition(running, lost, won), levels and so on.
+
+-Olysold
+
+-----------------------------------------------------------------------------------
