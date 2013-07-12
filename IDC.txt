@@ -16,4 +16,14 @@ what's the current game condition(running, lost, won), levels and so on.
 
 -Olysold
 
------------------------------------------------------------------------------------
+###
+
+I added the static stuff so that running the .exe doesn't require the compiler libraries, but it's not a big deal.
+
+I made a lot of changes before I went to bed, but forgot to sync.. oh well.
+
+shouldn't need to check if the container is empty, since it wouldn't loop.
+
+Yeah, I never did like the way I've seen Game handled but I couldn't think of anything better, your way is pretty nice.
+
+-Z
