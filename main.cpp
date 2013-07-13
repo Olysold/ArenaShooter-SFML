@@ -3,6 +3,7 @@
 
 //STD
 #include <iostream>
+#include <list>
 
 //SELF
 #include "Game.hpp"
@@ -21,7 +22,9 @@ int main()
 
     ///TEST
     Player player;
-    player.createPlayer();
+    player.setStats(100, 100, 0.05, 20, 0.1);
+    std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 50, 50) };
+    player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
 
     EnemyManager enemyMan;
@@ -41,7 +44,9 @@ int main()
                 window.close();
         }
 
+        ///TEST
         player.move(deltaTime);
+        ///TEST
 
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan);
 

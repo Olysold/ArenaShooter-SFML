@@ -2,21 +2,42 @@
 
 Player::Player(): m_resMan(std::make_shared<ResourceManager>()) { }
 
-void Player::createPlayer()
+void Player::setStats(const int health,
+                  const unsigned int speed,
+                  const unsigned int bulletSpd,
+                  const int bulletDmg,
+                  const unsigned int bulletROF)
 {
-    //Set stats
     m_alive = true;
-    m_health = 100;
-    m_speed = 10; //I'm guessing this is the number of units to move?
+    m_health = health;
+    m_speed = speed; //I'm guessing this is the number of units to move?
 
-    m_bulletSpeed = 0.05; //Seconds
-    m_bulletDamage = 20;
-    m_bulletROF = 0.1; //Seconds
+    m_bulletSpeed = bulletSpd; //Seconds
+    m_bulletDamage = bulletDmg;
+    m_bulletROF = bulletROF; //Seconds
+}
 
-    m_resMan->texture("Player");
-    m_resMan->addAnimation("PlayerAni", "Player");
-    m_resMan->addAniFrame("PlayerAni", sf::IntRect(0, 0, 50, 50));
-    sprite.setAnimation(m_resMan->getAnimation("PlayerAni"));
+void Player::setTexAni(const std::string texture,
+                       const std::string animation,
+                       const std::list<sf::IntRect> frame)
+{
+    m_resMan->texture(texture);
+    m_resMan->addAnimation(animation, texture);
+
+    if(!frame.empty())
+    {
+        for(auto iter : frame)
+        {
+            m_resMan->addAniFrame(animation, iter);
+        }
+    }
+    else
+    {
+        std::cerr << "Frames were not set\n";
+        m_resMan->addAniFrame(animation, sf::IntRect(0, 0, 0, 0));
+    }
+
+    sprite.setAnimation(m_resMan->getAnimation(animation));
 }
 
 void Player::move(sf::Time& deltaTime)
@@ -37,6 +58,11 @@ void Player::move(sf::Time& deltaTime)
     {
         sprite.move(0, 100 * deltaTime.asSeconds());
     }
+}
+
+void Player::shoot(sf::Time& deltaTime, BulletManager& bullets)
+{
+
 }
 
 bool Player::isAlive()

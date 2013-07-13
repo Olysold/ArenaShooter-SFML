@@ -7,6 +7,7 @@
 
 //STD
 #include <memory>
+#include <list>
 
 //SELF
 #include "Animation.hpp"
@@ -20,7 +21,15 @@ class Player
 {
 public:
     Player();
-    void createPlayer();
+    void setStats(const int health,
+                  const unsigned int speed,
+                  const unsigned int bulletSpd,
+                  const int bulletDmg,
+                  const unsigned int bulletROF);
+
+    void setTexAni(const std::string texture,
+                   const std::string animation,
+                   const std::list<sf::IntRect> frames);
 
     void move(sf::Time&);
     void shoot(sf::Time& deltaTime, BulletManager&);
