@@ -33,3 +33,19 @@ Yeah, I never did like the way I've seen Game handled but I couldn't think of an
 Changed a few things but stuck on setting textures now, since animated sprites only use animations
 
 -Z
+
+###
+
+Animation needs to have frames set (addFrame()). Since the process of setting up an AnimatedSprite is quite delicate,
+I left it to getAnimation as the only function that will be returning anything and two other set up functions
+to well, set up the animation.
+
+Getting an OpenGl error though, called failed to Texture.cpp(95).
+
+Thinking about the textured entities, I have two suggestions. 
+
+1) They can either be like the textured Player I've set up, a plane-ish figure that would require the head to rotate
+to the desired location. Animation would only apply when movement is made.
+2) Saucer-like so there's no worry of rotation and Animation is just contantly playing.
+
+-O
