@@ -27,6 +27,9 @@ public:
     void createPlayerB(Player& player); ///Create bullets at player's location
     void createEnemyB(std::shared_ptr<Enemy> enemy); ///Create bullets at chosen enemy type location
 
+    void killEnemyBullet(size_t i);
+    void killPlayerBullet(size_t i);
+
     std::vector<Bullet>& getEnemyBullets();
     std::vector<Bullet>& getPlayerBullets();
 
@@ -36,7 +39,7 @@ private:
     std::vector<Bullet>                     m_enemyBullets;
     std::vector<Bullet>                     m_playerBullets;
 
-    const std::shared_ptr<ResourceManager>  m_resMan;
+    static ResourceManager  m_resMan;
 };
 
 #endif

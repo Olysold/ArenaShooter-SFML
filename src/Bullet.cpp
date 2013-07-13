@@ -16,3 +16,8 @@ void Bullet::draw(sf::RenderWindow& window)
 {
     window.draw(sprite);
 }
+
+int Bullet::getDamage()
+{
+    return m_damage;
+}

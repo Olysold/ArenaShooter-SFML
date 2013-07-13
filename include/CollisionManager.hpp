@@ -18,13 +18,12 @@ class CollisionManager
 {
 public:
     CollisionManager();
-    void update(sf::Time& deltaTime); ///Call to check for collisions
+    void update(sf::Time& deltaTime, Player&); ///Call to check for collisions
 
 private:
-    const std::shared_ptr<BulletManager> m_bulMan;
-    const std::shared_ptr<EnemyManager>  m_enemyMan;
-    const std::shared_ptr<Game>          m_game;
-    Player                               m_player;
+    static BulletManager m_bulMan;
+    static EnemyManager  m_enemyMan;
+    static Game          m_game;
 };
 
 #endif

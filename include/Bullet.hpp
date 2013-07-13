@@ -15,11 +15,8 @@ public:
     void update(sf::Time& deltaTime); ///Call to move bullet
     void draw(sf::RenderWindow& window); ///Call to draw bullet
 
-    //TODO
-    int getDamage()
-    {
-        return m_damage;
-    }
+    int getDamage();
+
     sf::Sprite sprite;
 
 private:

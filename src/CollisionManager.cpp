@@ -1,27 +1,31 @@
 #include "CollisionManager.hpp"
 
+BulletManager CollisionManager::m_bulMan;
+EnemyManager  CollisionManager::m_enemyMan;
+Game          CollisionManager::m_game;
+
 CollisionManager::CollisionManager()
 {
 }
 
-void CollisionManager::update(sf::Time& deltaTime)
+void CollisionManager::update(sf::Time& deltaTime, Player& player)
 {
-    auto enemies = m_enemyMan->getEnemies();
-    auto pBullets = m_bulMan->getPlayerBullets();
-    auto eBullets = m_bulMan->getEnemyBullets();
+    auto enemies = m_enemyMan.getEnemies();
+    auto pBullets = m_bulMan.getPlayerBullets();
+    auto eBullets = m_bulMan.getEnemyBullets();
 
     //Enemy hits player
     for (size_t i = 0; i < enemies.size(); ++i)
     {
-        if (enemies[i].sprite.getGlobalBounds().intersects(m_player.sprite.getGlobalBounds()))
+        if (enemies[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
         {
-            m_player.takeDamage(enemies[i].getDamage());
-            ///m_game->score += enemies[i].getValue();
-            ///m_enemyMan->kill(i);
+            player.takeDamage(enemies[i].getDamage());
+            m_game.addScore(enemies[i].getValue());
+            m_enemyMan.kill(i);
 
-            if (m_player.getHealth() <= 0)
+            if (!player.isAlive())
             {
-                ///m_player.kill();
+                m_game.gameOver();
             }
         }
     }
@@ -29,14 +33,14 @@ void CollisionManager::update(sf::Time& deltaTime)
     //Enemy Bullets hit player
     for (size_t i = 0; i < eBullets.size(); ++i)
     {
-        if (eBullets[i].sprite.getGlobalBounds().intersects(m_player.sprite.getGlobalBounds()))
+        if (eBullets[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
         {
-            m_player.takeDamage(eBullets[i].getDamage());
-            ///m_bulMan->kill(i);
+            player.takeDamage(eBullets[i].getDamage());
+            m_bulMan.killEnemyBullet(i);
 
-            if (m_player.getHealth() <= 0)
+            if (!player.isAlive())
             {
-               ///m_player.kill();
+               m_game.gameOver();
             }
         }
     }
@@ -46,14 +50,14 @@ void CollisionManager::update(sf::Time& deltaTime)
     {
         for (size_t j = 0; j < enemies.size(); ++j)
         {
-            if (pBullets[i].sprite.getGlobalBounds().intersects(enemies[i].sprite.getGlobalBounds()))
+            if (pBullets[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
             {
-                ///enemies.takeDamage(pBullets[i].getDamage());
-                ///m_bulMan->kill(i);
+                enemies[j].takeDamage(pBullets[i].getDamage());
+                m_bulMan.killPlayerBullet(i);
 
-                ///if (enemies[i].getHealth() <= 0)
+                if (!enemies[j].isAlive())
                 {
-                    ///m_enemyMan->kill(i);
+                    m_enemyMan.kill(i);
                 }
             }
         }

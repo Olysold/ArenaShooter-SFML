@@ -27,3 +27,9 @@ shouldn't need to check if the container is empty, since it wouldn't loop.
 Yeah, I never did like the way I've seen Game handled but I couldn't think of anything better, your way is pretty nice.
 
 -Z
+
+###
+
+Changed a few things but stuck on setting textures now, since animated sprites only use animations
+
+-Z

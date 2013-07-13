@@ -1,5 +1,12 @@
 #include "Camera.hpp"
-Camera::Camera(Player& ply):
-m_player(ply)
+
+Game Camera::m_game;
+
+Camera::Camera()
 {
+}
+
+void Camera::update(sf::RenderWindow& window)
+{
+
 }

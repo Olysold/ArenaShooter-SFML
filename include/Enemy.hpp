@@ -17,24 +17,16 @@ class BulletManager;
 class Enemy
 {
 public:
-    Enemy(unsigned int level); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
-    virtual ~Enemy();
-
+    Enemy(unsigned int level, unsigned int m_score); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
     void update(sf::Time& deltaTime);
     void draw(sf::RenderWindow&);
 
-    //TODO
-    void takeDamage(int damage)
-    {
-        m_health -= damage;
-    }
     int getDamage();
+    int getValue();
 
-    //TODO
-    int getValue()
-    {
-        return 10;
-    }
+    bool isAlive();
+
+    void takeDamage(int damage);
 
     AnimatedSprite sprite;
     sf::Sound deathSound;
@@ -46,6 +38,7 @@ private:
     void dropLoot();
 
     unsigned int    m_level; ///Used as a factor to multiply stats?
+    unsigned int    m_value; ///Score value
 
     unsigned int    m_health;
     unsigned int    m_armor;
@@ -57,7 +50,7 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
 
-    const std::shared_ptr<BulletManager> m_bulMan;
+    static BulletManager m_bulMan;
 };
 
 #endif

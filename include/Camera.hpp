@@ -5,16 +5,20 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-#include "Player.hpp"
+#include "Game.hpp"
+
+class Game;
 
 class Camera
 {
 public:
-    Camera(Player&); ///Camera stores a reference to the player to get player's location
+    Camera();
     void update(sf::RenderWindow&); ///Call for camera to move to player
 
 private:
-    Player& m_player;
+    sf::View m_view;
+
+    static Game m_game;
 };
 
 #endif

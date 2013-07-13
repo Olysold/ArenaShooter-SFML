@@ -20,14 +20,23 @@ class CollisionManager;
 class Game
 {
 public:
+    Game();
+
     void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&);
     void drawEntity(Player&, EnemyManager&, BulletManager&, sf::RenderWindow&);
 
+    Player& getPlayer();
+
+    void addScore(unsigned int);
+
+    void gameOver();
+
 private:
-    sf::Time m_deltaTime;
-
-
+    bool m_gameOver;
     unsigned int m_score;
+    Player m_player;
+
+    static ResourceManager m_resMan;
 };
 
 #endif

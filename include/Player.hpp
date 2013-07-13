@@ -20,17 +20,14 @@ class Player
 public:
     Player();
 
-    void kill();
-
     void update(sf::Time& deltaTime);
     void draw(sf::RenderWindow& window);
 
-    //TODO
-    int getHealth()
-    {
-        return m_health;
-    }
+    int getHealth();
+
     void takeDamage(int damage);
+
+    bool isAlive();
 
     AnimatedSprite sprite;
     sf::Sound deathSound;
@@ -41,9 +38,7 @@ private:
     void shoot(sf::Time deltaTime);
     void dropLoot();
 
-    bool            m_alive;
-
-    int    m_health;
+    int             m_health;
     unsigned int    m_speed;
 
     unsigned int    m_bulletSpeed;

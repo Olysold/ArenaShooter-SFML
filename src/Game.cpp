@@ -2,36 +2,36 @@
 
 #include <iostream>
 
+ResourceManager Game::m_resMan;
+
+Game::Game():
+m_gameOver(false),
+m_score(0)
+{
+    m_player.sprite.setTexture(m_resMan.texture("Player"));
+}
+
 void Game::updateEntity(sf::Time& deltaTime,
                         EnemyManager& enemyMan,
                         BulletManager& bulMan,
                         CollisionManager& colMan)
 {
-    if(!enemyMan.getEnemies().empty())
+    for (auto& enemy : enemyMan.getEnemies())
     {
-        for (auto& enemy : enemyMan.getEnemies())
-        {
-            enemy.update(deltaTime);
-        }
+        enemy.update(deltaTime);
     }
 
-    if(!bulMan.getEnemyBullets().empty())
+    for (auto& bullet : bulMan.getEnemyBullets())
     {
-        for (auto& bullet : bulMan.getEnemyBullets())
-        {
-            bullet.update(deltaTime);
-        }
+        bullet.update(deltaTime);
     }
 
-    if(!bulMan.getPlayerBullets().empty())
+    for (auto& bullet : bulMan.getPlayerBullets())
     {
-        for (auto& bullet : bulMan.getPlayerBullets())
-        {
-            bullet.update(deltaTime);
-        }
+        bullet.update(deltaTime);
     }
 
-    ///colMan.update(deltaTime);
+    colMan.update(deltaTime, m_player);
 }
 
 void Game::drawEntity(Player& player,
@@ -39,29 +39,35 @@ void Game::drawEntity(Player& player,
                       BulletManager& bulMan,
                       sf::RenderWindow& window)
 {
-    //window.draw(player.getPlayer());
+    player.draw(window);
 
-    if(!enemyMan.getEnemies().empty())
+    for (auto enemy : enemyMan.getEnemies())
     {
-        for (auto enemy : enemyMan.getEnemies())
-        {
-            enemy.draw(window);
-        }
+        enemy.draw(window);
     }
 
-    //if(!bulMan.getEnemeyBullets().empty())
+    for (auto bullet : bulMan.getEnemyBullets())
     {
-        //for (auto bullet : bulMan.getEnemyBullets())
-        {
-            //bullet.draw(window);
-        }
+        bullet.draw(window);
     }
 
-    if(!bulMan.getEnemyBullets().empty())
+    for (auto bullet : bulMan.getPlayerBullets())
     {
-        for (auto bullet : bulMan.getPlayerBullets())
-        {
-            bullet.draw(window);
-        }
+        bullet.draw(window);
     }
+}
+
+Player& Game::getPlayer()
+{
+    return m_player;
+}
+
+void Game::addScore(unsigned int score)
+{
+    m_score += score;
+}
+
+void Game::gameOver()
+{
+    m_gameOver = true;
 }
