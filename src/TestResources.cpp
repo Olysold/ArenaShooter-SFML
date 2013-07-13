@@ -1,19 +1,16 @@
-#include "ResourceManager.hpp"
+#include "TestResources.hpp"
 
-texMap ResourceManager::m_textures;
-fontMap ResourceManager::m_fonts;
-aniMap ResourceManager::m_animations;
-sBufferMap ResourceManager::m_sBuffers;
+TestResources::texMap TestResources::m_textures;
+TestResources::fontMap TestResources::m_fonts;
+TestResources::aniMap TestResources::m_animations;
+TestResources::sBufferMap TestResources::m_sBuffers;
 
-ResourceManager::ResourceManager()
+TestResources::TestResources()
 {
 }
 
-ResourceManager::~ResourceManager()
-{
-}
 
-sf::Texture& ResourceManager::texture(std::string filename)
+sf::Texture& TestResources::texture(std::string filename)
 {
     if (m_textures.find(filename) != m_textures.end())
     {
@@ -39,7 +36,7 @@ sf::Texture& ResourceManager::texture(std::string filename)
     }
 }
 
-sf::Font& ResourceManager::font(std::string filename)
+sf::Font& TestResources::font(std::string filename)
 {
     if (m_fonts.find(filename) != m_fonts.end())
     {
@@ -65,7 +62,7 @@ sf::Font& ResourceManager::font(std::string filename)
     }
 }
 
-sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
+sf::SoundBuffer& TestResources::soundBuffer(std::string filename)
 {
     if (m_sBuffers.find(filename) != m_sBuffers.end())
     {
@@ -90,33 +87,28 @@ sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
     }
 }
 
-void ResourceManager::addAnimation(std::string name, std::string tex)
-{
-    std::shared_ptr<Animation> a(new Animation);
-    a->setSpriteSheet(*m_textures.find(tex)->second);
-
-    std::cout << "Added animation \'" << name << "\'\n";
-    m_animations.insert(aniPair(name, a));
-}
-
-void ResourceManager::addAniFrame(std::string name, sf::IntRect area)
-{
-    auto ani = m_animations.find(name)->second;
-    ani->addFrame(area);
-}
-
-Animation& ResourceManager::getAnimation(std::string name)
+Animation& TestResources::addAnimation(std::string name, Animation ani)
 {
     if (m_animations.find(name) != m_animations.end())
     {
-        if(m_animations.find(name)->second->getSize() > 0)
-        {
-            return *m_animations.find(name)->second;
-        }
-        else
-        {
-            std::cerr << "No frames were added for animation '" << name << "'\n";
-        }
+        return *m_animations.find(name)->second;
+    }
+    else
+    {
+        std::shared_ptr<Animation> a(new Animation);
+        *a = ani;
+
+        std::cout << "Added animation \'" << name << "\'\n";
+        m_animations.insert(aniPair(name, a));
+        return *m_animations.find(name)->second;
+    }
+}
+
+Animation& TestResources::getAnimation(std::string name)
+{
+    if (m_animations.find(name) != m_animations.end())
+    {
+        return *m_animations.find(name)->second;
     }
     else
     {

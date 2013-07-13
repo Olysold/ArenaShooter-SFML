@@ -19,7 +19,11 @@ int main()
     //Controls
     Game game;
 
+    ///TEST
     Player player;
+    player.createPlayer();
+    ///TEST
+
     EnemyManager enemyMan;
     BulletManager bulMan;
     CollisionManager colMan;
@@ -36,6 +40,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        player.move(deltaTime);
 
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan);
 

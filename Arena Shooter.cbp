@@ -52,7 +52,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="Z:/Programming/C++/SFML2/include" />
+			<Add directory="extlibs/SFML2/include" />
 			<Add directory="src" />
 			<Add directory="include" />
 			<Add directory="dll" />
@@ -60,10 +60,7 @@
 			<Add directory="dll/debug" />
 		</Compiler>
 		<Linker>
-			<Add option="-static-libgcc" />
-			<Add option="-static-libstdc++" />
-			<Add option="-static" />
-			<Add directory="Z:/Programming/C++/SFML2/lib" />
+			<Add directory="extlibs/SFML2/lib" />
 			<Add directory="src" />
 			<Add directory="include" />
 			<Add directory="dll" />
@@ -76,22 +73,28 @@
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="data/textures/Error.png" />
+		<Unit filename="include/AnimatedSprite.hpp" />
+		<Unit filename="include/Animation.hpp" />
 		<Unit filename="include/Bullet.hpp" />
+		<Unit filename="include/BulletManager.hpp" />
 		<Unit filename="include/Camera.hpp" />
+		<Unit filename="include/CollisionManager.hpp" />
 		<Unit filename="include/Enemy.hpp" />
 		<Unit filename="include/EnemyManager.hpp" />
 		<Unit filename="include/Game.hpp" />
-		<Unit filename="include/Interaction.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/util.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/AnimatedSprite.cpp" />
+		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Bullet.cpp" />
+		<Unit filename="src/BulletManager.cpp" />
 		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/CollisionManager.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/EnemyManager.cpp" />
 		<Unit filename="src/Game.cpp" />
-		<Unit filename="src/Interaction.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/util.cpp" />

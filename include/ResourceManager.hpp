@@ -37,7 +37,8 @@ public:
     sf::Font& font(std::string);
     sf::SoundBuffer& soundBuffer(std::string);
 
-    Animation& addAnimation(std::string, Animation);
+    void addAnimation(std::string, std::string);
+    void addAniFrame(std::string, sf::IntRect);
     Animation& getAnimation(std::string);
 
 private:

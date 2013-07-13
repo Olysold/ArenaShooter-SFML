@@ -9,6 +9,7 @@
 #include <memory>
 
 //SELF
+#include "Animation.hpp"
 #include "AnimatedSprite.hpp"
 #include "BulletManager.hpp"
 #include "ResourceManager.hpp"
@@ -19,24 +20,23 @@ class Player
 {
 public:
     Player();
+    void createPlayer();
 
-    void update(sf::Time& deltaTime);
-    void draw(sf::RenderWindow& window);
-
-    int getHealth();
+    void move(sf::Time&);
+    void shoot(sf::Time& deltaTime, BulletManager&);
 
     void takeDamage(int damage);
-
+    int getHealth();
     bool isAlive();
+    void kill();
 
+    sf::Sprite testSprite;
     AnimatedSprite sprite;
-    sf::Sound deathSound;
-    sf::Sound shootSound;
+
+    void draw(sf::RenderWindow&);
 
 private:
-    void move(sf::Time deltaTime);
-    void shoot(sf::Time deltaTime);
-    void dropLoot();
+    bool            m_alive;
 
     int             m_health;
     unsigned int    m_speed;
@@ -45,7 +45,6 @@ private:
     int             m_bulletDamage;
     unsigned int    m_bulletROF;
 
-    const std::shared_ptr<BulletManager> m_bulMan;
     const std::shared_ptr<ResourceManager> m_resMan;
 };
 

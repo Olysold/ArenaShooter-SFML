@@ -8,7 +8,7 @@ Game::Game():
 m_gameOver(false),
 m_score(0)
 {
-    m_player.sprite.setTexture(m_resMan.texture("Player"));
+
 }
 
 void Game::updateEntity(sf::Time& deltaTime,
