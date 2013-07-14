@@ -6,7 +6,7 @@ void Player::setStats(const int health,
                   const unsigned int speed,
                   const unsigned int bulletSpd,
                   const int bulletDmg,
-                  const unsigned int bulletROF)
+                  const double bulletROF)
 {
     m_alive = true;
     m_health = health;
@@ -62,7 +62,16 @@ void Player::move(sf::Time& deltaTime)
 
 void Player::shoot(sf::Time& deltaTime, BulletManager& bullets)
 {
+    m_timeROF += deltaTime;
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        if(m_timeROF.asSeconds() >= m_bulletROF)
+        {
+            bullets.createPlayerB(sprite);
+            m_timeROF = sf::Time::Zero;
+        }
+    }
 }
 
 bool Player::isAlive()

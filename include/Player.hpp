@@ -25,7 +25,7 @@ public:
                   const unsigned int speed,
                   const unsigned int bulletSpd,
                   const int bulletDmg,
-                  const unsigned int bulletROF);
+                  const double bulletROF);
 
     void setTexAni(const std::string texture,
                    const std::string animation,
@@ -48,11 +48,12 @@ private:
     bool            m_alive;
 
     int             m_health;
-    unsigned int    m_speed;
+    int             m_speed;
 
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
-    unsigned int    m_bulletROF;
+    sf::Time        m_timeROF;
+    double          m_bulletROF;
 
     const std::shared_ptr<ResourceManager> m_resMan;
 };

@@ -22,7 +22,7 @@ int main()
 
     ///TEST
     Player player;
-    player.setStats(100, 100, 0.05, 20, 0.1);
+    player.setStats(100, 0, 0.05, 20, 0.1);
     std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 50, 50) };
     player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
@@ -46,6 +46,7 @@ int main()
 
         ///TEST
         player.move(deltaTime);
+        player.shoot(deltaTime, bulMan);
         ///TEST
 
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan);

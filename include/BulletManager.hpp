@@ -11,6 +11,7 @@
 #include <memory>
 
 //SELF
+#include "AnimatedSprite.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Bullet.hpp"
@@ -24,11 +25,13 @@ class BulletManager
 {
 public:
     BulletManager();
-    void createPlayerB(Player& player); ///Create bullets at player's location
+    void createPlayerB(AnimatedSprite&); ///Create bullets at player's location
     void createEnemyB(std::shared_ptr<Enemy> enemy); ///Create bullets at chosen enemy type location
 
     void killEnemyBullet(size_t i);
+    void killEnemyBullet(std::vector<Bullet>::iterator);
     void killPlayerBullet(size_t i);
+    void killPlayerBullet(std::vector<Bullet>::iterator);
 
     std::vector<Bullet>& getEnemyBullets();
     std::vector<Bullet>& getPlayerBullets();
@@ -39,7 +42,9 @@ private:
     std::vector<Bullet>                     m_enemyBullets;
     std::vector<Bullet>                     m_playerBullets;
 
-    static ResourceManager  m_resMan;
+    const std::shared_ptr<ResourceManager>  m_resMan;
 };
+
+//Todo : 1) Textures have not been found/made yet.
 
 #endif

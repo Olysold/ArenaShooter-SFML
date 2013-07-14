@@ -32,6 +32,7 @@ void Game::updateEntity(sf::Time& deltaTime,
     }
 
     colMan.update(deltaTime, m_player);
+    bulMan.cleanup();
 }
 
 void Game::drawEntity(Player& player,
