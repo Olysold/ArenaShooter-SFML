@@ -370,10 +370,12 @@
 	"Player.hpp"
 	"Enemy.hpp"
 
-1373705569 z:\programming\c++\github repositories\arenashooter-sfml\include\player.hpp
+1373878246 z:\programming\c++\github repositories\arenashooter-sfml\include\player.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<memory>
+	<list>
+	"Animation.hpp"
 	"AnimatedSprite.hpp"
 	"BulletManager.hpp"
 	"ResourceManager.hpp"
@@ -438,12 +440,13 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1373706235 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
+1373878246 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
 	<SFML/Graphics.hpp>
 	<map>
 	<vector>
 	<string>
 	<memory>
+	"AnimatedSprite.hpp"
 	"Enemy.hpp"
 	"Player.hpp"
 	"Bullet.hpp"
@@ -456,7 +459,7 @@
 	"AnimatedSprite.hpp"
 	"BulletManager.hpp"
 
-1373551119 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
+1373722205 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<map>

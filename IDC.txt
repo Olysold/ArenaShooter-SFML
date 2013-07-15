@@ -49,3 +49,20 @@ to the desired location. Animation would only apply when movement is made.
 2) Saucer-like so there's no worry of rotation and Animation is just contantly playing.
 
 -O
+
+###
+
+I'm not getting an OpenGL error, guessing you fixed it.
+
+Rotation is easy, unless animated sprites do it differently.
+
+I changed const shared_ptr to static because const shared_ptr doesn't make sense
+shared_ptr is useless if you're not going to share it, it doesn't automatically detect all instances of the class unless its copied.
+static will save space and ensure the class is dealing with the same instance of what we've static'ed
+we can leave const for the sake of explicity
+
+Bullets stats should depend on what fire it, otherwise bulletDamage of Enemy is useless, etc.
+
+About IDC, the width limit seemed a bit pointless and since we're the only two working on it an initial is fine, don't you think?
+
+~Z
