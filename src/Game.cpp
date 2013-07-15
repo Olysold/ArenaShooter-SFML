@@ -40,13 +40,6 @@ void Game::drawEntity(Player& player,
                       BulletManager& bulMan,
                       sf::RenderWindow& window)
 {
-    player.draw(window);
-
-    for (auto enemy : enemyMan.getEnemies())
-    {
-        enemy.draw(window);
-    }
-
     for (auto bullet : bulMan.getEnemyBullets())
     {
         bullet.draw(window);
@@ -56,6 +49,13 @@ void Game::drawEntity(Player& player,
     {
         bullet.draw(window);
     }
+
+    for (auto enemy : enemyMan.getEnemies())
+    {
+        enemy.draw(window);
+    }
+
+    player.draw(window);
 }
 
 Player& Game::getPlayer()

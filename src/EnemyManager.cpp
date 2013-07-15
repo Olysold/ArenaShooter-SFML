@@ -1,5 +1,6 @@
 #include "EnemyManager.hpp"
 
+std::vector<Enemy> EnemyManager::m_enemies;
 ResourceManager EnemyManager::m_resMan;
 
 EnemyManager::EnemyManager()

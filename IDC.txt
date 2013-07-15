@@ -65,4 +65,7 @@ Bullets stats should depend on what fire it, otherwise bulletDamage of Enemy is 
 
 About IDC, the width limit seemed a bit pointless and since we're the only two working on it an initial is fine, don't you think?
 
+There seems to be a problem with animated texture again, so I commented out collision manager
+
+I've done a bit of math stuff with bullets, I forgot how annoying this was :b
 ~Z

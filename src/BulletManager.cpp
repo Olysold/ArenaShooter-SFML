@@ -1,35 +1,26 @@
 #include "BulletManager.hpp"
 
+std::vector<Bullet> BulletManager::m_enemyBullets;
+std::vector<Bullet> BulletManager::m_playerBullets;
+ResourceManager BulletManager::m_resMan;
+
 BulletManager::BulletManager()
 {
 }
 
-void BulletManager::createPlayerB(AnimatedSprite& sprite)
+void BulletManager::createBullet(sf::Vector2f pos, float rotation, float speed, int damage, bool playerBullet)
 {
-    auto midPoint = (sprite.getGlobalBounds().top +
-                     sprite.getGlobalBounds().width) / 2;
+    Bullet b(pos, rotation, speed, damage);
+    b.sprite.setTexture(m_resMan.texture(std::string("Bullet")));
 
-    //Bind values of speed and damage to the bullet itself or
-    //take that from data in Player?
-    Bullet pBullet(true, 100, 20);
-    pBullet.sprite.setPosition(sprite.getPosition().x + midPoint,
-                               sprite.getPosition().y);
-
-    m_playerBullets.push_back(pBullet);
-}
-
-void BulletManager::createEnemyB(std::shared_ptr<Enemy> enemy)
-{
-    auto midPoint = (enemy->sprite.getGlobalBounds().top +
-                     enemy->sprite.getGlobalBounds().width) / 2;
-
-    //Bind values of speed and damage to the bullet itself or
-    //take that from data in Enemy?
-    Bullet eBullet(false, 100, 20);
-    eBullet.sprite.setPosition(enemy->sprite.getPosition().x + midPoint,
-                               enemy->sprite.getPosition().y);
-
-    m_enemyBullets.push_back(eBullet);
+    if (playerBullet)
+    {
+        m_playerBullets.push_back(b);
+    }
+    else
+    {
+        m_enemyBullets.push_back(b);
+    }
 }
 
 std::vector<Bullet>& BulletManager::getEnemyBullets()

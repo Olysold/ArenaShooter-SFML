@@ -32,7 +32,7 @@ public:
                    const std::list<sf::IntRect> frames);
 
     void move(sf::Time&);
-    void shoot(sf::Time& deltaTime, BulletManager&);
+    void shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager&);
 
     void takeDamage(int damage);
     int getHealth();
@@ -55,7 +55,7 @@ private:
     sf::Time        m_timeROF;
     double          m_bulletROF;
 
-    const std::shared_ptr<ResourceManager> m_resMan;
+    static ResourceManager m_resMan;
 };
 
 #endif

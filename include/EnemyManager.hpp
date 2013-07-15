@@ -17,8 +17,6 @@ public:
 
     void createEnemy(unsigned int level,
                      unsigned int health,
-                     unsigned int armor,
-                     unsigned int shield,
                      unsigned int speed,
                      int damage,
                      unsigned int ROF,
@@ -31,7 +29,7 @@ public:
     std::vector<Enemy>& getEnemies(); ///For collision handling
 
 private:
-    std::vector<Enemy> m_enemies;
+    static std::vector<Enemy> m_enemies;
 
     static ResourceManager m_resMan;
 };

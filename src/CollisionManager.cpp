@@ -15,7 +15,7 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
     auto eBullets = m_bulMan.getEnemyBullets();
 
     //Enemy hits player
-    for (size_t i = 0; i < enemies.size(); ++i)
+    /*for (size_t i = 0; i < enemies.size(); ++i)
     {
         if (enemies[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
         {
@@ -61,5 +61,5 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
                 }
             }
         }
-    }
+    }*/
 }
