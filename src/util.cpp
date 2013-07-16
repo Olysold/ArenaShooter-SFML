@@ -44,3 +44,13 @@ std::string util::enumToString(Status stat)
 
     return "Unknown Status2";
 }
+
+float       util::degToRad(float degrees)
+{
+    return (degrees / 180.f) * 3.141592653;
+}
+
+float       util::radToDeg(float radians)
+{
+    return (radians * 180.f) / 3.141592653;
+}

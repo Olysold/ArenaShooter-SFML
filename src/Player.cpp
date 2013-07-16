@@ -1,6 +1,7 @@
 #include "Player.hpp"
 
 #include <cmath>
+#include "util.hpp"
 
 ResourceManager Player::m_resMan;
 
@@ -78,10 +79,11 @@ void Player::shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager&
             sf::Vector2f mousePos(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
             mousePos.x = sprite.getPosition().x - mousePos.x;
             mousePos.y = sprite.getPosition().y - mousePos.y;
-            float rotation = (std::atan2(-1 * mousePos.x, mousePos.y) * 180.f) / 3.141592653;
 
-            std::cout << mousePos.x << "/" << mousePos.y << "/" << rotation << "\n";
-            bullets.createBullet(sprite.getPosition(), rotation, m_bulletSpeed, m_bulletDamage);
+            //atan2 returns the angle in radians from a vector, in this case the vector(or line) between mousePos and the center of Player
+            float rotation = util::radToDeg(std::atan2(-1 * mousePos.x, mousePos.y));
+
+            bullets.createBullet(sprite.getPosition(), rotation, m_bulletSpeed, m_bulletDamage, true);
             m_timeROF = sf::Time::Zero;
         }
     }

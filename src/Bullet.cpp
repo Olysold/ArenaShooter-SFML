@@ -1,16 +1,20 @@
 #include "Bullet.hpp"
 
 #include <cmath>
+#include "util.hpp"
 
 Bullet::Bullet(sf::Vector2f pos,
                float rotation,
                unsigned int speed,
-               int damage):
+               int damage,
+               sf::Texture& tex):
 m_speed(speed),
 m_damage(damage)
 {
+    sprite.setTexture(tex);
     sprite.setPosition(pos);
     sprite.setRotation(rotation);
+    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
 }
 
 void Bullet::update(sf::Time& deltaTime)
@@ -36,19 +40,21 @@ void Bullet::update(sf::Time& deltaTime)
             }
     */
 
-    float sinMove = std::sin((sprite.getRotation() / 180.f) * 3.141592653);
-    float cosMove = std::cos((sprite.getRotation() / 180.f) * 3.141592653);
+    //These guys will have values between 0 and 1, determining the amount to move on each axis based on rotation.
+    float sinMove = std::sin(util::degToRad(sprite.getRotation()));
+    float cosMove = std::cos(util::degToRad(sprite.getRotation()));
 
-    if (sprite.getRotation() <= 0)
+    if (sprite.getRotation() <= 0) //Facing south
     {
         sprite.move(m_speed * -1 * sinMove * deltaTime.asSeconds(), m_speed * cosMove * deltaTime.asSeconds());
     }
-    else if (sprite.getRotation() > 0)
+    else if (sprite.getRotation() > 0) //Facing north
     {
         sprite.move(m_speed * sinMove * deltaTime.asSeconds(), m_speed * -1 * cosMove * deltaTime.asSeconds());
     }
     else
     {
+        //Dunno why I put this here, can probably delete.
         std::cout << "ERROR\n";
     }
 }

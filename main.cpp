@@ -22,7 +22,7 @@ int main()
 
     ///TEST
     Player player;
-    player.setStats(100, 250, 500, 20, 0.1);
+    player.setStats(100, 250, 500, 20, 0.0);
     std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 50, 50) };
     player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
@@ -55,7 +55,9 @@ int main()
         game.drawEntity(player, enemyMan, bulMan, window);
         window.display();
 
-        std::cout << "FPS:" << 1.f / currFrame.getElapsedTime().asSeconds() << "\n";
+        std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
+        std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
+        std::cout << "FPS: " << 1.f / currFrame.getElapsedTime().asSeconds() << "\n";
         deltaTime = currFrame.restart();
     }
 

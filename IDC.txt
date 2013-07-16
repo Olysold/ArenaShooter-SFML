@@ -111,4 +111,6 @@ Ah, I tend to just open the file up.
 
 Yeah no problem, I should comment it and in a function or two in util.hpp
 
+15k bullets, 67 FPS, pretty nice :b
+
 ~Z

@@ -17,6 +17,8 @@ namespace util
 {
     std::string getDate();
     std::string enumToString(Status);
+    float       degToRad(float degrees);
+    float       radToDeg(float radians);
 
     template <class T> std::string PODToString(T type)
     {
