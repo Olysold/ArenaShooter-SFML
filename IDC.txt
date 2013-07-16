@@ -113,4 +113,9 @@ Yeah no problem, I should comment it and in a function or two in util.hpp
 
 15k bullets, 67 FPS, pretty nice :b
 
+I fixed a problem with the bullet offset, I needed to set the Origin before the Position.
+
+I tried incorporating util::isBetween/Dir::XYZ in to player::move() but I screwed up something and gave up
+personally I'm not sure if its worth it.
+
 ~Z
