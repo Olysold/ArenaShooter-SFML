@@ -23,7 +23,7 @@ int main()
     ///TEST
     Player player;
     player.setStats(100, 250, 500, 20, 0.0);
-    std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 50, 50) };
+    std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
     player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
 
