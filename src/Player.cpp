@@ -50,22 +50,145 @@ void Player::setTexAni(const std::string texture,
 
 void Player::move(sf::Time& deltaTime)
 {
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         sprite.move(-1 * m_speed * deltaTime.asSeconds(), 0);
+        m_moveHori = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         sprite.move(m_speed * deltaTime.asSeconds(), 0);
+        m_moveHori = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         sprite.move(0, -1 * m_speed * deltaTime.asSeconds());
+        m_moveVerti = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         sprite.move(0, m_speed * deltaTime.asSeconds());
+        m_moveVerti = true;
     }
+
+    //Rotating player
+    //Diagonal movement
+    if(m_moveHori && m_moveVerti)
+    {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
+           !(sprite.getRotation() > 44 && sprite.getRotation() < 47))
+        {
+            if(sprite.getRotation() < 47 ||
+               sprite.getRotation() < 360 && sprite.getRotation() > 225)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(sprite.getRotation() > 44 && sprite.getRotation() < 225)
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
+           !(sprite.getRotation() > 133 && sprite.getRotation() < 137))
+        {
+            if(sprite.getRotation() < 137 ||
+               sprite.getRotation() < 360 && sprite.getRotation() > 315)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(sprite.getRotation() > 133 && sprite.getRotation() < 315)
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
+           !(sprite.getRotation() > 313 && sprite.getRotation() < 317))
+        {
+            if(sprite.getRotation() < 317 && sprite.getRotation() > 135)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(sprite.getRotation() > 313 ||
+                    sprite.getRotation() < 360 && sprite.getRotation() < 135)
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
+           !(sprite.getRotation() > 223 && sprite.getRotation() < 227))
+        {
+            if(sprite.getRotation() < 227 && sprite.getRotation() > 45)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(sprite.getRotation() > 223 ||
+                    sprite.getRotation() < 360 && sprite.getRotation() > 45)
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+    }
+    //Horizontal and vertical
+    else if(m_moveHori)
+    {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
+           !(sprite.getRotation() > 88 && sprite.getRotation() < 92))
+        {
+            if(sprite.getRotation() < 92)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) &&
+                !(sprite.getRotation() > 268 && sprite.getRotation() < 272))
+        {
+            if(sprite.getRotation() > 90 && sprite.getRotation() < 272)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(sprite.getRotation() < 90 ||
+                    sprite.getRotation() < 360 && sprite.getRotation() > 268)
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+    }
+    else if(m_moveVerti)
+    {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
+           !(sprite.getRotation() > 0 && sprite.getRotation() < 2))
+        {
+            if(sprite.getRotation() > 180)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
+           !(sprite.getRotation() > 178 && sprite.getRotation() < 182))
+        {
+            if(sprite.getRotation() < 180)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else
+            {
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+            }
+        }
+    }
+
+    m_moveHori = false;
+    m_moveVerti = false;
 }
 
 void Player::shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bullets)

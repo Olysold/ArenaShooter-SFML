@@ -55,6 +55,9 @@ private:
     sf::Time        m_timeROF;
     double          m_bulletROF;
 
+    bool            m_moveHori;
+    bool            m_moveVerti;
+
     static ResourceManager m_resMan;
 };
 

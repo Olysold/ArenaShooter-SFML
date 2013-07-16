@@ -55,9 +55,9 @@ int main()
         game.drawEntity(player, enemyMan, bulMan, window);
         window.display();
 
-        std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
-        std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
-        std::cout << "FPS: " << 1.f / currFrame.getElapsedTime().asSeconds() << "\n";
+        //std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
+        //std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
+        //std::cout << "FPS: " << 1.f / currFrame.getElapsedTime().asSeconds() << "\n";
         deltaTime = currFrame.restart();
     }
 

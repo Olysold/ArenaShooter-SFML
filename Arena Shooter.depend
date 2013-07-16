@@ -926,7 +926,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1373983742 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
+1373987759 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<list>
@@ -1280,7 +1280,7 @@
 	"CollisionManager.hpp"
 	"Camera.hpp"
 
-1373983623 c:\users\user\documents\github\arenashooter-sfml\include\player.hpp
+1373994828 c:\users\user\documents\github\arenashooter-sfml\include\player.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<memory>
@@ -1443,7 +1443,7 @@
 	"Game.hpp"
 	<iostream>
 
-1373983623 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
+1373994787 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 	<cmath>
 	"util.hpp"
