@@ -123,4 +123,6 @@ Animation& ResourceManager::getAnimation(std::string name)
         std::cout << "Unable to find animation \'" << name << "\', exiting\n";
         exit(EXIT_FAILURE);
     }
+
+    return *(new Animation);
 }

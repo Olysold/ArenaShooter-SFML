@@ -80,7 +80,7 @@ void Player::move(sf::Time& deltaTime)
            !(sprite.getRotation() > 44 && sprite.getRotation() < 47))
         {
             if(sprite.getRotation() < 47 ||
-               sprite.getRotation() < 360 && sprite.getRotation() > 225)
+               (sprite.getRotation() < 360 && sprite.getRotation() > 225))
             {
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
@@ -93,7 +93,7 @@ void Player::move(sf::Time& deltaTime)
            !(sprite.getRotation() > 133 && sprite.getRotation() < 137))
         {
             if(sprite.getRotation() < 137 ||
-               sprite.getRotation() < 360 && sprite.getRotation() > 315)
+               (sprite.getRotation() < 360 && sprite.getRotation() > 315))
             {
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
@@ -110,7 +110,7 @@ void Player::move(sf::Time& deltaTime)
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
             else if(sprite.getRotation() > 313 ||
-                    sprite.getRotation() < 360 && sprite.getRotation() < 135)
+                    (sprite.getRotation() < 360 && sprite.getRotation() < 135))
             {
                 sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
@@ -123,7 +123,7 @@ void Player::move(sf::Time& deltaTime)
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
             else if(sprite.getRotation() > 223 ||
-                    sprite.getRotation() < 360 && sprite.getRotation() < 45)
+                    (sprite.getRotation() < 360 && sprite.getRotation() < 45))
             {
                 sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
@@ -136,7 +136,7 @@ void Player::move(sf::Time& deltaTime)
            !(sprite.getRotation() > 88 && sprite.getRotation() < 92))
         {
             if(sprite.getRotation() < 88 ||
-               sprite.getRotation() < 360 && sprite.getRotation() > 225)
+               (sprite.getRotation() < 360 && sprite.getRotation() > 225))
             {
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
@@ -153,7 +153,7 @@ void Player::move(sf::Time& deltaTime)
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
             else if(sprite.getRotation() < 90 ||
-                    sprite.getRotation() < 360 && sprite.getRotation() > 268)
+                    (sprite.getRotation() < 360 && sprite.getRotation() > 268))
             {
                 sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
@@ -196,7 +196,8 @@ void Player::shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager&
 {
     m_timeROF += deltaTime;
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
+        sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
     {
         if(m_timeROF.asSeconds() >= m_bulletROF)
         {
