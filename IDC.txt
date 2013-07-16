@@ -89,3 +89,26 @@ at the header and it fixes the whole scrolling thing, so whatever floats your bo
 I've never done math stuff with bullets, thanks for the example =)
 
 -O
+
+###
+
+hmm, why would you want to stop it rotating at 90 degrees? anyway it's pretty easy
+if (sprite.getRotation() <= 90 && key::D.isPressed()) rotate ship
+
+At the moment I'm using the mousePos to set the rotation of the bullet
+but I (or you, for experience) could easily change it to rotate the ship, which is how its normally done in Arena shooters.
+
+Well, animated sprite isn't exactly the same, but yeah.
+
+We should probably wait until we need the getter before making it.
+
+Yeah, but the only way around that is to make ResourceManager, BulMan, etc. ah uh..
+crap, forgot the word, that class which you get a reference to and can't construct, daleth made one.. interaction? security?
+but static'ing a few members of ResourceManager means they will all be the same
+and static'ing the resMan objects means that if I create 10 bulMan they will all point to the same resMan object, again, saving space.
+
+Ah, I tend to just open the file up.
+
+Yeah no problem, I should comment it and in a function or two in util.hpp
+
+~Z
