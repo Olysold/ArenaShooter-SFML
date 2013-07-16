@@ -135,11 +135,12 @@ void Player::move(sf::Time& deltaTime)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
            !(sprite.getRotation() > 88 && sprite.getRotation() < 92))
         {
-            if(sprite.getRotation() < 92)
+            if(sprite.getRotation() < 92 ||
+               sprite.getRotation() < 360 && sprite.getRotation() > 225)
             {
                 sprite.rotate(m_speed * deltaTime.asSeconds());
             }
-            else
+            else if(sprite.getRotation() > 88 && sprite.getRotation() < 225)
             {
                 sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
