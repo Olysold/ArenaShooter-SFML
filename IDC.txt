@@ -69,3 +69,23 @@ There seems to be a problem with animated texture again, so I commented out coll
 
 I've done a bit of math stuff with bullets, I forgot how annoying this was :b
 ~Z
+
+###
+
+Nah it's probably an error on my part I guess, something to do with unupdated graphics driver.
+
+Animated sprite is exactly like sprites as far as I can tell. What I'm concerned with is how do we stop rotating it
+at a given point? Like if I press D long enough, it should rotate until 90 degrees and stop. My math's bad so yeah =/,
+it's probably really simple.
+
+So I guess we should have a getter for each stat in Player and Enemy as well?
+
+If every class has a static ResourceManager, would they each be creating different static instances of 
+ResourceManager?
+
+About IDC, I'm keeping to this limit so I don't have to use the side-scroller. I just discovered the "zen" mode up
+at the header and it fixes the whole scrolling thing, so whatever floats your boat about the width limit.
+
+I've never done math stuff with bullets, thanks for the example =)
+
+-O
