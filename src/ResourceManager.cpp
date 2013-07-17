@@ -93,7 +93,14 @@ sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
 void ResourceManager::addAnimation(std::string name, std::string tex)
 {
     std::shared_ptr<Animation> a(new Animation);
-    a->setSpriteSheet(*m_textures.find(tex)->second);
+    if (m_textures.find(tex) != m_textures.end())
+    {
+        a->setSpriteSheet(*m_textures.find(tex)->second);
+    }
+    else
+    {
+        a->setSpriteSheet(*m_textures.find("Error")->second);
+    }
 
     std::cout << "Added animation \'" << name << "\'\n";
     m_animations.insert(aniPair(name, a));
@@ -120,8 +127,8 @@ Animation& ResourceManager::getAnimation(std::string name)
     }
     else
     {
-        std::cout << "Unable to find animation \'" << name << "\', exiting\n";
-        exit(EXIT_FAILURE);
+        std::cout << "Unable to find animation \'" << name << "\'\n";
+        return *m_animations.find("Error")->second;
     }
 
     return *(new Animation);

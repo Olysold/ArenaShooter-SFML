@@ -477,7 +477,7 @@
 1373961362 source:z:\programming\c++\github repositories\arenashooter-sfml\src\bulletmanager.cpp
 	"BulletManager.hpp"
 
-1374049722 source:z:\programming\c++\github repositories\arenashooter-sfml\src\camera.cpp
+1374050906 source:z:\programming\c++\github repositories\arenashooter-sfml\src\camera.cpp
 	"Camera.hpp"
 
 1374049415 z:\programming\c++\github repositories\arenashooter-sfml\include\camera.hpp
@@ -524,7 +524,7 @@
 	<cmath>
 	"util.hpp"
 
-1374006320 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
+1374051493 source:z:\programming\c++\github repositories\arenashooter-sfml\src\resourcemanager.cpp
 	"ResourceManager.hpp"
 
 1374006232 source:z:\programming\c++\github repositories\arenashooter-sfml\src\util.cpp
