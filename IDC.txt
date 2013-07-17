@@ -118,4 +118,6 @@ I fixed a problem with the bullet offset, I needed to set the Origin before the 
 I tried incorporating util::isBetween/Dir::XYZ in to player::move() but I screwed up something and gave up
 personally I'm not sure if its worth it.
 
+Okay, I have no idea why but I can't change the health of the enemy...
+
 ~Z
