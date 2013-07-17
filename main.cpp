@@ -8,6 +8,7 @@
 
 //SELF
 #include "Game.hpp"
+#include "Camera.hpp"
 #include "Player.hpp"
 #include "EnemyManager.hpp"
 #include "BulletManager.hpp"
@@ -31,9 +32,13 @@ int main()
     player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
 
+    Camera cam;
     EnemyManager enemyMan;
     BulletManager bulMan;
     CollisionManager colMan;
+
+    //Very Quick Hack, just want to get a reference point while moving.
+    enemyMan.createEnemy(0, 0, 0, 0, 0, 0, 0);
 
     //Time
     sf::Clock currFrame;
@@ -52,6 +57,7 @@ int main()
         ///TEST
         player.move(deltaTime);
         player.shoot(deltaTime, window, bulMan);
+        cam.update(deltaTime, window, player);
         ///TEST
 
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan);
@@ -60,11 +66,12 @@ int main()
         game.drawEntity(player, enemyMan, bulMan, window);
         drawFPS(deltaTime, window);
         window.display();
+        deltaTime = currFrame.restart();
 
         //std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
         //std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
-        //std::cout << "FPS: " << 1.f / currFrame.getElapsedTime().asSeconds() << "\n";
-        deltaTime = currFrame.restart();
+        //std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
+
     }
 
     return 0;
@@ -78,8 +85,8 @@ void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window)
                  ResMan.font("arial"));
 
     FPS.setColor(sf::Color(255, 180, 0));
-    FPS.setPosition(800 - (FPS.getGlobalBounds().width * 1.5),
-                    0 + (FPS.getGlobalBounds().height / 2.f));
+    FPS.setPosition((window.getView().getCenter().x + (window.getView().getSize().x / 2.f)) - (FPS.getGlobalBounds().width * 1.5),
+                    (window.getView().getCenter().y - (window.getView().getSize().y / 2.f)) + (FPS.getGlobalBounds().height / 2.f));
 
     window.draw(FPS);
 }

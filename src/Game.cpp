@@ -32,7 +32,7 @@ void Game::updateEntity(sf::Time& deltaTime,
     }
 
     colMan.update(deltaTime, m_player);
-    bulMan.cleanup();
+    //bulMan.cleanup(); //Disabled until we have an arena and thus know the boundaries.
 }
 
 void Game::drawEntity(Player& player,

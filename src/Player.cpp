@@ -201,7 +201,7 @@ void Player::shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager&
     {
         if(m_timeROF.asSeconds() >= m_bulletROF)
         {
-            sf::Vector2f mousePos(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+            sf::Vector2f mousePos(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
             mousePos.x = sprite.getPosition().x - mousePos.x;
             mousePos.y = sprite.getPosition().y - mousePos.y;
 

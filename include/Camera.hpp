@@ -13,12 +13,10 @@ class Camera
 {
 public:
     Camera();
-    void update(sf::RenderWindow&); ///Call for camera to move to player
+    void update(sf::Time&, sf::RenderWindow&, Player&); ///Call for camera to move to player
 
 private:
-    sf::View m_view;
-
-    static Game m_game;
+    static sf::View m_view;
 };
 
 #endif
