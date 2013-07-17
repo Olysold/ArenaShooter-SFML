@@ -27,7 +27,7 @@ int main()
 
     ///TEST
     Player player;
-    player.setStats(100, 250, 500, 20, 0.1);
+    player.setStats(100, 250, 500, 20, 0.05);
     std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
     player.setTexAni("Player", "PlayerAni", frame);
     ///TEST
@@ -38,7 +38,7 @@ int main()
     CollisionManager colMan;
 
     //Very Quick Hack, just want to get a reference point while moving.
-    enemyMan.createEnemy(0, 0, 0, 0, 0, 0, 0);
+    enemyMan.createEnemy(10, 10, 10, 10, 10, 10, 10);
 
     //Time
     sf::Clock currFrame;
@@ -57,9 +57,10 @@ int main()
         ///TEST
         player.move(deltaTime);
         player.shoot(deltaTime, window, bulMan);
-        cam.update(deltaTime, window, player);
+        player.sprite.update(deltaTime);
         ///TEST
 
+        cam.update(deltaTime, window, player);
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan);
 
         window.clear(sf::Color(40, 40, 40));
@@ -71,7 +72,6 @@ int main()
         //std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
         //std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
         //std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
-
     }
 
     return 0;

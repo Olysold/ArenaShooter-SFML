@@ -28,12 +28,17 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
                 m_game.gameOver();
             }
         }
-    }
+    }*/
 
     //Enemy Bullets hit player
     for (size_t i = 0; i < eBullets.size(); ++i)
     {
-        if (eBullets[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
+        //Makes the bounding box smaller, good depending on size/transparency of bullet
+        auto bulRect = eBullets[i].sprite.getGlobalBounds();
+        bulRect.width /= 4.f;
+        bulRect.height /= 4.f;
+
+        if (bulRect.intersects(player.sprite.getGlobalBounds()))
         {
             player.takeDamage(eBullets[i].getDamage());
             m_bulMan.killEnemyBullet(i);
@@ -50,7 +55,12 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
     {
         for (size_t j = 0; j < enemies.size(); ++j)
         {
-            if (pBullets[i].sprite.getGlobalBounds().intersects(enemies[j].sprite.getGlobalBounds()))
+            //Makes the bounding box smaller, good depending on size/transparency of bullet
+            auto bulRect = pBullets[i].sprite.getGlobalBounds();
+            bulRect.width /= 4.f;
+            bulRect.height /= 4.f;
+
+            if (bulRect.intersects(enemies[j].sprite.getGlobalBounds()))
             {
                 enemies[j].takeDamage(pBullets[i].getDamage());
                 m_bulMan.killPlayerBullet(i);
@@ -59,7 +69,9 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
                 {
                     m_enemyMan.kill(i);
                 }
+
+                std::cout << enemies[j].isAlive() << "\n";
             }
         }
-    }*/
+    }
 }
