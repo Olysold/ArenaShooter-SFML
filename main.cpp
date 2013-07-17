@@ -4,6 +4,7 @@
 //STD
 #include <iostream>
 #include <list>
+#include <cmath>
 
 //SELF
 #include "Game.hpp"
@@ -11,11 +12,14 @@
 #include "EnemyManager.hpp"
 #include "BulletManager.hpp"
 #include "CollisionManager.hpp"
+#include "util.hpp"
+
+void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window);
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Bullet Arena");
-    window.setFramerateLimit(120);
+    window.setVerticalSyncEnabled(true);
 
     //Controls
     Game game;
@@ -36,6 +40,7 @@ int main()
     sf::Time deltaTime;
 
     sf::Event event;
+
     while(window.isOpen())
     {
         while (window.pollEvent(event))
@@ -53,6 +58,7 @@ int main()
 
         window.clear(sf::Color(40, 40, 40));
         game.drawEntity(player, enemyMan, bulMan, window);
+        drawFPS(deltaTime, window);
         window.display();
 
         //std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
@@ -62,4 +68,18 @@ int main()
     }
 
     return 0;
+}
+
+void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window)
+{
+    static ResourceManager ResMan;
+    int modFPS = std::floor(1.f / (deltaTime.asSeconds() * 5.f)) * 5.f; //Round down to the nearest multiple of 5
+    sf::Text FPS(util::PODToString(modFPS),
+                 ResMan.font("arial"));
+
+    FPS.setColor(sf::Color(255, 180, 0));
+    FPS.setPosition(800 - (FPS.getGlobalBounds().width * 1.5),
+                    0 + (FPS.getGlobalBounds().height / 2.f));
+
+    window.draw(FPS);
 }

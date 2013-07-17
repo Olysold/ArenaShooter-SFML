@@ -1,13 +1,15 @@
 # depslib dependency file v1.0
-1374006667 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
+1374048394 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<list>
+	<cmath>
 	"Game.hpp"
 	"Player.hpp"
 	"EnemyManager.hpp"
 	"BulletManager.hpp"
 	"CollisionManager.hpp"
+	"util.hpp"
 
 1373461123 z:\programming\c++\sfml2\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -502,7 +504,7 @@
 1373880384 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1373962024 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
+1374048407 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 	<iostream>
 
@@ -516,7 +518,7 @@
 	"CollisionManager.hpp"
 	"Camera.hpp"
 
-1374006410 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
+1374006967 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 	<cmath>
 	"util.hpp"
