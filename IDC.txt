@@ -120,4 +120,6 @@ personally I'm not sure if its worth it.
 
 Okay, I have no idea why but I can't change the health of the enemy...
 
+By the way, it's more efficient to use 'power of 2' width/height for textures, e.g 16x16, 32x32, 64x64.
+
 ~Z
