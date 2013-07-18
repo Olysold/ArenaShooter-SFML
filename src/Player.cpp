@@ -7,12 +7,12 @@ ResourceManager Player::m_resMan;
 
 Player::Player()
 {
-    m_resMan.texture("Player");
-    m_resMan.addAnimation("PlayerAni", "Player");
-    m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
-    sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
-    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
-                     sprite.getGlobalBounds().height / 2.f);
+    //m_resMan.texture("Player");
+    //m_resMan.addAnimation("PlayerAni", "Player");
+    //m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
+    //sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
+    //sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
+    //                 sprite.getGlobalBounds().height / 2.f);
 }
 
 void Player::setStats(const int health,

@@ -14,10 +14,13 @@ void Game::updateEntity(sf::Time& deltaTime,
                         EnemyManager& enemyMan,
                         BulletManager& bulMan,
                         CollisionManager& colMan,
+                        Arena& arena,
                         Player& player)
 {
     if (!m_gameOver)
     {
+        arena.confinePlayer(player);
+
         for (auto& enemy : enemyMan.getEnemies())
         {
             enemy.update(deltaTime);
@@ -34,17 +37,20 @@ void Game::updateEntity(sf::Time& deltaTime,
         }
 
         colMan.update(deltaTime, player);
-        //bulMan.cleanup(); //Disabled until we have an arena and thus know the boundaries.
+        bulMan.cleanup(arena.getSize()); //Disabled until we have an arena and thus know the boundaries.
     }
 }
 
 void Game::drawEntity(Player& player,
                       EnemyManager& enemyMan,
                       BulletManager& bulMan,
+                      Arena& arena,
                       sf::RenderWindow& window)
 {
     if (!m_gameOver)
     {
+        arena.draw(window);
+
         for (auto bullet : bulMan.getEnemyBullets())
         {
             bullet.draw(window);

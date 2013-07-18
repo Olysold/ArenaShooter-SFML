@@ -35,7 +35,7 @@ public:
     std::vector<Bullet>& getEnemyBullets();
     std::vector<Bullet>& getPlayerBullets();
 
-    void cleanup(); ///Call to cleanup bullets that extend out of the arena
+    void cleanup(sf::Vector2u arenaSize); ///Call to cleanup bullets that extend out of the arena
 
 private:
     static std::vector<Bullet>  m_enemyBullets;

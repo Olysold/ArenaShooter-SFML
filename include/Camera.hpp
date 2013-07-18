@@ -12,8 +12,8 @@ class Game;
 class Camera
 {
 public:
-    Camera();
-    void update(sf::Time&, sf::RenderWindow&, Player&); ///Call for camera to move to player
+    Camera(Player& player);
+    void update(sf::Time&, sf::RenderWindow&, Player&, sf::Vector2u arenaSize); ///Call for camera to move to player
 
 private:
     static sf::View m_view;

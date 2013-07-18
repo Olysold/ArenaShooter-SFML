@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1374136216 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
+1374155107 source:z:\programming\c++\github repositories\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<list>
 	<cmath>
 	<ctime>
 	<cstdlib>
+	"Arena.hpp"
 	"Game.hpp"
 	"Camera.hpp"
 	"Player.hpp"
@@ -448,7 +449,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1373880096 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
+1374155098 z:\programming\c++\github repositories\arenashooter-sfml\include\bulletmanager.hpp
 	<SFML/Graphics.hpp>
 	<map>
 	<vector>
@@ -476,13 +477,13 @@
 	<iostream>
 	"Animation.hpp"
 
-1373961362 source:z:\programming\c++\github repositories\arenashooter-sfml\src\bulletmanager.cpp
+1374154986 source:z:\programming\c++\github repositories\arenashooter-sfml\src\bulletmanager.cpp
 	"BulletManager.hpp"
 
-1374051512 source:z:\programming\c++\github repositories\arenashooter-sfml\src\camera.cpp
+1374155161 source:z:\programming\c++\github repositories\arenashooter-sfml\src\camera.cpp
 	"Camera.hpp"
 
-1374049415 z:\programming\c++\github repositories\arenashooter-sfml\include\camera.hpp
+1374152931 z:\programming\c++\github repositories\arenashooter-sfml\include\camera.hpp
 	<SFML/Graphics.hpp>
 	"Game.hpp"
 
@@ -507,11 +508,11 @@
 1374133759 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1374136315 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
+1374155141 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 	<iostream>
 
-1374136296 z:\programming\c++\github repositories\arenashooter-sfml\include\game.hpp
+1374155116 z:\programming\c++\github repositories\arenashooter-sfml\include\game.hpp
 	<SFML/Graphics.hpp>
 	<memory>
 	<string>
@@ -520,8 +521,9 @@
 	"BulletManager.hpp"
 	"CollisionManager.hpp"
 	"Camera.hpp"
+	"Arena.hpp"
 
-1374136056 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
+1374149423 source:z:\programming\c++\github repositories\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 	<cmath>
 	"util.hpp"
@@ -1475,4 +1477,12 @@
 	<memory>
 	<iostream>
 	"Animation.hpp"
+
+1374154886 source:z:\programming\c++\github repositories\arenashooter-sfml\src\arena.cpp
+	"Arena.hpp"
+
+1374154558 z:\programming\c++\github repositories\arenashooter-sfml\include\arena.hpp
+	<SFML/Graphics.hpp>
+	"ResourceManager.hpp"
+	"Player.hpp"
 

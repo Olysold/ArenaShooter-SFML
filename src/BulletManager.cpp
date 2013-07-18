@@ -52,14 +52,14 @@ void BulletManager::killPlayerBullet(std::vector<Bullet>::iterator iter)
     m_playerBullets.erase(iter);
 }
 
-void BulletManager::cleanup()
+void BulletManager::cleanup(sf::Vector2u arenaSize)
 {
     if(!m_playerBullets.empty())
     {
         //Temporary out of bounds positions set
-        if(m_playerBullets.begin()->sprite.getPosition().x >= 800 ||
+        if(m_playerBullets.begin()->sprite.getPosition().x >= arenaSize.x ||
            m_playerBullets.begin()->sprite.getPosition().x <= 0 ||
-           m_playerBullets.begin()->sprite.getPosition().y >= 600 ||
+           m_playerBullets.begin()->sprite.getPosition().y >= arenaSize.y ||
            m_playerBullets.begin()->sprite.getPosition().y <= 0)
         {
             m_playerBullets.erase(m_playerBullets.begin());
