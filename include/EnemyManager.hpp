@@ -15,7 +15,9 @@ class EnemyManager
 public:
     EnemyManager();
 
-    void createEnemy(unsigned int level,
+    void createEnemy(sf::Vector2f pos,
+                     float rotation,
+                     unsigned int level,
                      unsigned int health,
                      unsigned int speed,
                      int damage,

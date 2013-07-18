@@ -10,15 +10,16 @@ CollisionManager::CollisionManager()
 
 void CollisionManager::update(sf::Time& deltaTime, Player& player)
 {
-    auto enemies = m_enemyMan.getEnemies();
-    auto pBullets = m_bulMan.getPlayerBullets();
-    auto eBullets = m_bulMan.getEnemyBullets();
+    std::vector<Enemy>& enemies = m_enemyMan.getEnemies();
+    std::vector<Bullet>& pBullets = m_bulMan.getPlayerBullets();
+    std::vector<Bullet>& eBullets = m_bulMan.getEnemyBullets();
 
     //Enemy hits player
-    /*for (size_t i = 0; i < enemies.size(); ++i)
+    for (size_t i = 0; i < enemies.size(); ++i)
     {
         if (enemies[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
         {
+            std::cout << "Took damage!\n";
             player.takeDamage(enemies[i].getDamage());
             m_game.addScore(enemies[i].getValue());
             m_enemyMan.kill(i);
@@ -28,7 +29,7 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
                 m_game.gameOver();
             }
         }
-    }*/
+    }
 
     //Enemy Bullets hit player
     for (size_t i = 0; i < eBullets.size(); ++i)
@@ -67,10 +68,8 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
 
                 if (!enemies[j].isAlive())
                 {
-                    m_enemyMan.kill(i);
+                    m_enemyMan.kill(j);
                 }
-
-                std::cout << enemies[j].isAlive() << "\n";
             }
         }
     }

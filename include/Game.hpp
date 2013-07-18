@@ -22,19 +22,17 @@ class Game
 public:
     Game();
 
-    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&);
+    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&, Player&);
     void drawEntity(Player&, EnemyManager&, BulletManager&, sf::RenderWindow&);
-
-    Player& getPlayer();
 
     void addScore(unsigned int);
 
+    bool isGameOver();
     void gameOver();
 
 private:
-    bool m_gameOver;
-    unsigned int m_score;
-    Player m_player;
+    static bool m_gameOver;
+    static unsigned int m_score;
 
     static ResourceManager m_resMan;
 };

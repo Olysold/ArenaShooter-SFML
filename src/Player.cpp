@@ -7,6 +7,12 @@ ResourceManager Player::m_resMan;
 
 Player::Player()
 {
+    m_resMan.texture("Player");
+    m_resMan.addAnimation("PlayerAni", "Player");
+    m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
+    sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
+    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
+                     sprite.getGlobalBounds().height / 2.f);
 }
 
 void Player::setStats(const int health,
@@ -33,7 +39,7 @@ void Player::setTexAni(const std::string texture,
 
     if(!frame.empty())
     {
-        for(auto iter : frame)
+        for(auto& iter : frame)
         {
             m_resMan.addAniFrame(animation, iter);
         }
@@ -221,7 +227,14 @@ bool Player::isAlive()
 
 void Player::takeDamage(int damage)
 {
-    m_health -= damage;
+    if (m_health >= damage)
+    {
+        m_health -= damage;
+    }
+    else
+    {
+        m_health = 0;
+    }
 }
 
 int Player::getHealth()

@@ -92,24 +92,30 @@ sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
 
 void ResourceManager::addAnimation(std::string name, std::string tex)
 {
-    std::shared_ptr<Animation> a(new Animation);
-    if (m_textures.find(tex) != m_textures.end())
+    if (m_animations.find(name) == m_animations.end())
     {
-        a->setSpriteSheet(*m_textures.find(tex)->second);
-    }
-    else
-    {
-        a->setSpriteSheet(*m_textures.find("Error")->second);
-    }
+        std::shared_ptr<Animation> a(new Animation);
+        if (m_textures.find(tex) != m_textures.end())
+        {
+            a->setSpriteSheet(*m_textures.find(tex)->second);
+        }
+        else
+        {
+            a->setSpriteSheet(*m_textures.find("Error")->second);
+        }
 
-    std::cout << "Added animation \'" << name << "\'\n";
-    m_animations.insert(aniPair(name, a));
+        std::cout << "Added animation \'" << name << "\'\n";
+        m_animations.insert(aniPair(name, a));
+    }
 }
 
 void ResourceManager::addAniFrame(std::string name, sf::IntRect area)
 {
-    auto ani = m_animations.find(name)->second;
-    ani->addFrame(area);
+    if (m_animations.find(name) != m_animations.end())
+    {
+        auto ani = m_animations.find(name)->second;
+        ani->addFrame(area);
+    }
 }
 
 Animation& ResourceManager::getAnimation(std::string name)

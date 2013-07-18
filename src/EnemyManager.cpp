@@ -7,7 +7,9 @@ EnemyManager::EnemyManager()
 {
 }
 
-void EnemyManager::createEnemy(unsigned int level,
+void EnemyManager::createEnemy(sf::Vector2f pos,
+                               float rotation,
+                               unsigned int level,
                                unsigned int health,
                                unsigned int speed,
                                int damage,
@@ -15,21 +17,20 @@ void EnemyManager::createEnemy(unsigned int level,
                                unsigned int bulletSpeed,
                                unsigned int bulletDamage)
 {
-    //Very Quick Hack, just want to get a reference point while moving.
-    Enemy enemy(0, 0);
+    Enemy ene(level, health, speed, damage, ROF, bulletSpeed, bulletDamage);
 
     m_resMan.texture("Enemy1");
     m_resMan.addAnimation("Enemy1Ani", "Enemy1");
     m_resMan.addAniFrame("Enemy1Ani", sf::Rect<int>(0, 0, 30, 36));
 
-    enemy.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
+    ene.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
 
-    enemy.sprite.setOrigin(enemy.sprite.getGlobalBounds().width / 2.f,
-                     enemy.sprite.getGlobalBounds().height / 2.f);
+    ene.sprite.setOrigin(ene.sprite.getGlobalBounds().width / 2.f,
+                     ene.sprite.getGlobalBounds().height / 2.f);
+    ene.sprite.setPosition(pos);
+    ene.sprite.setRotation(rotation);
 
-    enemy.sprite.setPosition(0, 0);
-
-    m_enemies.push_back(enemy);
+    m_enemies.push_back(ene);
 }
 
 void EnemyManager::kill(size_t i)

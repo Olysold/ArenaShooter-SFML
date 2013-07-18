@@ -5,6 +5,8 @@
 #include <iostream>
 #include <list>
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 
 //SELF
 #include "Game.hpp"
@@ -19,26 +21,26 @@ void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window);
 
 int main()
 {
+    std::srand(std::time(nullptr));
+
     sf::RenderWindow window(sf::VideoMode(800, 600), "Bullet Arena");
     window.setVerticalSyncEnabled(true);
 
     //Controls
     Game game;
 
-    ///TEST
-    Player player;
-    player.setStats(100, 250, 500, 20, 0.05);
-    std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
-    player.setTexAni("Player", "PlayerAni", frame);
-    ///TEST
-
     Camera cam;
     EnemyManager enemyMan;
     BulletManager bulMan;
     CollisionManager colMan;
 
-    //Very Quick Hack, just want to get a reference point while moving.
-    enemyMan.createEnemy(10, 10, 10, 10, 10, 10, 10);
+    ///TEST
+    Player player;
+    player.setStats(1000, 250, 500, 20, 0.05);
+    //Does not work for some reason, using player constructor instead
+    //std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
+    //player.setTexAni("Player", "PlayerAni", frame);
+    ///TEST
 
     //Time
     sf::Clock currFrame;
@@ -46,12 +48,20 @@ int main()
 
     sf::Event event;
 
-    while(window.isOpen())
+    while(window.isOpen() && game.isGameOver() == false)
     {
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+        }
+
+        //Quick hack
+
+        if (std::rand() % 25 == 1)
+        {
+            enemyMan.createEnemy(sf::Vector2f(player.sprite.getPosition().x + std::rand() % 200, player.sprite.getPosition().y + std::rand() % 200),
+                                 0, 100, 200, 100, 100, 100, 100, 100);
         }
 
         ///TEST
@@ -61,7 +71,7 @@ int main()
         ///TEST
 
         cam.update(deltaTime, window, player);
-        game.updateEntity(deltaTime, enemyMan, bulMan, colMan);
+        game.updateEntity(deltaTime, enemyMan, bulMan, colMan, player);
 
         window.clear(sf::Color(40, 40, 40));
         game.drawEntity(player, enemyMan, bulMan, window);
@@ -74,6 +84,7 @@ int main()
         //std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
     }
 
+    sf::sleep(sf::seconds(10));
     return 0;
 }
 

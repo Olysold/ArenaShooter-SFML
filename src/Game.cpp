@@ -2,37 +2,40 @@
 
 #include <iostream>
 
+bool Game::m_gameOver = false;
+unsigned int Game::m_score = 0;
 ResourceManager Game::m_resMan;
 
-Game::Game():
-m_gameOver(false),
-m_score(0)
+Game::Game()
 {
-
 }
 
 void Game::updateEntity(sf::Time& deltaTime,
                         EnemyManager& enemyMan,
                         BulletManager& bulMan,
-                        CollisionManager& colMan)
+                        CollisionManager& colMan,
+                        Player& player)
 {
-    for (auto& enemy : enemyMan.getEnemies())
+    if (!m_gameOver)
     {
-        enemy.update(deltaTime);
-    }
+        for (auto& enemy : enemyMan.getEnemies())
+        {
+            enemy.update(deltaTime);
+        }
 
-    for (auto& bullet : bulMan.getEnemyBullets())
-    {
-        bullet.update(deltaTime);
-    }
+        for (auto& bullet : bulMan.getEnemyBullets())
+        {
+            bullet.update(deltaTime);
+        }
 
-    for (auto& bullet : bulMan.getPlayerBullets())
-    {
-        bullet.update(deltaTime);
-    }
+        for (auto& bullet : bulMan.getPlayerBullets())
+        {
+            bullet.update(deltaTime);
+        }
 
-    colMan.update(deltaTime, m_player);
-    //bulMan.cleanup(); //Disabled until we have an arena and thus know the boundaries.
+        colMan.update(deltaTime, player);
+        //bulMan.cleanup(); //Disabled until we have an arena and thus know the boundaries.
+    }
 }
 
 void Game::drawEntity(Player& player,
@@ -40,27 +43,25 @@ void Game::drawEntity(Player& player,
                       BulletManager& bulMan,
                       sf::RenderWindow& window)
 {
-    for (auto bullet : bulMan.getEnemyBullets())
+    if (!m_gameOver)
     {
-        bullet.draw(window);
+        for (auto bullet : bulMan.getEnemyBullets())
+        {
+            bullet.draw(window);
+        }
+
+        for (auto bullet : bulMan.getPlayerBullets())
+        {
+            bullet.draw(window);
+        }
+
+        for (auto enemy : enemyMan.getEnemies())
+        {
+            enemy.draw(window);
+        }
+
+        player.draw(window);
     }
-
-    for (auto bullet : bulMan.getPlayerBullets())
-    {
-        bullet.draw(window);
-    }
-
-    for (auto enemy : enemyMan.getEnemies())
-    {
-        enemy.draw(window);
-    }
-
-    player.draw(window);
-}
-
-Player& Game::getPlayer()
-{
-    return m_player;
 }
 
 void Game::addScore(unsigned int score)
@@ -68,7 +69,13 @@ void Game::addScore(unsigned int score)
     m_score += score;
 }
 
+bool Game::isGameOver()
+{
+    return m_gameOver;
+}
+
 void Game::gameOver()
 {
     m_gameOver = true;
+    std::cout << "Game Over!\n";
 }

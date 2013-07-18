@@ -17,7 +17,14 @@ class BulletManager;
 class Enemy
 {
 public:
-    Enemy(unsigned int level, unsigned int m_score); ///Create ResourceManager, set texture? Or leave that to EnemyManager?
+    Enemy(unsigned int level,
+          unsigned int health,
+          unsigned int speed,
+          int damage,
+          unsigned int ROF,
+          unsigned int bulletSpeed,
+          unsigned int bulletDamage);
+
     void update(sf::Time& deltaTime);
     void draw(sf::RenderWindow&);
 

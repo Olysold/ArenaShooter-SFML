@@ -2,10 +2,21 @@
 
 BulletManager Enemy::m_bulMan;
 
-Enemy::Enemy(unsigned int level, unsigned int m_score):
-m_level(level)
+Enemy::Enemy(unsigned int level,
+             unsigned int health,
+             unsigned int speed,
+             int damage,
+             unsigned int ROF,
+             unsigned int bulletSpeed,
+             unsigned int bulletDamage):
+m_level(level),
+m_health(health),
+m_speed(speed),
+m_damage(damage),
+m_ROF(ROF),
+m_bulletSpeed(bulletSpeed),
+m_bulletDamage(bulletDamage)
 {
-    m_health = 100;
 }
 
 void Enemy::update(sf::Time& deltaTime)
@@ -35,8 +46,6 @@ bool Enemy::isAlive()
 
 void Enemy::takeDamage(int damage)
 {
-    std::cout << m_health << "-" << damage << "\n";
-
     if (damage <= m_health)
     {
         m_health -= damage;
