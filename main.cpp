@@ -80,12 +80,14 @@ int main()
         window.display();
         deltaTime = currFrame.restart();
 
-        //std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
-        //std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
-        //std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
-    }
 
-    //sf::sleep(sf::seconds(10));
+    }
+    std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
+    std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
+    std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
+    std::cout << "Enemies: " << enemyMan.getEnemies().size() << "\n";
+
+    sf::sleep(sf::seconds(1));
     return 0;
 }
 

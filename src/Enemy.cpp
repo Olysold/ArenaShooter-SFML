@@ -1,5 +1,7 @@
 #include "Enemy.hpp"
 
+sf::Sound Enemy::m_deathSound;
+sf::Sound Enemy::m_shootSound;
 BulletManager Enemy::m_bulMan;
 
 Enemy::Enemy(unsigned int level,

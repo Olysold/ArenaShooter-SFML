@@ -36,8 +36,6 @@ public:
     void takeDamage(int damage);
 
     AnimatedSprite sprite;
-    sf::Sound deathSound;
-    sf::Sound shootSound;
 
 private:
     void move(sf::Time& deltaTime);
@@ -57,6 +55,8 @@ private:
     unsigned int    m_bulletSpeed;
     int             m_bulletDamage;
 
+    static sf::Sound m_deathSound;
+    static sf::Sound m_shootSound;
     static BulletManager m_bulMan;
 };
 

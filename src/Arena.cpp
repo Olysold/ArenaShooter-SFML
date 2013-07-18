@@ -43,7 +43,9 @@ void Arena::draw(sf::RenderWindow& window)
 void Arena::confinePlayer(Player& player)
 {
     sf::Vector2f pos = player.sprite.getPosition();
-    sf::FloatRect texRect = player.sprite.getGlobalBounds();
+    sf::FloatRect texRect = player.sprite.getLocalBounds();
+
+    std::cout << texRect.width << "/" << texRect.height << "\n";
 
     if (pos.x - texRect.width / 2.f < 0)
     {
