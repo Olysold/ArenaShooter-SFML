@@ -17,7 +17,10 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
     //Enemy hits player
     for (size_t i = 0; i < enemies.size(); ++i)
     {
-        if (enemies[i].sprite.getGlobalBounds().intersects(player.sprite.getGlobalBounds()))
+        auto pRect = player.sprite.getGlobalBounds();
+        pRect.width /= 1.25f;
+        pRect.height /= 1.25;
+        if (enemies[i].sprite.getGlobalBounds().intersects(pRect))
         {
             std::cout << "Took damage!\n";
             player.takeDamage(enemies[i].getDamage());
@@ -39,7 +42,11 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
         bulRect.width /= 4.f;
         bulRect.height /= 4.f;
 
-        if (bulRect.intersects(player.sprite.getGlobalBounds()))
+        auto pRect = player.sprite.getGlobalBounds();
+        pRect.width /= 1.25f;
+        pRect.height /= 1.25;
+
+        if (bulRect.intersects(pRect))
         {
             player.takeDamage(eBullets[i].getDamage());
             m_bulMan.killEnemyBullet(i);

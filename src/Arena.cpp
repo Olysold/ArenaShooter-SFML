@@ -15,7 +15,7 @@ m_grid(sf::Quads)
         for (size_t j = 0; j < m_gridSize.y / floorSize; ++j)
         {
             //Create a quad, easier to work with.
-            sf::Vertex* quad = &m_grid[(i + j * (m_gridSize.x/floorSize)) * 4];
+            sf::Vertex* quad = &m_grid[(i + j * (m_gridSize.y/floorSize)) * 4];
             quad[0].position = sf::Vector2f(i*floorSize, j*floorSize);
             quad[1].position = sf::Vector2f(i*floorSize + floorSize, j*floorSize);
             quad[2].position = sf::Vector2f(i*floorSize + floorSize, j*floorSize + floorSize);
@@ -49,7 +49,6 @@ void Arena::confinePlayer(Player& player)
     {
         pos.x = 0 + texRect.width / 2.f;
         player.sprite.setPosition(pos.x, pos.y);
-
     }
 
     if (pos.x + texRect.width / 2.f > m_gridSize.x)

@@ -36,7 +36,7 @@ int main()
 
     ///TEST
     Player player;
-    player.setStats(1000, 250, 50, 200, 0.2);
+    player.setStats(1000000, 250, 50, 200, 0.2);
     std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
     player.setTexAni("Player", "PlayerAni", frame);
     player.sprite.setPosition(arena.getSize().x / 2.f, arena.getSize().y / 2.f);
