@@ -25,7 +25,7 @@ class BulletManager
 {
 public:
     BulletManager();
-    void createBullet(sf::Vector2f pos, float rotation, float speed, int damage, bool playerBullet = false);
+    void createBullet(sf::Vector2f pos, float rotation, float speed, unsigned int damage, bool playerBullet = false);
 
     void killEnemyBullet(size_t i);
     void killEnemyBullet(std::vector<Bullet>::iterator);

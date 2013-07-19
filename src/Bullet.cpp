@@ -6,7 +6,7 @@
 Bullet::Bullet(sf::Vector2f pos,
                float rotation,
                unsigned int speed,
-               int damage,
+               unsigned int damage,
                sf::Texture& tex):
 m_speed(speed),
 m_damage(damage)

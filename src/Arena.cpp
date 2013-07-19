@@ -3,6 +3,7 @@
 ResourceManager Arena::m_resMan;
 
 Arena::Arena():
+m_wave(1),
 m_grid(sf::Quads)
 {
     unsigned int floorSize = m_resMan.texture("Floor").getSize().x;
@@ -35,15 +36,61 @@ m_grid(sf::Quads)
     }
 }
 
+void Arena::update(EnemyManager& enemyMan)
+{
+    if (enemyMan.numEnemies() == 0)
+    {
+        this->spawnWave(enemyMan);
+    }
+}
+
 void Arena::draw(sf::RenderWindow& window)
 {
     window.draw(m_grid, &m_resMan.texture("Floor"));
 }
 
+void Arena::spawnWave(EnemyManager& enemyMan)
+{
+    unsigned int numEnemies = (m_wave * 10) + 50;
+    for (unsigned int i = 0; i < numEnemies; ++i)
+    {
+        switch (std::rand() % 4)
+        {
+        case 0:
+            enemyMan.createEnemy(sf::Vector2f(std::rand() % m_gridSize.x,
+                                              0),
+                                 m_wave);
+            break;
+        case 1:
+            enemyMan.createEnemy(sf::Vector2f(std::rand() % m_gridSize.x,
+                                              m_gridSize.y),
+                                 m_wave);
+            break;
+        case 2:
+            enemyMan.createEnemy(sf::Vector2f(0,
+                                              std::rand() % m_gridSize.y),
+                                 m_wave);
+            break;
+        case 3:
+            enemyMan.createEnemy(sf::Vector2f(m_gridSize.x,
+                                              std::rand() % m_gridSize.y),
+                                 m_wave);
+            break;
+        default:
+            std::cout << "WAVE SPAWN ERROR\n";
+            enemyMan.createEnemy(sf::Vector2f(0, 0), m_wave);
+            break;
+        }
+
+    }
+
+    m_wave++;
+}
+
 void Arena::confinePlayer(Player& player)
 {
     sf::Vector2f pos = player.sprite.getPosition();
-    sf::FloatRect texRect = player.sprite.getLocalBounds();
+    sf::FloatRect texRect = player.sprite.getGlobalBounds();
 
     if (pos.x - texRect.width / 2.f < 0)
     {

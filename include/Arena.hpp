@@ -9,12 +9,14 @@
 //SELF
 #include "ResourceManager.hpp"
 #include "Player.hpp"
+#include "EnemyManager.hpp"
 
 class Arena
 {
 public:
     Arena();
 
+    void update(EnemyManager& enemyMan);
     void draw(sf::RenderWindow& window);
 
     void confinePlayer(Player& player);
@@ -22,6 +24,10 @@ public:
     sf::Vector2u getSize();
 
 private:
+    void spawnWave(EnemyManager&);
+
+    unsigned int m_wave;
+
     sf::Vector2u m_gridSize;
     sf::VertexArray m_grid;
 

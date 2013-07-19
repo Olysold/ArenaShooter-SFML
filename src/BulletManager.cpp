@@ -8,7 +8,7 @@ BulletManager::BulletManager()
 {
 }
 
-void BulletManager::createBullet(sf::Vector2f pos, float rotation, float speed, int damage, bool playerBullet)
+void BulletManager::createBullet(sf::Vector2f pos, float rotation, float speed, unsigned int damage, bool playerBullet)
 {
     Bullet b(pos, rotation, speed, damage, m_resMan.texture(std::string("Bullet")));
 

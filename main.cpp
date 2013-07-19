@@ -34,13 +34,11 @@ int main()
     BulletManager bulMan;
     CollisionManager colMan;
 
-    ///TEST
     Player player;
-    player.setStats(1000000, 250, 50, 200, 0.2);
+    player.setStats(10000, 250, 500, 200, 0.2);
     std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
     player.setTexAni("Player", "PlayerAni", frame);
     player.sprite.setPosition(arena.getSize().x / 2.f, arena.getSize().y / 2.f);
-    ///TEST
 
     Camera cam(player);
 
@@ -58,30 +56,26 @@ int main()
                 window.close();
         }
 
-        //Quick hack
-        if (std::rand() % 25 == 1)
-        {
-            enemyMan.createEnemy(sf::Vector2f(player.sprite.getPosition().x + std::rand() % 200, player.sprite.getPosition().y + std::rand() % 200),
-                                 0, 100, 200, 100, 100, 100, 100, 100);
-        }
-
-        ///TEST
-        player.move(deltaTime);
-        player.shoot(deltaTime, window, bulMan);
-        player.sprite.update(deltaTime);
-        ///TEST
+        player.update(deltaTime, window, bulMan);
 
         cam.update(deltaTime, window, player, arena.getSize());
         game.updateEntity(deltaTime, enemyMan, bulMan, colMan, arena, player);
 
         window.clear(sf::Color(40, 40, 40));
+
         game.drawEntity(player, enemyMan, bulMan, arena, window);
         drawFPS(deltaTime, window);
+
         window.display();
+
         deltaTime = currFrame.restart();
-
-
+        std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
+        std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
+        std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
+        std::cout << "Enemies: " << enemyMan.getEnemies().size() << "\n";
+        std::cout << "Loc: " << player.sprite.getPosition().x << "/" << player.sprite.getPosition().y << "\n";
     }
+
     std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
     std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
     std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";

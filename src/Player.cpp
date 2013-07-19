@@ -15,24 +15,24 @@ Player::Player()
     //                 sprite.getGlobalBounds().height / 2.f);
 }
 
-void Player::setStats(const int health,
-                  const unsigned int speed,
-                  const unsigned int bulletSpd,
-                  const int bulletDmg,
-                  const double bulletROF)
+void Player::setStats(int health,
+                      int speed,
+                      unsigned int bulletSpeed,
+                      unsigned int bulletDamage,
+                      double bulletROF)
 {
     m_alive = true;
     m_health = health;
     m_speed = speed; //I'm guessing this is the number of units to move?
 
-    m_bulletSpeed = bulletSpd;
-    m_bulletDamage = bulletDmg;
+    m_bulletSpeed = bulletSpeed;
+    m_bulletDamage = bulletDamage;
     m_bulletROF = bulletROF; //Seconds
 }
 
-void Player::setTexAni(const std::string texture,
-                       const std::string animation,
-                       const std::list<sf::IntRect> frame)
+void Player::setTexAni(std::string texture,
+                       std::string animation,
+                       std::list<sf::IntRect> frame)
 {
     m_resMan.texture(texture);
     m_resMan.addAnimation(animation, texture);
@@ -54,6 +54,12 @@ void Player::setTexAni(const std::string texture,
     sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
 }
 
+void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bulMan)
+{
+    this->move(deltaTime);
+    this->shoot(deltaTime, window, bulMan);
+    sprite.update(deltaTime);
+}
 void Player::move(sf::Time& deltaTime)
 {
 
@@ -225,7 +231,7 @@ bool Player::isAlive()
     return (m_health > 0);
 }
 
-void Player::takeDamage(int damage)
+void Player::takeDamage(unsigned int damage)
 {
     if (m_health >= damage)
     {

@@ -19,6 +19,7 @@ void Game::updateEntity(sf::Time& deltaTime,
 {
     if (!m_gameOver)
     {
+        arena.update(enemyMan);
         arena.confinePlayer(player);
 
         for (auto& enemy : enemyMan.getEnemies())
@@ -37,7 +38,7 @@ void Game::updateEntity(sf::Time& deltaTime,
         }
 
         colMan.update(deltaTime, player);
-        bulMan.cleanup(arena.getSize()); //Disabled until we have an arena and thus know the boundaries.
+        bulMan.cleanup(arena.getSize());
     }
 }
 

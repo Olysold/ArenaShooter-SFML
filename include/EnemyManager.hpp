@@ -16,11 +16,13 @@ public:
     EnemyManager();
 
     void createEnemy(sf::Vector2f pos,
-                     float rotation,
+                     unsigned int level);
+
+    void createEnemy(sf::Vector2f pos,
                      unsigned int level,
                      unsigned int health,
                      unsigned int speed,
-                     int damage,
+                     unsigned int damage,
                      unsigned int ROF,
                      unsigned int bulletSpeed,
                      unsigned int bulletDamage);
@@ -29,6 +31,8 @@ public:
     void kill(std::vector<Enemy>::iterator&);
 
     std::vector<Enemy>& getEnemies(); ///For collision handling
+
+    size_t numEnemies();
 
 private:
     static std::vector<Enemy> m_enemies;

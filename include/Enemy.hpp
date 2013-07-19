@@ -17,10 +17,12 @@ class BulletManager;
 class Enemy
 {
 public:
+    Enemy(unsigned int level);
+
     Enemy(unsigned int level,
           unsigned int health,
           unsigned int speed,
-          int damage,
+          unsigned int damage,
           unsigned int ROF,
           unsigned int bulletSpeed,
           unsigned int bulletDamage);
@@ -33,7 +35,7 @@ public:
 
     bool isAlive();
 
-    void takeDamage(int damage);
+    void takeDamage(unsigned int damage);
 
     AnimatedSprite sprite;
 
@@ -49,11 +51,11 @@ private:
     unsigned int    m_armor;
     unsigned int    m_shield;
     unsigned int    m_speed;
-    int             m_damage; ///Collision damage
+    unsigned int    m_damage; ///Collision damage
     unsigned int    m_ROF;
 
     unsigned int    m_bulletSpeed;
-    int             m_bulletDamage;
+    unsigned int    m_bulletDamage;
 
     static sf::Sound m_deathSound;
     static sf::Sound m_shootSound;

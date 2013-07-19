@@ -11,7 +11,7 @@
 class Bullet
 {
 public:
-    Bullet(sf::Vector2f pos, float rotation, unsigned int speed, int damage, sf::Texture&); ///Set who shot the bullet
+    Bullet(sf::Vector2f pos, float rotation, unsigned int speed, unsigned int damage, sf::Texture&); ///Set who shot the bullet
     void update(sf::Time& deltaTime); ///Call to move bullet
     void draw(sf::RenderWindow& window); ///Call to draw bullet
 
@@ -21,7 +21,7 @@ public:
 
 private:
     float   m_speed;
-    int     m_damage;
+    unsigned int     m_damage;
 };
 
 #endif
