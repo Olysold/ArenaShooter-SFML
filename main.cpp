@@ -17,6 +17,7 @@
 #include "BulletManager.hpp"
 #include "CollisionManager.hpp"
 #include "util.hpp"
+#include "UI.hpp"
 
 void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window);
 
@@ -29,6 +30,7 @@ int main()
 
     //Controls
     Game game;
+    UI userInter;
     Arena arena;
     EnemyManager enemyMan;
     BulletManager bulMan;
@@ -56,24 +58,28 @@ int main()
                 window.close();
         }
 
-        player.update(deltaTime, window, bulMan);
+        if(userInter.isMainMenu()) //If it's the main menu
+        {
+            userInter.mainMenu(userInter.vertiMenuNavigator("MainScreenSelect", deltaTime),
+                               window);
+        }
+        else //Game functionality becomes active
+        {
+            player.update(deltaTime, window, bulMan);
 
-        cam.update(deltaTime, window, player, arena.getSize());
-        game.updateEntity(deltaTime, enemyMan, bulMan, colMan, arena, player);
+            cam.update(deltaTime, window, player, arena.getSize());
+            game.updateEntity(deltaTime, enemyMan, bulMan, colMan, arena, userInter, player);
+        }
 
         window.clear(sf::Color(40, 40, 40));
 
-        game.drawEntity(player, enemyMan, bulMan, arena, window);
+        game.drawEntity(player, enemyMan, bulMan, arena, userInter, window);
         drawFPS(deltaTime, window);
 
         window.display();
 
         deltaTime = currFrame.restart();
-        std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
-        std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
-        std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
-        std::cout << "Enemies: " << enemyMan.getEnemies().size() << "\n";
-        std::cout << "Loc: " << player.sprite.getPosition().x << "/" << player.sprite.getPosition().y << "\n";
+
     }
 
     std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
