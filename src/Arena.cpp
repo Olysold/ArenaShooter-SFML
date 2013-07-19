@@ -47,22 +47,27 @@ void Arena::confinePlayer(Player& player)
 
     if (pos.x - texRect.width / 2.f < 0)
     {
-        player.sprite.setPosition(0 + texRect.width / 2.f, pos.y);
+        pos.x = 0 + texRect.width / 2.f;
+        player.sprite.setPosition(pos.x, pos.y);
+
     }
 
     if (pos.x + texRect.width / 2.f > m_gridSize.x)
     {
-        player.sprite.setPosition(m_gridSize.x - texRect.width / 2.f, pos.y);
+        pos.x = m_gridSize.x - texRect.width / 2.f;
+        player.sprite.setPosition(pos.x, pos.y);
     }
 
     if (pos.y - texRect.height / 2.f < 0)
     {
-        player.sprite.setPosition(pos.x, 0 + texRect.height / 2.f);
+        pos.y = 0 + texRect.height / 2.f;
+        player.sprite.setPosition(pos.x, pos.y);
     }
 
     if (pos.y + texRect.height / 2.f > m_gridSize.y)
     {
-        player.sprite.setPosition(pos.x, m_gridSize.y - texRect.height / 2.f);
+        pos.y = m_gridSize.y - texRect.height / 2.f;
+        player.sprite.setPosition(pos.x, pos.y);
     }
 }
 

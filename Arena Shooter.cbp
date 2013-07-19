@@ -75,6 +75,7 @@
 		<Unit filename="data/textures/Error.png" />
 		<Unit filename="include/AnimatedSprite.hpp" />
 		<Unit filename="include/Animation.hpp" />
+		<Unit filename="include/Arena.hpp" />
 		<Unit filename="include/Bullet.hpp" />
 		<Unit filename="include/BulletManager.hpp" />
 		<Unit filename="include/Camera.hpp" />
@@ -88,6 +89,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AnimatedSprite.cpp" />
 		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/Arena.cpp" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/BulletManager.cpp" />
 		<Unit filename="src/Camera.cpp" />
