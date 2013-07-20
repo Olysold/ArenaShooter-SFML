@@ -53,7 +53,7 @@ void Game::drawEntity(Player& player,
 {
     if (!m_gameOver && !userInter.isMainMenu())
     {
-        arena.draw(window);
+        //arena.draw(window);
 
         for (auto bullet : bulMan.getEnemyBullets())
         {

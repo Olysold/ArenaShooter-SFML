@@ -933,7 +933,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1374256311 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
+1374350446 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<list>
@@ -1296,11 +1296,10 @@
 	"Arena.hpp"
 	"UI.hpp"
 
-1374256134 c:\users\user\documents\github\arenashooter-sfml\include\player.hpp
+1374349699 c:\users\user\documents\github\arenashooter-sfml\include\player.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<memory>
-	<list>
 	"Animation.hpp"
 	"AnimatedSprite.hpp"
 	"BulletManager.hpp"
@@ -1440,13 +1439,13 @@
 	<cmath>
 	"util.hpp"
 
-1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\bulletmanager.cpp
+1374318539 source:c:\users\user\documents\github\arenashooter-sfml\src\bulletmanager.cpp
 	"BulletManager.hpp"
 
 1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\camera.cpp
 	"Camera.hpp"
 
-1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\collisionmanager.cpp
+1374318537 source:c:\users\user\documents\github\arenashooter-sfml\src\collisionmanager.cpp
 	"CollisionManager.hpp"
 
 1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\enemy.cpp
@@ -1455,14 +1454,15 @@
 1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1374256489 source:c:\users\user\documents\github\arenashooter-sfml\src\game.cpp
+1374257587 source:c:\users\user\documents\github\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 	<iostream>
 
-1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
+1374350364 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 	<cmath>
 	"util.hpp"
+	"Movement.hpp"
 
 1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\resourcemanager.cpp
 	"ResourceManager.hpp"
@@ -1525,6 +1525,13 @@
 	"ResourceManager.hpp"
 	"util.hpp"
 
-1374256633 source:c:\users\user\documents\github\arenashooter-sfml\src\ui.cpp
+1374257001 source:c:\users\user\documents\github\arenashooter-sfml\src\ui.cpp
 	"UI.hpp"
+
+1374350252 c:\users\user\documents\github\arenashooter-sfml\include\movement.hpp
+	<SFML/Graphics.hpp>
+	"AnimatedSprite.hpp"
+
+1374350324 source:c:\users\user\documents\github\arenashooter-sfml\src\movement.cpp
+	"Movement.hpp"
 

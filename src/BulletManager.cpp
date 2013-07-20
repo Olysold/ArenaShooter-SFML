@@ -65,17 +65,4 @@ void BulletManager::cleanup(sf::Vector2u arenaSize)
             m_playerBullets.erase(m_playerBullets.begin());
         }
     }
-
-    if(!m_enemyBullets.empty())
-    {
-        //Temporary out of bounds positions set
-        if(m_enemyBullets.begin()->sprite.getPosition().x >= 800 ||
-           m_enemyBullets.begin()->sprite.getPosition().x <= 0 ||
-           m_enemyBullets.begin()->sprite.getPosition().y >= 600 ||
-           m_enemyBullets.begin()->sprite.getPosition().y <= 0)
-        {
-            m_enemyBullets.erase(m_enemyBullets.begin());
-        }
-    }
-
 }

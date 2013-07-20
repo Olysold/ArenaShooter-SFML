@@ -2,17 +2,23 @@
 
 #include <cmath>
 #include "util.hpp"
+#include "Movement.hpp"
 
 ResourceManager Player::m_resMan;
 
-Player::Player()
+Player::Player(): m_alive(true),
+                  m_health(10000),
+                  m_speed(250),
+                  m_bulletSpeed(500),
+                  m_bulletDamage(200),
+                  m_bulletROF(0.2)
 {
-    //m_resMan.texture("Player");
-    //m_resMan.addAnimation("PlayerAni", "Player");
-    //m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
-    //sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
-    //sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
-    //                 sprite.getGlobalBounds().height / 2.f);
+    m_resMan.texture("Player");
+    m_resMan.addAnimation("PlayerAni", "Player");
+    m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
+    sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
+    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
+                     sprite.getGlobalBounds().height / 2.f);
 }
 
 void Player::setStats(int health,
@@ -23,7 +29,7 @@ void Player::setStats(int health,
 {
     m_alive = true;
     m_health = health;
-    m_speed = speed; //I'm guessing this is the number of units to move?
+    m_speed = speed;
 
     m_bulletSpeed = bulletSpeed;
     m_bulletDamage = bulletDamage;
@@ -32,7 +38,7 @@ void Player::setStats(int health,
 
 void Player::setTexAni(std::string texture,
                        std::string animation,
-                       std::list<sf::IntRect> frame)
+                       std::vector<sf::IntRect> frame)
 {
     m_resMan.texture(texture);
     m_resMan.addAnimation(animation, texture);
@@ -62,141 +68,67 @@ void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager
 }
 void Player::move(sf::Time& deltaTime)
 {
-
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        sprite.move(-1 * m_speed * deltaTime.asSeconds(), 0);
+        Movement::moveLeft(sprite, m_speed, deltaTime);
         m_moveHori = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        sprite.move(m_speed * deltaTime.asSeconds(), 0);
+        Movement::moveRight(sprite, m_speed, deltaTime);
         m_moveHori = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
-        sprite.move(0, -1 * m_speed * deltaTime.asSeconds());
+        Movement::moveUp(sprite, m_speed, deltaTime);
         m_moveVerti = true;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        sprite.move(0, m_speed * deltaTime.asSeconds());
+        Movement::moveDown(sprite, m_speed, deltaTime);
         m_moveVerti = true;
     }
 
-    //Rotating player
-    //Diagonal movement
+    //Rotating diagonally
     if(m_moveHori && m_moveVerti)
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
-           !(sprite.getRotation() > 43 && sprite.getRotation() < 47))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            if(sprite.getRotation() < 47 ||
-               (sprite.getRotation() < 360 && sprite.getRotation() > 225))
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() > 43 && sprite.getRotation() < 225)
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateUpRight(sprite, m_speed, deltaTime);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
-           !(sprite.getRotation() > 133 && sprite.getRotation() < 137))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            if(sprite.getRotation() < 137 ||
-               (sprite.getRotation() < 360 && sprite.getRotation() > 315))
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() > 133 && sprite.getRotation() < 315)
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateDownRight(sprite, m_speed, deltaTime);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
-           !(sprite.getRotation() > 313 && sprite.getRotation() < 317))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            if(sprite.getRotation() < 317 && sprite.getRotation() > 135)
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() > 313 ||
-                    (sprite.getRotation() < 360 && sprite.getRotation() < 135))
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateUpLeft(sprite, m_speed, deltaTime);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
-           !(sprite.getRotation() > 223 && sprite.getRotation() < 227))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            if(sprite.getRotation() < 227 && sprite.getRotation() > 45)
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() > 223 ||
-                    (sprite.getRotation() < 360 && sprite.getRotation() < 45))
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateDownLeft(sprite, m_speed, deltaTime);
         }
     }
-    //Horizontal and vertical
     else if(m_moveHori)
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
-           !(sprite.getRotation() > 88 && sprite.getRotation() < 92))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            if(sprite.getRotation() < 88 ||
-               (sprite.getRotation() < 360 && sprite.getRotation() > 225))
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() > 92 && sprite.getRotation() < 225)
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateRight(sprite, m_speed, deltaTime);
         }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) &&
-                !(sprite.getRotation() > 268 && sprite.getRotation() < 272))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            if(sprite.getRotation() > 90 && sprite.getRotation() < 272)
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else if(sprite.getRotation() < 90 ||
-                    (sprite.getRotation() < 360 && sprite.getRotation() > 268))
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateLeft(sprite, m_speed, deltaTime);
         }
     }
     else if(m_moveVerti)
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) &&
-           !(sprite.getRotation() > 0 && sprite.getRotation() < 2))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            if(sprite.getRotation() > 180)
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateUp(sprite, m_speed, deltaTime);
         }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) &&
-           !(sprite.getRotation() > 178 && sprite.getRotation() < 182))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            if(sprite.getRotation() < 180)
-            {
-                sprite.rotate(m_speed * deltaTime.asSeconds());
-            }
-            else
-            {
-                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
-            }
+            Movement::rotateDown(sprite, m_speed, deltaTime);
         }
     }
 

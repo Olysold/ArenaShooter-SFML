@@ -37,9 +37,6 @@ int main()
     CollisionManager colMan;
 
     Player player;
-    player.setStats(10000, 250, 500, 200, 0.2);
-    std::list<sf::IntRect> frame{ sf::IntRect(0, 0, 47, 52) };
-    player.setTexAni("Player", "PlayerAni", frame);
     player.sprite.setPosition(arena.getSize().x / 2.f, arena.getSize().y / 2.f);
 
     Camera cam(player);
@@ -80,6 +77,11 @@ int main()
 
         deltaTime = currFrame.restart();
 
+        std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";
+        std::cout << "pBul: " << bulMan.getPlayerBullets().size() << "\n";
+        std::cout << "FPS: " << 1.f / deltaTime.asSeconds() << "\n";
+        std::cout << "Enemies: " << enemyMan.getEnemies().size() << "\n";
+        std::cout << "Loc: " << player.sprite.getPosition().x << "/" << player.sprite.getPosition().y << "\n";
     }
 
     std::cout << "eBul: " << bulMan.getEnemyBullets().size() << "\n";

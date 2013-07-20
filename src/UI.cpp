@@ -7,7 +7,7 @@ UI::UI(): m_selectDelay(sf::seconds(0.3)),
           m_mainMenu(true),
           m_delay(true),
           m_roundDelayT(sf::seconds(2.5)),
-          m_roundNum(0),
+          m_roundNum(1),
           m_opacity(0)
 {
     m_resMan.font("CenturyGothic");

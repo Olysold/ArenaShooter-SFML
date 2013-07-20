@@ -19,7 +19,7 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
     {
         auto pRect = player.sprite.getGlobalBounds();
         pRect.width /= 1.25f;
-        pRect.height /= 1.25;
+        pRect.height /= 1.25f;
         if (enemies[i].sprite.getGlobalBounds().intersects(pRect))
         {
             std::cout << "Took damage!\n";

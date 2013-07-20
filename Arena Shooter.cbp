@@ -191,10 +191,11 @@
 		<Unit filename="include/CollisionManager.hpp" />
 		<Unit filename="include/Enemy.hpp" />
 		<Unit filename="include/EnemyManager.hpp" />
+		<Unit filename="include/EnemyType1.hpp" />
 		<Unit filename="include/Game.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
-		<Unit filename="include/TestResources.hpp" />
+		<Unit filename="include/UI.hpp" />
 		<Unit filename="include/util.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AnimatedSprite.cpp" />
@@ -209,7 +210,7 @@
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
-		<Unit filename="src/TestResources.cpp" />
+		<Unit filename="src/UI.cpp" />
 		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<DoxyBlocks>

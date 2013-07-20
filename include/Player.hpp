@@ -7,7 +7,6 @@
 
 //STD
 #include <memory>
-#include <list>
 
 //SELF
 #include "Animation.hpp"
@@ -29,7 +28,7 @@ public:
 
     void setTexAni(std::string texture,
                    std::string animation,
-                   std::list<sf::IntRect> frames);
+                   std::vector<sf::IntRect> frames);
 
 
     void update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bulMan);
@@ -41,7 +40,6 @@ public:
 
     void kill();
 
-    sf::Sprite testSprite;
     AnimatedSprite sprite;
 
     void draw(sf::RenderWindow&);
