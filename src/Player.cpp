@@ -13,10 +13,21 @@ Player::Player(): m_alive(true),
                   m_bulletDamage(200),
                   m_bulletROF(0.2)
 {
-    m_resMan.texture("Player");
-    m_resMan.addAnimation("PlayerAni", "Player");
-    m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
-    sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
+    sprite.setTexture(m_resMan.texture("Player"));
+
+    auto& pdAni = m_resMan.frameAnimation("Player Default");
+    m_resMan.addFrame("Player Default",
+                      sf::seconds(1.f),
+                      sf::IntRect(0,
+                                  0,
+                                  m_resMan.texture("Player").getSize().x,
+                                  m_resMan.texture("Player").getSize().y));
+
+    animator.addAnimation("Default", pdAni, sf::seconds(1.f));
+
+    //m_resMan.addAnimation("PlayerAni", "Player");
+    //m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
+    //sprite.setAnimation(m_resMan.getAnimation("PlayerAni"));
     sprite.setOrigin(sprite.getGlobalBounds().width / 2.f,
                      sprite.getGlobalBounds().height / 2.f);
 }
@@ -36,36 +47,22 @@ void Player::setStats(int health,
     m_bulletROF = bulletROF; //Seconds
 }
 
-void Player::setTexAni(std::string texture,
-                       std::string animation,
-                       std::vector<sf::IntRect> frame)
-{
-    m_resMan.texture(texture);
-    m_resMan.addAnimation(animation, texture);
-
-    if(!frame.empty())
-    {
-        for(auto& iter : frame)
-        {
-            m_resMan.addAniFrame(animation, iter);
-        }
-    }
-    else
-    {
-        std::cerr << "Frames were not set\n";
-        m_resMan.addAniFrame(animation, sf::IntRect(0, 0, 0, 0));
-    }
-
-    sprite.setAnimation(m_resMan.getAnimation(animation));
-    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
-}
-
 void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bulMan)
 {
     this->move(deltaTime);
     this->shoot(deltaTime, window, bulMan);
-    sprite.update(deltaTime);
+    animator.update(deltaTime);
 }
+
+void Player::draw(sf::RenderWindow& window)
+{
+    if (m_alive)
+    {
+        animator.playAnimation("Default");
+        window.draw(sprite);
+    }
+}
+
 void Player::move(sf::Time& deltaTime)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -178,12 +175,4 @@ void Player::takeDamage(unsigned int damage)
 int Player::getHealth()
 {
     return m_health;
-}
-
-void Player::draw(sf::RenderWindow& window)
-{
-    if(m_alive)
-    {
-        window.draw(sprite);
-    }
 }

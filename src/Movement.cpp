@@ -1,26 +1,26 @@
 #include "Movement.hpp"
 
-void Movement::moveLeft(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::moveLeft(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     sprite.move(-1 * speed * deltaTime.asSeconds(), 0);
 }
 
-void Movement::moveRight(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::moveRight(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     sprite.move(speed * deltaTime.asSeconds(), 0);
 }
 
-void Movement::moveUp(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::moveUp(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     sprite.move(0, -1 * speed * deltaTime.asSeconds());
 }
 
-void Movement::moveDown(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::moveDown(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     sprite.move(0, speed * deltaTime.asSeconds());
 }
 
-void Movement::rotateRight(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateRight(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (east-2) && sprite.getRotation() < (east+2) ))
     {
@@ -38,7 +38,7 @@ void Movement::rotateRight(AnimatedSprite& sprite, const int& speed, const sf::T
     }
 }
 
-void Movement::rotateLeft(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateLeft(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (west-2) && sprite.getRotation() < (west+2) ))
     {
@@ -54,7 +54,7 @@ void Movement::rotateLeft(AnimatedSprite& sprite, const int& speed, const sf::Ti
     }
 }
 
-void Movement::rotateUp(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateUp(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > north0 && sprite.getRotation() < (north0+2) ))
     {
@@ -69,7 +69,7 @@ void Movement::rotateUp(AnimatedSprite& sprite, const int& speed, const sf::Time
     }
 }
 
-void Movement::rotateDown(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateDown(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (south-2) && sprite.getRotation() < (south+2) ))
     {
@@ -84,7 +84,7 @@ void Movement::rotateDown(AnimatedSprite& sprite, const int& speed, const sf::Ti
     }
 }
 
-void Movement::rotateUpRight(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateUpRight(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (northEast-2) && sprite.getRotation() < (northEast+2) ))
     {
@@ -100,7 +100,7 @@ void Movement::rotateUpRight(AnimatedSprite& sprite, const int& speed, const sf:
     }
 }
 
-void Movement::rotateDownRight(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateDownRight(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (southEast-2) && sprite.getRotation() < (southEast+2) ))
     {
@@ -116,7 +116,7 @@ void Movement::rotateDownRight(AnimatedSprite& sprite, const int& speed, const s
     }
 }
 
-void Movement::rotateUpLeft(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateUpLeft(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (northWest-2) && sprite.getRotation() < (northWest+2) ))
     {
@@ -132,7 +132,7 @@ void Movement::rotateUpLeft(AnimatedSprite& sprite, const int& speed, const sf::
     }
 }
 
-void Movement::rotateDownLeft(AnimatedSprite& sprite, const int& speed, const sf::Time& deltaTime)
+void Movement::rotateDownLeft(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     if(!(sprite.getRotation() > (southWest-2) && sprite.getRotation() < (southWest+2) ))
     {

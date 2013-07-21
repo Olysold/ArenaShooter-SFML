@@ -12,11 +12,20 @@ void EnemyManager::createEnemy(sf::Vector2f pos,
 {
     Enemy ene(level);
 
-    m_resMan.texture("Enemy1");
-    m_resMan.addAnimation("Enemy1Ani", "Enemy1");
-    m_resMan.addAniFrame("Enemy1Ani", sf::Rect<int>(0, 0, 30, 36));
+    ene.sprite.setTexture(m_resMan.texture("Enemy1"));
 
-    ene.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
+    auto& edAni = m_resMan.frameAnimation("Enemy Default");
+    m_resMan.addFrame("Enemy Default",
+                      sf::seconds(1.f),
+                      sf::IntRect(0,
+                                  0,
+                                  m_resMan.texture("Enemy1").getSize().x,
+                                  m_resMan.texture("Enemy1").getSize().y));
+
+    ene.animator.addAnimation("Default", edAni, sf::seconds(1.f));
+    //m_resMan.addAnimation("Enemy1Ani", "Enemy1");
+    //m_resMan.addAniFrame("Enemy1Ani", sf::Rect<int>(0, 0, 30, 36));
+    //ene.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
 
     ene.sprite.setOrigin(ene.sprite.getGlobalBounds().width / 2.f,
                      ene.sprite.getGlobalBounds().height / 2.f);
@@ -37,10 +46,18 @@ void EnemyManager::createEnemy(sf::Vector2f pos,
     Enemy ene(level, health, speed, damage, ROF, bulletSpeed, bulletDamage);
 
     m_resMan.texture("Enemy1");
-    m_resMan.addAnimation("Enemy1Ani", "Enemy1");
-    m_resMan.addAniFrame("Enemy1Ani", sf::Rect<int>(0, 0, 30, 36));
+    auto& edAni = m_resMan.frameAnimation("Enemy Default");
+    m_resMan.addFrame("Enemy Default",
+                      sf::seconds(1.f),
+                      sf::IntRect(0,
+                                  0,
+                                  m_resMan.texture("Enemy1").getSize().x,
+                                  m_resMan.texture("Enemy1").getSize().y));
 
-    ene.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
+    ene.animator.addAnimation("Default", edAni, sf::seconds(1.f));
+    //m_resMan.addAnimation("Enemy1Ani", "Enemy1");
+    //m_resMan.addAniFrame("Enemy1Ani", sf::Rect<int>(0, 0, 30, 36));
+    //ene.sprite.setAnimation(m_resMan.getAnimation("Enemy1Ani"));
 
     ene.sprite.setOrigin(ene.sprite.getGlobalBounds().width / 2.f,
                      ene.sprite.getGlobalBounds().height / 2.f);

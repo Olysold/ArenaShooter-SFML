@@ -4,6 +4,7 @@
 //3RD
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <Thor/Animation.hpp>
 
 //STD
 #include <map>
@@ -20,8 +21,11 @@ typedef std::pair<std::string, std::shared_ptr<sf::Texture>> texPair;
 typedef std::map<std::string, std::shared_ptr<sf::Font>> fontMap;
 typedef std::pair<std::string, std::shared_ptr<sf::Font>> fontPair;
 
-typedef std::map<std::string, std::shared_ptr<Animation>> aniMap;
-typedef std::pair<std::string, std::shared_ptr<Animation>> aniPair;
+typedef std::map<std::string, std::shared_ptr<thor::FrameAnimation>> frameAnimationMap;
+typedef std::pair<std::string, std::shared_ptr<thor::FrameAnimation>> frameAnimationPair;
+
+//typedef std::map<std::string, std::shared_ptr<Animation>> aniMap;
+//typedef std::pair<std::string, std::shared_ptr<Animation>> aniPair;
 
 typedef std::map<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferMap;
 typedef std::pair<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferPair;
@@ -36,16 +40,21 @@ public:
     sf::Texture& texture(std::string);
     sf::Font& font(std::string);
     sf::SoundBuffer& soundBuffer(std::string);
+    thor::FrameAnimation& frameAnimation(std::string);
+    void addFrame(std::string frameAnimation, sf::Time duration, sf::IntRect);
 
-    void addAnimation(std::string, std::string);
-    void addAniFrame(std::string, sf::IntRect);
-    Animation& getAnimation(std::string);
+    //void addAnimation(std::string, std::string);
+    //void addAniFrame(std::string, sf::IntRect);
+    //Animation& getAnimation(std::string);
+
+    static thor::Animator<sf::Sprite, std::string> animator;
 
 private:
     static texMap m_textures;
     static fontMap m_fonts;
-    static aniMap m_animations;
+    //static aniMap m_animations;
     static sBufferMap m_sBuffers;
+    static frameAnimationMap m_frameAnimations;
 };
 
 #endif

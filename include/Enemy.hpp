@@ -4,6 +4,7 @@
 //3RD
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <Thor/Animation.hpp>
 
 //STD
 #include <memory>
@@ -37,7 +38,9 @@ public:
 
     void takeDamage(unsigned int damage);
 
-    AnimatedSprite sprite;
+    sf::Sprite sprite;
+    thor::Animator<sf::Sprite, std::string> animator;
+    //AnimatedSprite sprite;
 
 private:
     void move(sf::Time& deltaTime);

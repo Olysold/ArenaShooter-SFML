@@ -3,9 +3,9 @@
 ResourceManager UI::m_resMan;
 
 UI::UI(): m_selectDelay(sf::seconds(0.3)),
-          m_numChoices(0),
           m_mainMenu(true),
           m_delay(true),
+          m_numChoices(0),
           m_roundDelayT(sf::seconds(2.5)),
           m_roundNum(1),
           m_opacity(0)
@@ -100,6 +100,7 @@ unsigned UI::vertiMenuNavigator(const std::string mapKey, sf::Time deltaTime)
     {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
+            //UGLYNESS OVERLOAD!1!1!shift1!1
             if((m_keyUp || m_currMenuT > m_selectDelay) &&
             m_selectArrow.getPosition().y != (m_textMap[mapKey].end()-1)->getPosition().y - 2)
             {
@@ -140,6 +141,8 @@ unsigned UI::vertiMenuNavigator(const std::string mapKey, sf::Time deltaTime)
     {
         m_keyUp = true;
     }
+
+    return 0;
 }
 
 void UI::drawMainMenu(sf::RenderWindow& window)

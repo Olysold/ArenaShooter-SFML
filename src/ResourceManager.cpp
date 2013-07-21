@@ -2,8 +2,9 @@
 
 texMap ResourceManager::m_textures;
 fontMap ResourceManager::m_fonts;
-aniMap ResourceManager::m_animations;
+//aniMap ResourceManager::m_animations;
 sBufferMap ResourceManager::m_sBuffers;
+frameAnimationMap ResourceManager::m_frameAnimations;
 
 ResourceManager::ResourceManager()
 {
@@ -90,7 +91,31 @@ sf::SoundBuffer& ResourceManager::soundBuffer(std::string filename)
     }
 }
 
-void ResourceManager::addAnimation(std::string name, std::string tex)
+thor::FrameAnimation& ResourceManager::frameAnimation(std::string name)
+{
+    if (m_frameAnimations.find(name) == m_frameAnimations.end())
+    {
+        std::shared_ptr<thor::FrameAnimation> fa (new thor::FrameAnimation);
+
+        m_frameAnimations.insert(frameAnimationPair(name, fa));
+    }
+
+    return *m_frameAnimations.find(name)->second;
+}
+
+void ResourceManager::addFrame(std::string aniName, sf::Time duration, sf::IntRect rect)
+{
+    if (m_frameAnimations.find(aniName) != m_frameAnimations.end())
+    {
+        m_frameAnimations.find(aniName)->second->addFrame(duration.asSeconds(), rect);
+    }
+    else
+    {
+        std::cout << aniName << " not found, frame not added.\n";
+    }
+}
+
+/*void ResourceManager::addAnimation(std::string name, std::string tex)
 {
     if (m_animations.find(name) == m_animations.end())
     {
@@ -138,4 +163,4 @@ Animation& ResourceManager::getAnimation(std::string name)
     }
 
     return *(new Animation);
-}
+}*/

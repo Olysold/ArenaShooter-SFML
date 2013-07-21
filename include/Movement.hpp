@@ -9,21 +9,21 @@
 
 namespace Movement
 {
-    void moveLeft(AnimatedSprite&, const int&, const sf::Time&);
-    void moveRight(AnimatedSprite&, const int&, const sf::Time&);
-    void moveUp(AnimatedSprite&, const int&, const sf::Time&);
-    void moveDown(AnimatedSprite&, const int&, const sf::Time&);
+    void moveLeft(sf::Sprite&, const int&, const sf::Time&);
+    void moveRight(sf::Sprite&, const int&, const sf::Time&);
+    void moveUp(sf::Sprite&, const int&, const sf::Time&);
+    void moveDown(sf::Sprite&, const int&, const sf::Time&);
 
     //To determine clockwise vs counter-clockwise, consider how the sprite should rotate
     //from the opposite end back to the destination
-    void rotateRight(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateLeft(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateUp(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateDown(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateUpRight(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateDownRight(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateUpLeft(AnimatedSprite&, const int&, const sf::Time&);
-    void rotateDownLeft(AnimatedSprite&, const int&, const sf::Time&);
+    void rotateRight(sf::Sprite&, const int&, const sf::Time&);
+    void rotateLeft(sf::Sprite&, const int&, const sf::Time&);
+    void rotateUp(sf::Sprite&, const int&, const sf::Time&);
+    void rotateDown(sf::Sprite&, const int&, const sf::Time&);
+    void rotateUpRight(sf::Sprite&, const int&, const sf::Time&);
+    void rotateDownRight(sf::Sprite&, const int&, const sf::Time&);
+    void rotateUpLeft(sf::Sprite&, const int&, const sf::Time&);
+    void rotateDownLeft(sf::Sprite&, const int&, const sf::Time&);
 
     const int north0 = 0;
     const int north360 = 360;

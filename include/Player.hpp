@@ -4,6 +4,7 @@
 //3RD
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <Thor/Animation.hpp>
 
 //STD
 #include <memory>
@@ -26,11 +27,6 @@ public:
                   unsigned int bulletDamage,
                   double bulletROF);
 
-    void setTexAni(std::string texture,
-                   std::string animation,
-                   std::vector<sf::IntRect> frames);
-
-
     void update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bulMan);
 
     void takeDamage(unsigned int damage);
@@ -40,7 +36,9 @@ public:
 
     void kill();
 
-    AnimatedSprite sprite;
+    sf::Sprite sprite;
+    //AnimatedSprite sprite;
+    thor::Animator<sf::Sprite, std::string> animator;
 
     void draw(sf::RenderWindow&);
 
