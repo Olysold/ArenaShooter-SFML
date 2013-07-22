@@ -1,4 +1,4 @@
-#include "EnemyManager.hpp"
+#include "Managers/EnemyManager.hpp"
 
 std::vector<Enemy> EnemyManager::m_enemies;
 ResourceManager EnemyManager::m_resMan;

@@ -1,8 +1,7 @@
-#include "ResourceManager.hpp"
+#include "Managers/ResourceManager.hpp"
 
 texMap ResourceManager::m_textures;
 fontMap ResourceManager::m_fonts;
-//aniMap ResourceManager::m_animations;
 sBufferMap ResourceManager::m_sBuffers;
 frameAnimationMap ResourceManager::m_frameAnimations;
 
@@ -114,53 +113,3 @@ void ResourceManager::addFrame(std::string aniName, sf::Time duration, sf::IntRe
         std::cout << aniName << " not found, frame not added.\n";
     }
 }
-
-/*void ResourceManager::addAnimation(std::string name, std::string tex)
-{
-    if (m_animations.find(name) == m_animations.end())
-    {
-        std::shared_ptr<Animation> a(new Animation);
-        if (m_textures.find(tex) != m_textures.end())
-        {
-            a->setSpriteSheet(*m_textures.find(tex)->second);
-        }
-        else
-        {
-            a->setSpriteSheet(*m_textures.find("Error")->second);
-        }
-
-        std::cout << "Added animation \'" << name << "\'\n";
-        m_animations.insert(aniPair(name, a));
-    }
-}
-
-void ResourceManager::addAniFrame(std::string name, sf::IntRect area)
-{
-    if (m_animations.find(name) != m_animations.end())
-    {
-        auto ani = m_animations.find(name)->second;
-        ani->addFrame(area);
-    }
-}
-
-Animation& ResourceManager::getAnimation(std::string name)
-{
-    if (m_animations.find(name) != m_animations.end())
-    {
-        if(m_animations.find(name)->second->getSize() > 0)
-        {
-            return *m_animations.find(name)->second;
-        }
-        else
-        {
-            std::cerr << "No frames were added for animation '" << name << "'\n";
-        }
-    }
-    else
-    {
-        std::cout << "Unable to find animation \'" << name << "\'\n";
-        return *m_animations.find("Error")->second;
-    }
-
-    return *(new Animation);
-}*/

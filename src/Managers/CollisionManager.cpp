@@ -1,4 +1,4 @@
-#include "CollisionManager.hpp"
+#include "Managers/CollisionManager.hpp"
 
 BulletManager CollisionManager::m_bulMan;
 EnemyManager  CollisionManager::m_enemyMan;

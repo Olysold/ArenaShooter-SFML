@@ -7,9 +7,9 @@
 //STD
 
 //SELF
-#include "ResourceManager.hpp"
+#include "Managers/ResourceManager.hpp"
 #include "Player.hpp"
-#include "EnemyManager.hpp"
+#include "Managers/EnemyManager.hpp"
 
 class Arena
 {

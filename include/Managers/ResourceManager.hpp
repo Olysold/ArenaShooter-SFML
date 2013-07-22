@@ -13,7 +13,6 @@
 #include <iostream>
 
 //SELF
-#include "Animation.hpp"
 
 typedef std::map<std::string, std::shared_ptr<sf::Texture>> texMap;
 typedef std::pair<std::string, std::shared_ptr<sf::Texture>> texPair;
@@ -23,9 +22,6 @@ typedef std::pair<std::string, std::shared_ptr<sf::Font>> fontPair;
 
 typedef std::map<std::string, std::shared_ptr<thor::FrameAnimation>> frameAnimationMap;
 typedef std::pair<std::string, std::shared_ptr<thor::FrameAnimation>> frameAnimationPair;
-
-//typedef std::map<std::string, std::shared_ptr<Animation>> aniMap;
-//typedef std::pair<std::string, std::shared_ptr<Animation>> aniPair;
 
 typedef std::map<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferMap;
 typedef std::pair<std::string, std::shared_ptr<sf::SoundBuffer>> sBufferPair;
@@ -43,16 +39,11 @@ public:
     thor::FrameAnimation& frameAnimation(std::string);
     void addFrame(std::string frameAnimation, sf::Time duration, sf::IntRect);
 
-    //void addAnimation(std::string, std::string);
-    //void addAniFrame(std::string, sf::IntRect);
-    //Animation& getAnimation(std::string);
-
     static thor::Animator<sf::Sprite, std::string> animator;
 
 private:
     static texMap m_textures;
     static fontMap m_fonts;
-    //static aniMap m_animations;
     static sBufferMap m_sBuffers;
     static frameAnimationMap m_frameAnimations;
 };

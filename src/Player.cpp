@@ -51,6 +51,7 @@ void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager
 {
     this->move(deltaTime);
     this->shoot(deltaTime, window, bulMan);
+    animator.playAnimation("Default");
     animator.update(deltaTime);
 }
 
@@ -58,7 +59,7 @@ void Player::draw(sf::RenderWindow& window)
 {
     if (m_alive)
     {
-        animator.playAnimation("Default");
+        animator.animate(sprite);
         window.draw(sprite);
     }
 }

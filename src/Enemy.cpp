@@ -34,11 +34,13 @@ m_bulletDamage(bulletDamage)
 
 void Enemy::update(sf::Time& deltaTime)
 {
-
+    animator.playAnimation("Default");
+    animator.update(deltaTime);
 }
 
 void Enemy::draw(sf::RenderWindow& window)
 {
+    animator.animate(sprite);
     window.draw(sprite);
 }
 

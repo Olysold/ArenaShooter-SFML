@@ -10,10 +10,8 @@
 #include <memory>
 
 //SELF
-#include "Animation.hpp"
-#include "AnimatedSprite.hpp"
-#include "BulletManager.hpp"
-#include "ResourceManager.hpp"
+#include "Managers/BulletManager.hpp"
+#include "Managers/ResourceManager.hpp"
 
 class BulletManager;
 
@@ -37,7 +35,6 @@ public:
     void kill();
 
     sf::Sprite sprite;
-    //AnimatedSprite sprite;
     thor::Animator<sf::Sprite, std::string> animator;
 
     void draw(sf::RenderWindow&);

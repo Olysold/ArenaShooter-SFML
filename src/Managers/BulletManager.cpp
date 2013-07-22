@@ -1,4 +1,4 @@
-#include "BulletManager.hpp"
+#include "Managers/BulletManager.hpp"
 
 std::vector<Bullet> BulletManager::m_enemyBullets;
 std::vector<Bullet> BulletManager::m_playerBullets;

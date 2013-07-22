@@ -1,11 +1,10 @@
 #ifndef MOVEMENT_HPP_INCLUDED
 #define MOVEMENT_HPP_INCLUDED
 
-//3rd
+//3RD
 #include <SFML/Graphics.hpp>
 
-//Self
-#include "AnimatedSprite.hpp"
+//SELF
 
 namespace Movement
 {

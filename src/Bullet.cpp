@@ -32,11 +32,6 @@ void Bullet::update(sf::Time& deltaTime)
     {
         sprite.move(m_speed * sinMove * deltaTime.asSeconds(), m_speed * -1 * cosMove * deltaTime.asSeconds());
     }
-    else
-    {
-        //Dunno why I put this here, can probably delete.
-        std::cout << "ERROR\n";
-    }
 }
 
 void Bullet::draw(sf::RenderWindow& window)

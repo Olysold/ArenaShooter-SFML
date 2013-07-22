@@ -11,11 +11,10 @@
 #include <memory>
 
 //SELF
-#include "AnimatedSprite.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Bullet.hpp"
-#include "ResourceManager.hpp"
+#include "Managers/ResourceManager.hpp"
 
 class Enemy;
 class Player;

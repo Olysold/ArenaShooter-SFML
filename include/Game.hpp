@@ -10,9 +10,9 @@
 
 //SELF
 #include "Player.hpp"
-#include "EnemyManager.hpp"
-#include "BulletManager.hpp"
-#include "CollisionManager.hpp"
+#include "Managers/EnemyManager.hpp"
+#include "Managers/BulletManager.hpp"
+#include "Managers/CollisionManager.hpp"
 #include "Camera.hpp"
 #include "Arena.hpp"
 #include "UI.hpp"

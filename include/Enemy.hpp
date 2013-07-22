@@ -10,8 +10,7 @@
 #include <memory>
 
 //SELF
-#include "AnimatedSprite.hpp"
-#include "BulletManager.hpp"
+#include "Managers/BulletManager.hpp"
 
 class BulletManager;
 
@@ -40,7 +39,6 @@ public:
 
     sf::Sprite sprite;
     thor::Animator<sf::Sprite, std::string> animator;
-    //AnimatedSprite sprite;
 
 private:
     void move(sf::Time& deltaTime);

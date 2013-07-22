@@ -10,7 +10,7 @@
 #include <string>
 
 //Self
-#include "ResourceManager.hpp"
+#include "Managers/ResourceManager.hpp"
 #include "util.hpp"
 
 class UI
