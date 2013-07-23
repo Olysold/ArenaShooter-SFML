@@ -100,7 +100,6 @@ unsigned UI::vertiMenuNavigator(const std::string mapKey, sf::Time deltaTime)
     {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            //UGLYNESS OVERLOAD!1!1!shift1!1
             if((m_keyUp || m_currMenuT > m_selectDelay) &&
             m_selectArrow.getPosition().y != (m_textMap[mapKey].end()-1)->getPosition().y - 2)
             {
@@ -141,8 +140,6 @@ unsigned UI::vertiMenuNavigator(const std::string mapKey, sf::Time deltaTime)
     {
         m_keyUp = true;
     }
-
-    return 0;
 }
 
 void UI::drawMainMenu(sf::RenderWindow& window)

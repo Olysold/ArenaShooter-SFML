@@ -13,15 +13,16 @@ Player::Player(): m_alive(true),
                   m_bulletDamage(200),
                   m_bulletROF(0.2)
 {
-    sprite.setTexture(m_resMan.texture("Player"));
+    sprite.setTexture(m_resMan.texture("PSpriteSheet"));
+    sprite.setTextureRect(sf::IntRect(0, 0, 47, 60));
 
     auto& pdAni = m_resMan.frameAnimation("Player Default");
     m_resMan.addFrame("Player Default",
                       sf::seconds(1.f),
                       sf::IntRect(0,
                                   0,
-                                  m_resMan.texture("Player").getSize().x,
-                                  m_resMan.texture("Player").getSize().y));
+                                  47,
+                                  60));
 
     animator.addAnimation("Default", pdAni, sf::seconds(1.f));
 
@@ -53,6 +54,7 @@ void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager
     this->shoot(deltaTime, window, bulMan);
     animator.playAnimation("Default");
     animator.update(deltaTime);
+    animator.animate(sprite);
 }
 
 void Player::draw(sf::RenderWindow& window)
