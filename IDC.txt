@@ -129,6 +129,13 @@ callstack mentions GlobalBounds but that should be no different to previous comm
 
 ###
 
-Updates not done
+Updates not done.
+
+I think I know how to recreate the error you're getting where the prog crashes. Search around for enemies that are
+overlapping each other then shoot them in the middle. Apparently it's killing more than one in one go. I left a
+running comment updating score on each enemy kill so you can see for yourself.
+
+Also, why is CollisionManager working on its' own copies of BulletManager and EnemyManager? Anything done to them
+does not translate to those in main. 
 
 -O
