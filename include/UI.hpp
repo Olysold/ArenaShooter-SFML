@@ -8,46 +8,46 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <memory>
 
 //Self
 #include "Managers/ResourceManager.hpp"
-#include "util.hpp"
+#include "Player.hpp"
+#include "UIplayer.hpp"
+#include "UIroundTitles.hpp"
+#include "UImenu.hpp"
 
 class UI
 {
 public:
-    UI();
+    UI(const Player&);
 
     void update(sf::Time&);
 
     ///Menu functions
     bool isMainMenu() const;
-    void mainMenu(const unsigned, sf::RenderWindow&);
+    void mainMenu(sf::RenderWindow&, const sf::Time&);
 
-    //Only thing hardcoded is the arrow indicator and the distance between it and the text itself
-    unsigned vertiMenuNavigator(const std::string, sf::Time);
-    void drawMainMenu(sf::RenderWindow&);
-    void drawRoundDelay(sf::RenderWindow&);
+    unsigned vertiMenuNavigator(const std::vector<sf::Text>&,
+                                const sf::Time&);
+
+    void drawMenu(sf::RenderWindow&);
+    void drawIngame(sf::RenderWindow&);
 
 private:
+    const std::shared_ptr<const Player> m_ptPlayer;
+    UIroundTitles m_roundInter;
+    UIplayer    m_playerInter;
+    UImenu      m_menuInter;
+
     //Where we are in the game
     bool        m_mainMenu;
-
-    //Round delays
-    bool        m_delay;
-    std::string m_roundStr;
-    sf::Text    m_roundTxt;
-    sf::Time    m_currRoundT;
-    sf::Time    m_roundDelayT;
-    unsigned    m_roundNum;
-    float       m_opacity;
 
     //Scrolling selection controls
     bool        m_keyUp;
     sf::Time    m_currMenuT;
     sf::Time    m_selectDelay;
 
-    std::map<std::string, std::vector<sf::Text>> m_textMap;
     unsigned    m_numChoices;
     sf::Sprite  m_selectArrow;
     static ResourceManager m_resMan;

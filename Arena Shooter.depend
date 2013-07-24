@@ -935,7 +935,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1374597686 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
+1374669363 source:c:\users\user\documents\github\arenashooter-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<list>
@@ -1455,11 +1455,11 @@
 1374256134 source:c:\users\user\documents\github\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1374597543 source:c:\users\user\documents\github\arenashooter-sfml\src\game.cpp
+1374669022 source:c:\users\user\documents\github\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 	<iostream>
 
-1374597992 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
+1374598223 source:c:\users\user\documents\github\arenashooter-sfml\src\player.cpp
 	"Player.hpp"
 	<cmath>
 	"util.hpp"
@@ -1518,21 +1518,25 @@
 1374590988 source:c:\users\user\documents\github\arenashooter-sfml\src\arena.cpp
 	"Arena.hpp"
 
-1374590988 c:\users\user\documents\github\arenashooter-sfml\include\ui.hpp
+1374669264 c:\users\user\documents\github\arenashooter-sfml\include\ui.hpp
 	<SFML/Graphics.hpp>
 	<map>
 	<vector>
 	<string>
+	<memory>
 	"Managers/ResourceManager.hpp"
-	"util.hpp"
+	"Player.hpp"
+	"UIplayer.hpp"
+	"UIroundTitles.hpp"
+	"UImenu.hpp"
 
-1374597559 source:c:\users\user\documents\github\arenashooter-sfml\src\ui.cpp
+1374669394 source:c:\users\user\documents\github\arenashooter-sfml\src\ui.cpp
 	"UI.hpp"
 
 1374590988 c:\users\user\documents\github\arenashooter-sfml\include\movement.hpp
 	<SFML/Graphics.hpp>
 
-1374597807 source:c:\users\user\documents\github\arenashooter-sfml\src\movement.cpp
+1374598219 source:c:\users\user\documents\github\arenashooter-sfml\src\movement.cpp
 	"Movement.hpp"
 	<iostream>
 
@@ -1756,4 +1760,30 @@
 
 1374590988 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\resourcemanager.cpp
 	"Managers/ResourceManager.hpp"
+
+1374668022 source:c:\users\user\documents\github\arenashooter-sfml\src\uimenu.cpp
+	"UImenu.hpp"
+
+1374666235 c:\users\user\documents\github\arenashooter-sfml\include\uimenu.hpp
+	<SFML/Graphics.hpp>
+	<map>
+	<string>
+	<vector>
+	"Managers/ResourceManager.hpp"
+
+1374669022 source:c:\users\user\documents\github\arenashooter-sfml\src\uiplayer.cpp
+	"UIplayer.hpp"
+
+1374669022 c:\users\user\documents\github\arenashooter-sfml\include\uiplayer.hpp
+	<SFML/Graphics.hpp>
+	"Managers/ResourceManager.hpp"
+	"Player.hpp"
+
+1374668804 c:\users\user\documents\github\arenashooter-sfml\include\uiroundtitles.hpp
+	<SFML/Graphics.hpp>
+	"Managers/ResourceManager.hpp"
+
+1374668804 source:c:\users\user\documents\github\arenashooter-sfml\src\uiroundtitles.cpp
+	"UIroundTitles.hpp"
+	"util.hpp"
 

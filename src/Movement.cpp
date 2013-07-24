@@ -7,11 +7,6 @@ void Movement::moveLeft(sf::Sprite& sprite, const int& speed, const sf::Time& de
 
 void Movement::moveRight(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
-
-
-    std::cout << sprite.getLocalBounds().width << "\n";
-    std::cout << sprite.getLocalBounds().height << "\n";
-
     sprite.move(speed * deltaTime.asSeconds(), 0);
 }
 

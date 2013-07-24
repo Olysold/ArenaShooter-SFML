@@ -71,11 +71,11 @@ void Game::drawEntity(Player& player,
         }
 
         player.draw(window);
-        userInter.drawRoundDelay(window);
+        userInter.drawIngame(window);
     }
     else
     {
-        userInter.drawMainMenu(window);
+        userInter.drawMenu(window);
     }
 }
 

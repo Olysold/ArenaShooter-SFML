@@ -30,7 +30,6 @@ int main()
 
     //Controls
     Game game;
-    UI userInter;
     Arena arena;
     EnemyManager enemyMan;
     BulletManager bulMan;
@@ -39,6 +38,7 @@ int main()
     Player player;
     player.sprite.setPosition(arena.getSize().x / 2.f, arena.getSize().y / 2.f);
 
+    UI userInter(player);
     Camera cam(player);
 
     //Time
@@ -57,8 +57,7 @@ int main()
 
         if(userInter.isMainMenu()) //If it's the main menu
         {
-            userInter.mainMenu(userInter.vertiMenuNavigator("MainScreenSelect", deltaTime),
-                               window);
+            userInter.mainMenu(window, deltaTime);
         }
         else //Game functionality becomes active
         {
