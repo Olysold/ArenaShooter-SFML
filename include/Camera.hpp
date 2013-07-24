@@ -7,12 +7,11 @@
 //SELF
 #include "Game.hpp"
 
-class Game;
-
 class Camera
 {
 public:
     Camera(Player& player);
+    sf::View getCamera() const;
     void update(sf::Time&, sf::RenderWindow&, Player&, sf::Vector2u arenaSize); ///Call for camera to move to player
 
 private:

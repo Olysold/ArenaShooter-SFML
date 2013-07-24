@@ -13,8 +13,8 @@ public:
 
     void setDisplayHP(const int);
     void setDisplayShield(const int);
-    void setPos(const int, const int);
-    void updatePos(const int, const int, const double, const sf::Time&);
+    void setPos(const Player&);
+    void updatePos(const sf::Time&, const Player&);
     void draw(sf::RenderWindow&) const;
 
 private:

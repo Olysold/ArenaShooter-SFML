@@ -1,5 +1,5 @@
 #include "Movement.hpp"
-#include <iostream>
+
 void Movement::moveLeft(sf::Sprite& sprite, const int& speed, const sf::Time& deltaTime)
 {
     sprite.move(-1 * speed * deltaTime.asSeconds(), 0);
@@ -73,11 +73,11 @@ void Movement::rotateDown(sf::Sprite& sprite, const int& speed, const sf::Time& 
 {
     if(!(sprite.getRotation() > (south-2) && sprite.getRotation() < (south+2) ))
     {
-        if(sprite.getRotation() > north0)
+        if(sprite.getRotation() > north0 && sprite.getRotation() < south)
         {
             sprite.rotate(speed * deltaTime.asSeconds());
         }
-        else if(sprite.getRotation() < north360)
+        else if(sprite.getRotation() < north360 && sprite.getRotation() > south)
         {
             sprite.rotate(-1 * speed * deltaTime.asSeconds());
         }

@@ -1,27 +1,31 @@
-#include "UI.hpp"
+#include "UI/UI.hpp"
 using std::string;
 using std::vector;
-using std::make_shared;
 
 ResourceManager UI::m_resMan;
 
-UI::UI(const Player& player): m_ptPlayer(make_shared<Player>(player)),
-                              m_selectDelay(sf::seconds(0.3)),
-                              m_mainMenu(true),
-                              m_numChoices(0)
+UI::UI(const Player& player, const Camera& cam): m_selectDelay(sf::seconds(0.3)),
+                                                 m_mainMenu(true),
+                                                 m_numChoices(0)
 {
     ///Selection arrow
     m_selectArrow.setTexture(m_resMan.texture("Selection"));
     m_selectArrow.setPosition(m_menuInter.getSelection()[0].getPosition().x - 15,
                               m_menuInter.getSelection()[0].getPosition().y - 2);
 
-    m_playerInter.setPos(m_ptPlayer->sprite.getPosition().x,
-                         m_ptPlayer->sprite.getPosition().y);
+    m_playerInter.setPos(player);
+    m_scoreInter.setPos(cam);
 }
 
-void UI::update(sf::Time& deltaTime)
+void UI::update(const sf::Time& deltaTime,
+                const Player& player,
+                const EnemyManager& eneMan,
+                const Camera& cam)
 {
     m_roundInter.update(deltaTime);
+    m_playerInter.updatePos(deltaTime, player);
+    m_scoreInter.updateScore(eneMan);
+    m_scoreInter.updatePos(deltaTime, cam);
 }
 
 bool UI::isMainMenu() const
@@ -110,4 +114,5 @@ void UI::drawIngame(sf::RenderWindow& window)
 {
     m_roundInter.draw(window);
     m_playerInter.draw(window);
+    m_scoreInter.draw(window);
 }

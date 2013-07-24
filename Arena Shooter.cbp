@@ -122,6 +122,9 @@
 		<Unit filename="include/Movement.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/UI.hpp" />
+		<Unit filename="include/UImenu.hpp" />
+		<Unit filename="include/UIplayer.hpp" />
+		<Unit filename="include/UIroundTitles.hpp" />
 		<Unit filename="include/util.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Arena.cpp" />
@@ -136,6 +139,9 @@
 		<Unit filename="src/Movement.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/UI.cpp" />
+		<Unit filename="src/UImenu.cpp" />
+		<Unit filename="src/UIplayer.cpp" />
+		<Unit filename="src/UIroundTitles.cpp" />
 		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<DoxyBlocks>

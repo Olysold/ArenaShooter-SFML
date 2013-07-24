@@ -8,21 +8,25 @@
 #include <map>
 #include <vector>
 #include <string>
-#include <memory>
 
 //Self
 #include "Managers/ResourceManager.hpp"
+#include "Managers/EnemyManager.hpp"
 #include "Player.hpp"
+#include "Camera.hpp"
 #include "UIplayer.hpp"
 #include "UIroundTitles.hpp"
 #include "UImenu.hpp"
+#include "UIscore.hpp"
+
+class Camera;
 
 class UI
 {
 public:
-    UI(const Player&);
+    UI(const Player&, const Camera&);
 
-    void update(sf::Time&);
+    void update(const sf::Time&, const Player&, const EnemyManager&, const Camera&);
 
     ///Menu functions
     bool isMainMenu() const;
@@ -35,10 +39,10 @@ public:
     void drawIngame(sf::RenderWindow&);
 
 private:
-    const std::shared_ptr<const Player> m_ptPlayer;
     UIroundTitles m_roundInter;
-    UIplayer    m_playerInter;
-    UImenu      m_menuInter;
+    UIplayer      m_playerInter;
+    UImenu        m_menuInter;
+    UIscore       m_scoreInter;
 
     //Where we are in the game
     bool        m_mainMenu;

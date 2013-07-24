@@ -3,7 +3,7 @@
 std::vector<Enemy> EnemyManager::m_enemies;
 ResourceManager EnemyManager::m_resMan;
 
-EnemyManager::EnemyManager()
+EnemyManager::EnemyManager(): m_totalScore(0)
 {
 }
 
@@ -43,7 +43,7 @@ void EnemyManager::createEnemy(sf::Vector2f pos,
                                unsigned int bulletSpeed,
                                unsigned int bulletDamage)
 {
-    Enemy ene(level, health, speed, damage, ROF, bulletSpeed, bulletDamage);
+    Enemy ene(level, 10, health, speed, damage, ROF, bulletSpeed, bulletDamage);
 
     m_resMan.texture("Enemy1");
     auto& edAni = m_resMan.frameAnimation("Enemy Default");
@@ -68,12 +68,21 @@ void EnemyManager::createEnemy(sf::Vector2f pos,
 
 void EnemyManager::kill(size_t i)
 {
+    m_totalScore += m_enemies[i].getValue();
+
+    std::cout << m_totalScore << "\n";
+
     m_enemies.erase(m_enemies.begin() + i);
 }
 
 std::vector<Enemy>& EnemyManager::getEnemies()
 {
     return m_enemies;
+}
+
+unsigned int EnemyManager::getTotalScore() const
+{
+    return m_totalScore;
 }
 
 size_t EnemyManager::numEnemies()

@@ -31,11 +31,13 @@ public:
     void kill(std::vector<Enemy>::iterator&);
 
     std::vector<Enemy>& getEnemies(); ///For collision handling
+    unsigned int getTotalScore() const;
 
     size_t numEnemies();
 
 private:
     static std::vector<Enemy> m_enemies;
+    unsigned int m_totalScore;
 
     static ResourceManager m_resMan;
 };

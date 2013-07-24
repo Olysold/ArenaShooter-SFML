@@ -15,10 +15,9 @@ void Game::updateEntity(sf::Time& deltaTime,
                         BulletManager& bulMan,
                         CollisionManager& colMan,
                         Arena& arena,
-                        UI& userInter,
                         Player& player)
 {
-    if (!m_gameOver && !userInter.isMainMenu())
+    if (!m_gameOver)
     {
         arena.update(enemyMan);
         arena.confinePlayer(player);
@@ -40,7 +39,6 @@ void Game::updateEntity(sf::Time& deltaTime,
 
         colMan.update(deltaTime, player);
         bulMan.cleanup(arena.getSize());
-        userInter.update(deltaTime);
     }
 }
 
@@ -48,10 +46,9 @@ void Game::drawEntity(Player& player,
                       EnemyManager& enemyMan,
                       BulletManager& bulMan,
                       Arena& arena,
-                      UI& userInter,
                       sf::RenderWindow& window)
 {
-    if (!m_gameOver && !userInter.isMainMenu())
+    if (!m_gameOver)
     {
         //arena.draw(window);
 
@@ -71,17 +68,7 @@ void Game::drawEntity(Player& player,
         }
 
         player.draw(window);
-        userInter.drawIngame(window);
     }
-    else
-    {
-        userInter.drawMenu(window);
-    }
-}
-
-void Game::addScore(unsigned int score)
-{
-    m_score += score;
 }
 
 bool Game::isGameOver()

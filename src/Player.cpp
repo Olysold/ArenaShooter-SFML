@@ -19,10 +19,7 @@ Player::Player(): m_alive(true),
     auto& pdAni = m_resMan.frameAnimation("Player Default");
     m_resMan.addFrame("Player Default",
                       sf::seconds(1.f),
-                      sf::IntRect(0,
-                                  0,
-                                  47,
-                                  60));
+                      sf::IntRect(0, 0, 47, 60));
 
     animator.addAnimation("Default", pdAni, sf::seconds(1.f));
 

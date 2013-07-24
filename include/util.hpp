@@ -13,17 +13,18 @@ enum class Status
     AlreadyOpen
 };
 
-namespace Dir
+enum Direction
 {
-    const int NE = 45;
-    const int E  = 90;
-    const int SE = 135;
-    const int S  = 180;
-    const int SW = 225;
-    const int W  = 270;
-    const int NW = 315;
-    const int N  = 360;
-}
+    N0 = 0,
+    N360 = 360,
+    S = 180,
+    E = 90,
+    W = 270,
+    NE = 45,
+    SE = 135,
+    NW = 315,
+    SW = 225
+};
 
 namespace util
 {
@@ -31,6 +32,7 @@ namespace util
     std::string enumToString(Status);
     float       degToRad(float degrees);
     float       radToDeg(float radians);
+    bool        isNegative(const double);
 
     template <class T1, class T2, class T3> bool isBetween(T1 a, T2 b, T3 c)
     {

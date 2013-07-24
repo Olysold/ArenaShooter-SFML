@@ -17,23 +17,24 @@ class BulletManager;
 class Enemy
 {
 public:
-    Enemy(unsigned int level);
+    Enemy(const unsigned int level);
 
-    Enemy(unsigned int level,
-          unsigned int health,
-          unsigned int speed,
-          unsigned int damage,
-          unsigned int ROF,
-          unsigned int bulletSpeed,
-          unsigned int bulletDamage);
+    Enemy(const unsigned int level,
+          const unsigned int m_value,
+          const unsigned int health,
+          const unsigned int speed,
+          const unsigned int damage,
+          const unsigned int ROF,
+          const unsigned int bulletSpeed,
+          const unsigned int bulletDamage);
 
     void update(sf::Time& deltaTime);
     void draw(sf::RenderWindow&);
 
-    int getDamage();
-    int getValue();
+    int getDamage() const;
+    int getValue() const;
 
-    bool isAlive();
+    bool isAlive() const;
 
     void takeDamage(unsigned int damage);
 

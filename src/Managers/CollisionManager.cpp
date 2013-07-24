@@ -24,7 +24,6 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
         {
             std::cout << "Took damage!\n";
             player.takeDamage(enemies[i].getDamage());
-            m_game.addScore(enemies[i].getValue());
             m_enemyMan.kill(i);
 
             if (!player.isAlive())

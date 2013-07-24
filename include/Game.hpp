@@ -15,7 +15,6 @@
 #include "Managers/CollisionManager.hpp"
 #include "Camera.hpp"
 #include "Arena.hpp"
-#include "UI.hpp"
 
 class CollisionManager;
 
@@ -24,10 +23,8 @@ class Game
 public:
     Game();
 
-    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&, Arena&, UI&, Player&);
-    void drawEntity(Player&, EnemyManager&, BulletManager&, Arena&, UI&, sf::RenderWindow&);
-
-    void addScore(unsigned int);
+    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&, Arena&, Player&);
+    void drawEntity(Player&, EnemyManager&, BulletManager&, Arena&, sf::RenderWindow&);
 
     bool isGameOver();
     void gameOver();

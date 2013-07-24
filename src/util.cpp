@@ -54,3 +54,15 @@ float util::radToDeg(float radians)
 {
     return (radians * 180.f) / 3.141592653;
 }
+
+bool util::isNegative(const double input)
+{
+    if(input > 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}

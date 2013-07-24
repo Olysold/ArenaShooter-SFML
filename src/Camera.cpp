@@ -8,6 +8,11 @@ Camera::Camera(Player& player)
     m_view.setCenter(player.sprite.getPosition().x, player.sprite.getPosition().y);
 }
 
+sf::View Camera::getCamera() const
+{
+    return m_view;
+}
+
 void Camera::update(sf::Time& deltaTime, sf::RenderWindow& window, Player& player, sf::Vector2u arenaSize)
 {
     sf::Vector2f playerPos = player.sprite.getPosition();
