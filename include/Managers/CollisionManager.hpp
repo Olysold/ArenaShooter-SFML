@@ -18,12 +18,7 @@ class CollisionManager
 {
 public:
     CollisionManager();
-    void update(sf::Time& deltaTime, Player&); ///Call to check for collisions
-
-private:
-    static BulletManager m_bulMan;
-    static EnemyManager  m_enemyMan;
-    static Game          m_game;
+    void update(sf::Time& deltaTime, Player& player, EnemyManager& enemyMan, BulletManager& bulMan, Game& game); ///Call to check for collisions
 };
 
 #endif

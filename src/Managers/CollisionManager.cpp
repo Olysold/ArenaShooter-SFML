@@ -1,18 +1,14 @@
 #include "Managers/CollisionManager.hpp"
 
-BulletManager CollisionManager::m_bulMan;
-EnemyManager  CollisionManager::m_enemyMan;
-Game          CollisionManager::m_game;
-
 CollisionManager::CollisionManager()
 {
 }
 
-void CollisionManager::update(sf::Time& deltaTime, Player& player)
+void CollisionManager::update(sf::Time& deltaTime, Player& player, EnemyManager& enemyMan, BulletManager& bulMan, Game& game)
 {
-    std::vector<Enemy>& enemies = m_enemyMan.getEnemies();
-    std::vector<Bullet>& pBullets = m_bulMan.getPlayerBullets();
-    std::vector<Bullet>& eBullets = m_bulMan.getEnemyBullets();
+    std::vector<Enemy>& enemies = enemyMan.getEnemies();
+    std::vector<Bullet>& pBullets = bulMan.getPlayerBullets();
+    std::vector<Bullet>& eBullets = bulMan.getEnemyBullets();
 
     //Enemy hits player
     for (size_t i = 0; i < enemies.size(); ++i)
@@ -24,11 +20,14 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
         {
             std::cout << "Took damage!\n";
             player.takeDamage(enemies[i].getDamage());
-            m_enemyMan.kill(i);
+
+            enemyMan.kill(i);
+            enemies = enemyMan.getEnemies();
+            --i;
 
             if (!player.isAlive())
             {
-                m_game.gameOver();
+                game.gameOver();
             }
         }
     }
@@ -48,11 +47,14 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
         if (bulRect.intersects(pRect))
         {
             player.takeDamage(eBullets[i].getDamage());
-            m_bulMan.killEnemyBullet(i);
+
+            bulMan.killEnemyBullet(i);
+            eBullets = bulMan.getEnemyBullets();
+            --i;
 
             if (!player.isAlive())
             {
-               m_game.gameOver();
+               game.gameOver();
             }
         }
     }
@@ -70,11 +72,16 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player)
             if (bulRect.intersects(enemies[j].sprite.getGlobalBounds()))
             {
                 enemies[j].takeDamage(pBullets[i].getDamage());
-                m_bulMan.killPlayerBullet(i);
+
+                bulMan.killPlayerBullet(i);
+                pBullets = bulMan.getPlayerBullets();
+                --i;
 
                 if (!enemies[j].isAlive())
                 {
-                    m_enemyMan.kill(j);
+                    enemyMan.kill(j);
+                    enemies = enemyMan.getEnemies();
+                    --j;
                 }
             }
         }

@@ -37,7 +37,7 @@ void Game::updateEntity(sf::Time& deltaTime,
             bullet.update(deltaTime);
         }
 
-        colMan.update(deltaTime, player);
+        colMan.update(deltaTime, player, enemyMan, bulMan, *this);
         bulMan.cleanup(arena.getSize());
     }
 }
