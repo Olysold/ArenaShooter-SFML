@@ -82,7 +82,6 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
 {
     sf::Vector2f playerPos = player.sprite.getPosition();
     sf::Vector2f enemyPos = sprite.getPosition();
-    auto enemyTopMidPoint = sprite.getGlobalBounds().top / sprite.getLocalBounds().width;
 
     double distanceX = playerPos.x - enemyPos.x;
     double distanceY = playerPos.y - enemyPos.y;
@@ -105,51 +104,12 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
     }
 
     //Rotating
-    float angle = std::atan2(distanceX, -1 * distanceY) * (180 / 3.141592653);
+    float targetAngle = util::radToDeg(std::atan2(-1 * distanceX, distanceY)) + 180;
+    float actualAngle = sprite.getRotation();
 
-    if (angle < 0)
-    {
-        angle += 360;
-    }
+    //MAGIC ROTATION CODE
 
-    int moveDir = 0;
-    float tail = angle - 180;
-
-    if (tail < 0)
-    {
-        tail += 360;
-    }
-
-    float enemyRotation = sprite.getRotation();
-
-    if (angle < enemyRotation - 2 || angle > enemyRotation + 2)
-    {
-        if (enemyRotation <= 180) //right half
-        {
-            if (angle > enemyRotation && angle < tail) //if target angle further clock-wise and target angle is smaller than the angle directly behind us
-            {
-                moveDir = 1; //clockwise movement
-            }
-            else
-            {
-                moveDir = -1;
-            }
-        }
-        else //left half
-        {
-            if (angle < enemyRotation && angle > tail)
-            {
-                moveDir = -1;
-            }
-            else
-            {
-                moveDir = 1;
-            }
-        }
-    }
-
-    sprite.rotate(moveDir * m_speed * deltaTime.asSeconds());
-
+    sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
 }
 
 void Enemy::shoot(const Player&, sf::Time& deltaTime)
