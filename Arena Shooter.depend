@@ -460,12 +460,13 @@
 	"Bullet.hpp"
 	"ResourceManager.hpp"
 
-1375104258 z:\programming\c++\github repositories\arenashooter-sfml\include\enemy.hpp
+1375297005 z:\programming\c++\github repositories\arenashooter-sfml\include\enemy.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<Thor/Animation.hpp>
 	<memory>
 	"Managers/BulletManager.hpp"
+	"Player.hpp"
 
 1374397997 z:\programming\c++\github repositories\arenashooter-sfml\include\resourcemanager.hpp
 	<SFML/Graphics.hpp>
@@ -502,13 +503,16 @@
 	"Enemy.hpp"
 	<memory>
 
-1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemy.cpp
+1375299506 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemy.cpp
 	"Enemy.hpp"
+	"Movement.hpp"
+	"util.hpp"
+	<cmath>
 
 1374399066 source:z:\programming\c++\github repositories\arenashooter-sfml\src\enemymanager.cpp
 	"EnemyManager.hpp"
 
-1375104943 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
+1375299320 source:z:\programming\c++\github repositories\arenashooter-sfml\src\game.cpp
 	"Game.hpp"
 	<iostream>
 
@@ -1552,7 +1556,7 @@
 1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\movement.cpp
 	"Movement.hpp"
 
-1375104258 z:\programming\c++\github repositories\arenashooter-sfml\include\movement.hpp
+1375297921 z:\programming\c++\github repositories\arenashooter-sfml\include\movement.hpp
 	<SFML/Graphics.hpp>
 
 1374395525 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui.cpp
@@ -1641,8 +1645,9 @@
 	"Enemy.hpp"
 	<memory>
 
-1375104956 z:\programming\c++\github repositories\arenashooter-sfml\include\managers\collisionmanager.hpp
+1375297005 z:\programming\c++\github repositories\arenashooter-sfml\include\managers\collisionmanager.hpp
 	<SFML/Graphics.hpp>
+	<vector>
 	"Player.hpp"
 	"EnemyManager.hpp"
 	"BulletManager.hpp"
@@ -1651,10 +1656,10 @@
 1374480514 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\bulletmanager.cpp
 	"Managers/BulletManager.hpp"
 
-1375105053 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\collisionmanager.cpp
+1375299198 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\collisionmanager.cpp
 	"Managers/CollisionManager.hpp"
 
-1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\enemymanager.cpp
+1375297005 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\enemymanager.cpp
 	"Managers/EnemyManager.hpp"
 
 1374480513 source:z:\programming\c++\github repositories\arenashooter-sfml\src\managers\resourcemanager.cpp
@@ -1895,7 +1900,7 @@
 1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui\uimenu.cpp
 	"UI/UImenu.hpp"
 
-1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui\uiplayer.cpp
+1375297921 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui\uiplayer.cpp
 	"UI/UIplayer.hpp"
 	"Movement.hpp"
 	"util.hpp"
@@ -1905,7 +1910,7 @@
 	"UI/UIroundTitles.hpp"
 	"util.hpp"
 
-1375104258 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui\uiscore.cpp
+1375297921 source:z:\programming\c++\github repositories\arenashooter-sfml\src\ui\uiscore.cpp
 	"UI/UIscore.hpp"
 	"util.hpp"
 	"Movement.hpp"

@@ -27,6 +27,7 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player, EnemyManager&
             {
                 game.gameOver();
             }
+
             break;
         }
     }
@@ -48,13 +49,12 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player, EnemyManager&
             player.takeDamage(eBullets[i].getDamage());
 
             bulMan.killEnemyBullet(i);
-            eBullets = bulMan.getEnemyBullets();
-            --i;
 
             if (!player.isAlive())
             {
                game.gameOver();
             }
+            break;
         }
     }
 
@@ -73,15 +73,13 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player, EnemyManager&
                 enemies[j].takeDamage(pBullets[i].getDamage());
 
                 bulMan.killPlayerBullet(i);
-                pBullets = bulMan.getPlayerBullets();
-                --i;
 
                 if (!enemies[j].isAlive())
                 {
                     enemyMan.kill(j);
-                    enemies = enemyMan.getEnemies();
-                    --j;
                 }
+
+                break;
             }
         }
     }

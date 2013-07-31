@@ -42,12 +42,12 @@ void Enemy::update(const Player& player, sf::Time& deltaTime)
 {
     animator.playAnimation("Default");
     animator.update(deltaTime);
+    animator.animate(sprite);
     this->move(player, deltaTime);
 }
 
 void Enemy::draw(sf::RenderWindow& window)
 {
-    animator.animate(sprite);
     window.draw(sprite);
 }
 
@@ -148,7 +148,7 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
         }
     }
 
-    sprite.rotate(moveDir * 300 * deltaTime.asSeconds());
+    sprite.rotate(moveDir * m_speed * deltaTime.asSeconds());
 
 }
 
