@@ -137,3 +137,18 @@ Also, why is CollisionManager working on its' own copies of BulletManager and En
 does not translate to those in main. The score isn't rising because of this reason.
 
 -O
+
+###
+
+Just did a small update to make the enemies move. Trying to continuously iterate through the vector while erasing
+elements doesn't seem to be working out (enemies dying). I didn't sync the change to collisionManager, but a fix 
+to that is to break out the loop upon collision.
+
+I don't know if there are any unseen implications though, like enemies not getting processed between nanoseconds upon 
+death. But I don't think enemies will be dying in such rapid fashion and that wouldn't be a problem. Maybe you
+have another solution, so I left collisionManager the way it is.
+
+Currently enemy rotation is a direct copy and paste from your code. Something about it makes the enemy stutter, I think
+they are rotating too fast. I'll look into that.
+
+-O
