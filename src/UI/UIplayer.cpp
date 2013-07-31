@@ -54,16 +54,16 @@ void UIplayer::updatePos(const sf::Time& deltaTime, const Player& player)
     {
         double distance = playerBottomX - healthX;
 
-        Movement::moveHoriNoTime(m_healthBar, distance);
-        Movement::moveHoriNoTime(m_shieldBar, distance);
+        m_healthBar.move(distance, 0);
+        m_shieldBar.move(distance, 0);
     }
     //Follow downwards
     if( (healthY || shieldY) != playerBottomY)
     {
         double distance = playerBottomY - healthY;
 
-        Movement::moveVertiNoTime(m_healthBar, distance);
-        Movement::moveVertiNoTime(m_shieldBar, distance);
+        m_healthBar.move(0, distance);
+        m_shieldBar.move(0, distance);
     }
 }
 

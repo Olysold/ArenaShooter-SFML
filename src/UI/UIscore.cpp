@@ -40,13 +40,13 @@ void UIscore::updatePos(const sf::Time& deltaTime, const Camera& cam)
     {
         auto distance = camX - textX;
 
-        Movement::moveHoriNoTime(m_textDisplay, distance);
+        m_textDisplay.move(distance, 0);
     }
     if(textY != camY)
     {
         auto distance = camY - textY;
 
-        Movement::moveVertiNoTime(m_textDisplay, distance);
+        m_textDisplay.move(0, distance);
     }
 }
 

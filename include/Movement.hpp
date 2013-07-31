@@ -33,18 +33,6 @@ namespace Movement
     const int southEast = 135;
     const int northWest = 315;
     const int southWest = 225;
-
-    template<typename Object>
-    void moveVertiNoTime(Object& object, const double distance)
-    {
-        object.move(0, distance);
-    }
-
-    template<typename Object>
-    void moveHoriNoTime(Object& object, const double distance)
-    {
-        object.move(distance, 0);
-    }
 }
 
 #endif // MOVEMENT_H_INCLUDED

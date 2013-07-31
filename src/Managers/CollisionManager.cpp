@@ -22,13 +22,12 @@ void CollisionManager::update(sf::Time& deltaTime, Player& player, EnemyManager&
             player.takeDamage(enemies[i].getDamage());
 
             enemyMan.kill(i);
-            enemies = enemyMan.getEnemies();
-            --i;
 
             if (!player.isAlive())
             {
                 game.gameOver();
             }
+            break;
         }
     }
 
