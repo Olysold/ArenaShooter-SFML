@@ -72,7 +72,15 @@ void EnemyManager::kill(size_t i)
 
     std::cout << m_totalScore << "\n";
 
-    m_enemies.erase(m_enemies.begin() + i);
+    if(m_enemies.begin() + i == m_enemies.end())
+    {
+        std::cout << "END ITERATOR\n";
+    }
+    else
+    {
+        m_enemies.erase(m_enemies.begin() + i);
+    }
+
 }
 
 std::vector<Enemy>& EnemyManager::getEnemies()

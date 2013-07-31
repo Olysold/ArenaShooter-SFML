@@ -11,24 +11,26 @@
 
 //SELF
 #include "Managers/BulletManager.hpp"
+#include "Player.hpp"
 
 class BulletManager;
+class Player;
 
 class Enemy
 {
 public:
-    Enemy(const unsigned int level);
+    Enemy(unsigned int level);
 
-    Enemy(const unsigned int level,
-          const unsigned int m_value,
-          const unsigned int health,
-          const unsigned int speed,
-          const unsigned int damage,
-          const unsigned int ROF,
-          const unsigned int bulletSpeed,
-          const unsigned int bulletDamage);
+    Enemy(unsigned int level,
+          unsigned int m_value,
+          unsigned int health,
+          unsigned int speed,
+          unsigned int damage,
+          unsigned int ROF,
+          unsigned int bulletSpeed,
+          unsigned int bulletDamage);
 
-    void update(sf::Time& deltaTime);
+    void update(const Player&, sf::Time& deltaTime);
     void draw(sf::RenderWindow&);
 
     int getDamage() const;
@@ -42,8 +44,8 @@ public:
     thor::Animator<sf::Sprite, std::string> animator;
 
 private:
-    void move(sf::Time& deltaTime);
-    void shoot(sf::Time& deltaTime);
+    void move(const Player&, sf::Time& deltaTime);
+    void shoot(const Player&, sf::Time& deltaTime);
     void dropLoot();
 
     unsigned int    m_level; ///Used as a factor to multiply stats?

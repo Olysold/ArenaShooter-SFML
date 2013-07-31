@@ -4,6 +4,8 @@
 //3RD
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+
 //SELF
 #include "Player.hpp"
 #include "EnemyManager.hpp"
@@ -19,6 +21,10 @@ class CollisionManager
 public:
     CollisionManager();
     void update(sf::Time& deltaTime, Player& player, EnemyManager& enemyMan, BulletManager& bulMan, Game& game); ///Call to check for collisions
+
+private:
+    std::vector<size_t> m_numEnemyCollide;
+
 };
 
 #endif

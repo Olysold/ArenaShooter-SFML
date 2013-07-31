@@ -24,7 +24,7 @@ void Game::updateEntity(sf::Time& deltaTime,
 
         for (auto& enemy : enemyMan.getEnemies())
         {
-            enemy.update(deltaTime);
+            enemy.update(player, deltaTime);
         }
 
         for (auto& bullet : bulMan.getEnemyBullets())
