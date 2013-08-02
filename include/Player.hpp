@@ -44,6 +44,7 @@ private:
     void shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager&);
 
     bool            m_alive;
+    bool            m_aniMove;
 
     unsigned int    m_health;
     int             m_speed;

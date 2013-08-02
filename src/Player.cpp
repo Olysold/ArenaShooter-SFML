@@ -7,6 +7,7 @@
 ResourceManager Player::m_resMan;
 
 Player::Player(): m_alive(true),
+                  m_aniMove(false),
                   m_health(10000),
                   m_speed(250),
                   m_bulletSpeed(500),
@@ -21,7 +22,16 @@ Player::Player(): m_alive(true),
                       sf::seconds(1.f),
                       sf::IntRect(0, 0, 47, 60));
 
+    auto& pmAni = m_resMan.frameAnimation("Player Moving");
+    m_resMan.addFrame("Player Moving",
+                      sf::seconds(1.f),
+                      sf::IntRect(49, 0, 47, 60));
+    m_resMan.addFrame("Player Moving",
+                      sf::seconds(1.f),
+                      sf::IntRect(98, 0, 47, 61));
+
     animator.addAnimation("Default", pdAni, sf::seconds(1.f));
+    animator.addAnimation("Moving", pmAni, sf::seconds(1.f));
 
     //m_resMan.addAnimation("PlayerAni", "Player");
     //m_resMan.addAniFrame("PlayerAni", sf::IntRect(0, 0, 47, 52));
@@ -49,7 +59,15 @@ void Player::update(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager
 {
     this->move(deltaTime);
     this->shoot(deltaTime, window, bulMan);
-    animator.playAnimation("Default");
+    if(!animator.isPlayingAnimation())
+    {
+        animator.playAnimation("Default");
+    }
+    if(m_aniMove)
+    {
+        animator.playAnimation("Moving");
+    }
+
     animator.update(deltaTime);
     animator.animate(sprite);
 }
@@ -131,6 +149,19 @@ void Player::move(sf::Time& deltaTime)
 
     m_moveHori = false;
     m_moveVerti = false;
+
+    if(!animator.isPlayingAnimation() &&
+       (sf::Keyboard::isKeyPressed(sf::Keyboard::W) ||
+       sf::Keyboard::isKeyPressed(sf::Keyboard::A) ||
+       sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
+       sf::Keyboard::isKeyPressed(sf::Keyboard::D)) )
+    {
+        m_aniMove = true;
+    }
+    else
+    {
+        m_aniMove = false;
+    }
 }
 
 void Player::shoot(sf::Time& deltaTime, sf::RenderWindow& window, BulletManager& bullets)
