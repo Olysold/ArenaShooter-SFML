@@ -152,3 +152,11 @@ Currently enemy rotation is a direct copy and paste from your code. Something ab
 they are rotating too fast. I'll look into that.
 
 -O
+
+###
+
+Managed to make them rotate, but I used 100 as the speed for ccw rotation. I'm not sure what the current speed value is
+for enemies at the moment, but it's making the enemies spaz out on ccw rotations. Or maybe it's not the value, there's
+just something about using m_speed that's making them spaz out.
+
+-O
