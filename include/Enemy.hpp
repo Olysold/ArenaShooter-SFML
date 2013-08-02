@@ -48,6 +48,9 @@ private:
     void shoot(const Player&, sf::Time& deltaTime);
     void dropLoot();
 
+    bool            m_isFaceUp;
+    bool            m_isFaceLeft;
+
     unsigned int    m_level; ///Used as a factor to multiply stats?
     unsigned int    m_value; ///Score value
 

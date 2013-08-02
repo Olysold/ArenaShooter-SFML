@@ -107,9 +107,50 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
     float targetAngle = util::radToDeg(std::atan2(-1 * distanceX, distanceY)) + 180;
     float actualAngle = sprite.getRotation();
 
-    //MAGIC ROTATION CODE
+    if( !(actualAngle < targetAngle + 2 && actualAngle > targetAngle - 2) )
+    {
+        bool targetFacingRight;
 
-    sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
+        if(targetAngle < 180)
+        {
+            targetFacingRight = true;
+        }
+        else
+        {
+            targetFacingRight = false;
+        }
+
+        if(targetFacingRight)
+        {
+            float oppositeOfTarget = targetAngle + 180;
+
+            if(actualAngle < targetAngle ||
+               actualAngle < 360 && actualAngle > oppositeOfTarget)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+            else if(actualAngle > targetAngle ||
+                    actualAngle < oppositeOfTarget)
+            {
+                sprite.rotate(-1 * 100 * deltaTime.asSeconds());
+            }
+        }
+        else if(!targetFacingRight)
+        {
+            float oppositeOfTarget = targetAngle - 180;
+
+            if(actualAngle < 360 && actualAngle > targetAngle ||
+               actualAngle < oppositeOfTarget)
+            {
+                sprite.rotate(-1 * 100 * deltaTime.asSeconds());
+            }
+            else if(actualAngle < targetAngle ||
+                    actualAngle > oppositeOfTarget)
+            {
+                sprite.rotate(m_speed * deltaTime.asSeconds());
+            }
+        }
+    }
 }
 
 void Enemy::shoot(const Player&, sf::Time& deltaTime)

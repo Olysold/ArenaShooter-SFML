@@ -51,7 +51,7 @@ void Arena::draw(sf::RenderWindow& window)
 
 void Arena::spawnWave(EnemyManager& enemyMan)
 {
-    unsigned int numEnemies = (m_wave * 10) + 50;
+    unsigned int numEnemies = (m_wave * 10) + 1;
     for (unsigned int i = 0; i < numEnemies; ++i)
     {
         switch (std::rand() % 4)
