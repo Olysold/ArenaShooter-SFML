@@ -13,9 +13,7 @@ m_moving(false)
 {
     m_value = 10;
     m_health = (m_level * 50) + 100;
-    m_initVelocity = 0;
-    m_finalVelocity = m_level + 100;
-    m_rotationSpeed = m_level + 100;
+    m_speed = 300;
     m_damage = m_health / 2.f;
     m_ROF = 1.f - (m_level / 100.f);
     m_bulletSpeed = (m_level * 50) + 200;
@@ -25,9 +23,7 @@ m_moving(false)
 Enemy::Enemy(unsigned int level,
              unsigned int value,
              unsigned int health,
-             unsigned int initVelocity,
-             unsigned int finalVelocity,
-             unsigned int rotationSpeed,
+             unsigned int speed,
              unsigned int damage,
              unsigned int ROF,
              unsigned int bulletSpeed,
@@ -35,9 +31,7 @@ Enemy::Enemy(unsigned int level,
 m_level(level),
 m_value(value),
 m_health(health),
-m_initVelocity(initVelocity),
-m_finalVelocity(finalVelocity),
-m_rotationSpeed(rotationSpeed),
+m_speed(speed),
 m_damage(damage),
 m_ROF(ROF),
 m_bulletSpeed(bulletSpeed),
@@ -50,8 +44,8 @@ void Enemy::update(const Player& player, sf::Time& deltaTime)
     animator.playAnimation("Default");
     animator.update(deltaTime);
     animator.animate(sprite);
-    this->move(player, deltaTime);
-    //this->testMove(player, deltaTime);
+    //this->move(player, deltaTime);
+    this->testMove(player, deltaTime);
 }
 
 void Enemy::draw(sf::RenderWindow& window)
@@ -96,19 +90,19 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
 
     if(util::isNegative(distanceX))
     {
-        Movement::moveLeft(sprite, m_finalVelocity, deltaTime);
+        Movement::moveLeft(sprite, m_speed, deltaTime);
     }
     if(!util::isNegative(distanceX))
     {
-        Movement::moveRight(sprite, m_finalVelocity, deltaTime);
+        Movement::moveRight(sprite, m_speed, deltaTime);
     }
     if(util::isNegative(distanceY))
     {
-        Movement::moveUp(sprite, m_finalVelocity, deltaTime);
+        Movement::moveUp(sprite, m_speed, deltaTime);
     }
     if(!util::isNegative(distanceY))
     {
-        Movement::moveDown(sprite, m_finalVelocity, deltaTime);
+        Movement::moveDown(sprite, m_speed, deltaTime);
     }
 
     //Rotating
@@ -135,7 +129,7 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
             if(actualAngle < targetAngle ||
                actualAngle < 360 && actualAngle > oppositeOfTarget)
             {
-                sprite.rotate(m_finalVelocity * deltaTime.asSeconds());
+                sprite.rotate(m_speed * deltaTime.asSeconds());
             }
             else if(actualAngle > targetAngle ||
                     actualAngle < oppositeOfTarget)
@@ -155,7 +149,7 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
             else if(actualAngle < targetAngle ||
                     actualAngle > oppositeOfTarget)
             {
-                sprite.rotate(m_finalVelocity * deltaTime.asSeconds());
+                sprite.rotate(m_speed * deltaTime.asSeconds());
             }
         }
     }
@@ -173,7 +167,7 @@ void Enemy::testMove(const Player& player, sf::Time& deltaTime)
     float targetAngle = util::radToDeg(std::atan2(-1 * distanceX, distanceY)) + 180;
     float actualAngle = sprite.getRotation();
 
-    if( !(actualAngle < targetAngle + 2 && actualAngle > targetAngle - 2) &&
+    if( !(actualAngle < targetAngle + 1 && actualAngle > targetAngle - 1) &&
         !m_moving)
     {
         bool targetFacingRight;
@@ -194,12 +188,12 @@ void Enemy::testMove(const Player& player, sf::Time& deltaTime)
             if(actualAngle < targetAngle ||
                actualAngle < 360 && actualAngle > oppositeOfTarget)
             {
-                sprite.rotate(m_rotationSpeed * deltaTime.asSeconds());
+                sprite.rotate(m_speed * deltaTime.asSeconds());
             }
             else if(actualAngle > targetAngle ||
                     actualAngle < oppositeOfTarget)
             {
-                sprite.rotate(-1 * m_rotationSpeed * deltaTime.asSeconds());
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
         }
         else if(!targetFacingRight)
@@ -209,45 +203,37 @@ void Enemy::testMove(const Player& player, sf::Time& deltaTime)
             if(actualAngle < 360 && actualAngle > targetAngle ||
                actualAngle < oppositeOfTarget)
             {
-                sprite.rotate(-1 * m_rotationSpeed * deltaTime.asSeconds());
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
             else if(actualAngle < targetAngle ||
                     actualAngle > oppositeOfTarget)
             {
-                sprite.rotate(m_rotationSpeed * deltaTime.asSeconds());
+                sprite.rotate(m_speed * deltaTime.asSeconds());
             }
         }
     }
     else if(!m_moving)
     {
         m_targetLoc = playerPos;
-        m_targetLoc.x;
-        m_targetLoc.y;
+        m_targetLoc.x * 2;
+        m_targetLoc.y * 2;
 
-        ++m_initVelocity;
         m_moving = true;
     }
 
     if(m_moving &&
-       (!(enemyPos.x > m_targetLoc.x - 2 && enemyPos.x < m_targetLoc.x + 2) ||
-       !(enemyPos.y > m_targetLoc.y - 2 && enemyPos.y < m_targetLoc.y + 2)) )
+       (!(enemyPos.x > m_targetLoc.x - 3 && enemyPos.x < m_targetLoc.x + 3) ||
+       !(enemyPos.y > m_targetLoc.y - 3 && enemyPos.y < m_targetLoc.y + 3)) )
     {
-        if(util::isNegative(distanceX))
-        {
-            Movement::moveLeft(sprite, m_finalVelocity, deltaTime);
-        }
-        if(!util::isNegative(distanceX))
-        {
-            Movement::moveRight(sprite, m_finalVelocity, deltaTime);
-        }
-        if(util::isNegative(distanceY))
-        {
-            Movement::moveUp(sprite, m_finalVelocity, deltaTime);
-        }
-        if(!util::isNegative(distanceY))
-        {
-            Movement::moveDown(sprite, m_finalVelocity, deltaTime);
-        }
+        double moveDistanceX = m_targetLoc.x - enemyPos.x;
+        double moveDistanceY = m_targetLoc.y - enemyPos.y;
+
+        sprite.move(moveDistanceX * deltaTime.asSeconds(),
+                    moveDistanceY * deltaTime.asSeconds());
+    }
+    else
+    {
+        m_moving = false;
     }
 
 }

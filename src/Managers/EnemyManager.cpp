@@ -37,15 +37,13 @@ void EnemyManager::createTypeOne(sf::Vector2f pos,
 void EnemyManager::createEnemy(sf::Vector2f pos,
                                unsigned int level,
                                unsigned int health,
-                               unsigned int initVelocity,
-                               unsigned int finalVelocity,
-                               unsigned int rotationSpeed,
+                               unsigned int speed,
                                unsigned int damage,
                                unsigned int ROF,
                                unsigned int bulletSpeed,
                                unsigned int bulletDamage)
 {
-    Enemy ene(level, 10, health, initVelocity, finalVelocity, rotationSpeed, damage, ROF, bulletSpeed, bulletDamage);
+    Enemy ene(level, 10, health, speed, damage, ROF, bulletSpeed, bulletDamage);
 
     m_resMan.texture("Enemy1");
     auto& edAni = m_resMan.frameAnimation("Enemy Default");

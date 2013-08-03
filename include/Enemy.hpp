@@ -24,9 +24,7 @@ public:
     Enemy(unsigned int level,
           unsigned int m_value,
           unsigned int health,
-          unsigned int initVelocity,
-          unsigned int finalVelocity,
-          unsigned int m_rotationSpeed,
+          unsigned int speed,
           unsigned int damage,
           unsigned int ROF,
           unsigned int bulletSpeed,
@@ -61,9 +59,7 @@ private:
     unsigned int    m_health;
     unsigned int    m_armor;
     unsigned int    m_shield;
-    unsigned int    m_initVelocity;
-    unsigned int    m_finalVelocity;
-    unsigned int    m_rotationSpeed;
+    unsigned int    m_speed;
     unsigned int    m_damage; ///Collision damage
     unsigned int    m_ROF;
 
