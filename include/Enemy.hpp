@@ -24,7 +24,9 @@ public:
     Enemy(unsigned int level,
           unsigned int m_value,
           unsigned int health,
-          unsigned int speed,
+          unsigned int initVelocity,
+          unsigned int finalVelocity,
+          unsigned int m_rotationSpeed,
           unsigned int damage,
           unsigned int ROF,
           unsigned int bulletSpeed,
@@ -45,19 +47,23 @@ public:
 
 private:
     void move(const Player&, sf::Time& deltaTime);
+    void testMove(const Player&, sf::Time& deltaTime);
     void shoot(const Player&, sf::Time& deltaTime);
     void dropLoot();
 
-    bool            m_isFaceUp;
-    bool            m_isFaceLeft;
-
     unsigned int    m_level; ///Used as a factor to multiply stats?
+                             //Based on experimentation, needs a cap.
     unsigned int    m_value; ///Score value
+
+    bool            m_moving;
+    sf::Vector2f    m_targetLoc;
 
     unsigned int    m_health;
     unsigned int    m_armor;
     unsigned int    m_shield;
-    unsigned int    m_speed;
+    unsigned int    m_initVelocity;
+    unsigned int    m_finalVelocity;
+    unsigned int    m_rotationSpeed;
     unsigned int    m_damage; ///Collision damage
     unsigned int    m_ROF;
 

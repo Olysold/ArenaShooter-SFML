@@ -17,6 +17,7 @@
 #include "Managers/BulletManager.hpp"
 #include "Managers/CollisionManager.hpp"
 #include "util.hpp"
+#include "Spawner.hpp"
 #include "UI/UI.hpp"
 
 void drawFPS(sf::Time& deltaTime, sf::RenderWindow& window);
@@ -39,6 +40,7 @@ int main()
     player.sprite.setPosition(arena.getSize().x / 2.f, arena.getSize().y / 2.f);
 
     Camera cam(player);
+    Spawner spawner(arena);
     UI userInter(player, cam);
 
     //Time
@@ -64,7 +66,7 @@ int main()
             player.update(deltaTime, window, bulMan);
             cam.update(deltaTime, window, player, arena.getSize());
             userInter.update(deltaTime, player, enemyMan, cam);
-            game.updateEntity(deltaTime, enemyMan, bulMan, colMan, arena, player);
+            game.updateEntity(deltaTime, enemyMan, bulMan, colMan, arena, player, spawner);
         }
 
         window.clear(sf::Color(40, 40, 40));

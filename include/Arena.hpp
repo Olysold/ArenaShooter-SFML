@@ -21,7 +21,7 @@ public:
 
     void confinePlayer(Player& player);
 
-    sf::Vector2u getSize();
+    sf::Vector2u getSize() const;
 
 private:
     void spawnWave(EnemyManager&);

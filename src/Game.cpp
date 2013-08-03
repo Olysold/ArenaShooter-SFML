@@ -15,11 +15,13 @@ void Game::updateEntity(sf::Time& deltaTime,
                         BulletManager& bulMan,
                         CollisionManager& colMan,
                         Arena& arena,
-                        Player& player)
+                        Player& player,
+                        Spawner& spawner)
 {
     if (!m_gameOver)
     {
-        arena.update(enemyMan);
+        spawner.update(deltaTime, *this, enemyMan);
+        //arena.update(enemyMan);
         arena.confinePlayer(player);
 
         for (auto& enemy : enemyMan.getEnemies())

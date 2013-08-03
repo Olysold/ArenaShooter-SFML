@@ -57,28 +57,28 @@ void Arena::spawnWave(EnemyManager& enemyMan)
         switch (std::rand() % 4)
         {
         case 0:
-            enemyMan.createEnemy(sf::Vector2f(std::rand() % m_gridSize.x,
+            enemyMan.createTypeOne(sf::Vector2f(std::rand() % m_gridSize.x,
                                               0),
                                  m_wave);
             break;
         case 1:
-            enemyMan.createEnemy(sf::Vector2f(std::rand() % m_gridSize.x,
+            enemyMan.createTypeOne(sf::Vector2f(std::rand() % m_gridSize.x,
                                               m_gridSize.y),
                                  m_wave);
             break;
         case 2:
-            enemyMan.createEnemy(sf::Vector2f(0,
+            enemyMan.createTypeOne(sf::Vector2f(0,
                                               std::rand() % m_gridSize.y),
                                  m_wave);
             break;
         case 3:
-            enemyMan.createEnemy(sf::Vector2f(m_gridSize.x,
+            enemyMan.createTypeOne(sf::Vector2f(m_gridSize.x,
                                               std::rand() % m_gridSize.y),
                                  m_wave);
             break;
         default:
             std::cout << "WAVE SPAWN ERROR\n";
-            enemyMan.createEnemy(sf::Vector2f(0, 0), m_wave);
+            enemyMan.createTypeOne(sf::Vector2f(0, 0), m_wave);
             break;
         }
 
@@ -117,7 +117,7 @@ void Arena::confinePlayer(Player& player)
     }
 }
 
-sf::Vector2u Arena::getSize()
+sf::Vector2u Arena::getSize() const
 {
     return m_gridSize;
 }

@@ -15,15 +15,23 @@
 #include "Managers/CollisionManager.hpp"
 #include "Camera.hpp"
 #include "Arena.hpp"
+#include "Spawner.hpp"
 
 class CollisionManager;
+class Spawner;
 
 class Game
 {
 public:
     Game();
 
-    void updateEntity(sf::Time&, EnemyManager&, BulletManager&, CollisionManager&, Arena&, Player&);
+    void updateEntity(sf::Time&,
+                      EnemyManager&,
+                      BulletManager&,
+                      CollisionManager&,
+                      Arena&,
+                      Player&,
+                      Spawner&);
     void drawEntity(Player&, EnemyManager&, BulletManager&, Arena&, sf::RenderWindow&);
 
     bool isGameOver();

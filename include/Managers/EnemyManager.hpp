@@ -15,13 +15,15 @@ class EnemyManager
 public:
     EnemyManager();
 
-    void createEnemy(sf::Vector2f pos,
-                     unsigned int level);
+    void createTypeOne(sf::Vector2f pos,
+                       unsigned int level);
 
     void createEnemy(sf::Vector2f pos,
                      unsigned int level,
                      unsigned int health,
+                     unsigned int,
                      unsigned int speed,
+                     unsigned int,
                      unsigned int damage,
                      unsigned int ROF,
                      unsigned int bulletSpeed,
