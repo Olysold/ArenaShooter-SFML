@@ -1454,7 +1454,7 @@
 1374318537 source:c:\users\user\documents\github\arenashooter-sfml\src\collisionmanager.cpp
 	"CollisionManager.hpp"
 
-1375505194 source:c:\users\user\documents\github\arenashooter-sfml\src\enemy.cpp
+1375505857 source:c:\users\user\documents\github\arenashooter-sfml\src\enemy.cpp
 	"Enemy.hpp"
 	"Movement.hpp"
 	"util.hpp"
@@ -1764,7 +1764,7 @@
 1375387620 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\collisionmanager.cpp
 	"Managers/CollisionManager.hpp"
 
-1375505293 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\enemymanager.cpp
+1375505672 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\enemymanager.cpp
 	"Managers/EnemyManager.hpp"
 
 1375387620 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\resourcemanager.cpp

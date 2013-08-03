@@ -215,8 +215,8 @@ void Enemy::testMove(const Player& player, sf::Time& deltaTime)
     else if(!m_moving)
     {
         m_targetLoc = playerPos;
-        m_targetLoc.x *= 1.2;
-        m_targetLoc.y *= 1.2;
+        m_targetLoc.x;
+        m_targetLoc.y;
 
         m_moving = true;
     }
