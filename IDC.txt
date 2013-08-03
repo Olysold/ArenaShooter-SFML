@@ -159,4 +159,12 @@ Managed to make them rotate, but I used 100 as the speed for ccw rotation. I'm n
 for enemies at the moment, but it's making the enemies spaz out on ccw rotations. Or maybe it's not the value, there's
 just something about using m_speed that's making them spaz out.
 
+In the update, spawner is optional. I was just thinking that spawning is a big enough task that it should have it's
+own place to work in. Didn't remove anything though, just commented out arena's update.
+
+I'm also trying to make the first enemy type move in a certain way. The enemy will have to rotate until it's sort
+of pointing towards the player, then "dash" in a straight line, or rather on a vector between the enemy's current
+position and the player's "ghost" position; then rinse and repeat. It's called testMove for now. Will try to figure 
+it out later, any ideas?
+
 -O
