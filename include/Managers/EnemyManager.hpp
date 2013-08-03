@@ -21,7 +21,7 @@ public:
     void createEnemy(sf::Vector2f pos,
                      unsigned int level,
                      unsigned int health,
-                     unsigned int speed,
+                     int          speed,
                      unsigned int damage,
                      unsigned int ROF,
                      unsigned int bulletSpeed,

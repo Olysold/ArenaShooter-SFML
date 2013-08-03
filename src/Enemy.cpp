@@ -23,7 +23,7 @@ m_moving(false)
 Enemy::Enemy(unsigned int level,
              unsigned int value,
              unsigned int health,
-             unsigned int speed,
+             int          speed,
              unsigned int damage,
              unsigned int ROF,
              unsigned int bulletSpeed,
@@ -134,7 +134,7 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
             else if(actualAngle > targetAngle ||
                     actualAngle < oppositeOfTarget)
             {
-                sprite.rotate(-1 * 100 * deltaTime.asSeconds());
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
         }
         else if(!targetFacingRight)
@@ -144,7 +144,7 @@ void Enemy::move(const Player& player, sf::Time& deltaTime)
             if(actualAngle < 360 && actualAngle > targetAngle ||
                actualAngle < oppositeOfTarget)
             {
-                sprite.rotate(-1 * 100 * deltaTime.asSeconds());
+                sprite.rotate(-1 * m_speed * deltaTime.asSeconds());
             }
             else if(actualAngle < targetAngle ||
                     actualAngle > oppositeOfTarget)
@@ -215,8 +215,8 @@ void Enemy::testMove(const Player& player, sf::Time& deltaTime)
     else if(!m_moving)
     {
         m_targetLoc = playerPos;
-        m_targetLoc.x * 2;
-        m_targetLoc.y * 2;
+        m_targetLoc.x *= 1.2;
+        m_targetLoc.y *= 1.2;
 
         m_moving = true;
     }

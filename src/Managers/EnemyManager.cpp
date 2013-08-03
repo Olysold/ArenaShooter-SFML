@@ -8,7 +8,7 @@ EnemyManager::EnemyManager(): m_totalScore(0)
 }
 
 void EnemyManager::createTypeOne(sf::Vector2f pos,
-                               unsigned int level)
+                                 unsigned int level)
 {
     Enemy ene(level);
 
@@ -37,7 +37,7 @@ void EnemyManager::createTypeOne(sf::Vector2f pos,
 void EnemyManager::createEnemy(sf::Vector2f pos,
                                unsigned int level,
                                unsigned int health,
-                               unsigned int speed,
+                               int          speed,
                                unsigned int damage,
                                unsigned int ROF,
                                unsigned int bulletSpeed,

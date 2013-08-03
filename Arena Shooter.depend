@@ -1395,7 +1395,7 @@
 	"Bullet.hpp"
 	"ResourceManager.hpp"
 
-1375505150 c:\users\user\documents\github\arenashooter-sfml\include\enemy.hpp
+1375505596 c:\users\user\documents\github\arenashooter-sfml\include\enemy.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<Thor/Animation.hpp>
@@ -1745,7 +1745,7 @@
 	"Bullet.hpp"
 	"Managers/ResourceManager.hpp"
 
-1375505150 c:\users\user\documents\github\arenashooter-sfml\include\managers\enemymanager.hpp
+1375505672 c:\users\user\documents\github\arenashooter-sfml\include\managers\enemymanager.hpp
 	<vector>
 	"Enemy.hpp"
 	<memory>
@@ -1764,7 +1764,7 @@
 1375387620 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\collisionmanager.cpp
 	"Managers/CollisionManager.hpp"
 
-1375505204 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\enemymanager.cpp
+1375505293 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\enemymanager.cpp
 	"Managers/EnemyManager.hpp"
 
 1375387620 source:c:\users\user\documents\github\arenashooter-sfml\src\managers\resourcemanager.cpp
