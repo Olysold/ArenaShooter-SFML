@@ -167,4 +167,8 @@ of pointing towards the player, then "dash" in a straight line, or rather on a v
 position and the player's "ghost" position; then rinse and repeat. It's called testMove for now. Will try to figure 
 it out later, any ideas?
 
+Edit: Sort of figured out the movement. Eventually I'll try to get it to move at a constant speed. Finally figured
+out why m_speed wasn't working correctly with rotation, totally forgot about unsigned. 
+
+
 -O
